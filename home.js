@@ -295,3 +295,62 @@ window.addEventListener('scroll',updateHeader,{passive:true});
 updateHeader();
 updateWorld();
 render();
+
+// Keep the initial moment personal, then carry those exact details into the editor.
+const arrivalInputs=[$('#arrival-one'),$('#arrival-two')];
+function arrivalDetails(){return arrivalInputs.map((input,index)=>input.value.trim() || (index===0?'Your name':'Their name'));}
+function renderArrival(){
+  const names=arrivalDetails();
+  $('#arrival-name-one').textContent=names[0];
+  $('#arrival-name-two').textContent=names[1];
+  $('#portal-monogram').textContent=names.map(name=>Array.from(name)[0]).join(' / ');
+  $('.portal-inscription p').classList.toggle('is-long',names.some(name=>name.length>12));
+}
+arrivalInputs.forEach(input=>input.addEventListener('input',renderArrival));
+function toggleArrival(){
+  const open=$('#portal-toggle').getAttribute('aria-expanded')!=='true';
+  $('#invitation-portal').classList.toggle('is-open',open);
+  $('#portal-toggle').setAttribute('aria-expanded',String(open));
+  $('#portal-inside').setAttribute('aria-hidden',String(!open));
+  $('#portal-toggle-label').textContent=open?'Close & replay the reveal':'Open your invitation';
+  $('#portal-surface-button').setAttribute('aria-expanded',String(open));
+  $('#portal-surface-button').setAttribute('aria-label',open?'Close your invitation':'Open your invitation');
+}
+$('#portal-toggle').addEventListener('click',toggleArrival);
+$('#portal-surface-button').addEventListener('click',toggleArrival);
+document.querySelectorAll('[name="arrival-scene"]').forEach(input=>input.addEventListener('change',()=>{
+  $('#invitation-portal').dataset.scene=input.value;
+}));
+$('#arrival-form').addEventListener('submit',event=>{
+  event.preventDefault();
+  const [nameOne,nameTwo]=arrivalDetails();
+  const params=new URLSearchParams({style:document.querySelector('[name="arrival-scene"]:checked').value,nameOne,nameTwo});
+  location.href=`studio.html?${params}`;
+});
+const finishDescriptions={
+  cotton:'Soft grain. Blind impressions. An understated invitation with room to breathe.',
+  vellum:'A translucent first layer. Let the names appear before the full story unfolds.',
+  foil:'A restrained glint of light. One metallic detail becomes the signature of the suite.'
+};
+document.querySelectorAll('[data-material]').forEach(button=>button.addEventListener('click',()=>{
+  document.querySelectorAll('[data-material]').forEach(choice=>choice.setAttribute('aria-pressed',String(choice===button)));
+  $('.material-display').dataset.activeMaterial=button.dataset.material;
+  $('#material-detail').textContent=finishDescriptions[button.dataset.material];
+}));
+const ceremonyChapters={
+  haldi:{image:'botanical-mandap',alt:'Sunlit garden setting for a Haldi celebration',number:'01',title:'The Haldi',kicker:'YELLOW PETALS. GOLDEN MEMORIES.',description:'A little turmeric, a lot of laughter. Come ready to be part of the colour.',time:'10 December · 11:00 AM',place:'The Garden Courtyard, Jaipur',dress:'Sunshine shades & easy silhouettes'},
+  sangeet:{image:'moonlit-mehfil',alt:'Indigo courtyard glowing with lanterns for a Sangeet night',number:'02',title:'The Sangeet',kicker:'YOUR FAVOURITE PEOPLE. ONE DANCE FLOOR.',description:'Old songs, new memories and a night that belongs to everyone we love.',time:'11 December · 7:00 PM',place:'The Moonlit Terrace, Jaipur',dress:'Jewel tones & your dancing shoes'},
+  wedding:{image:'royal-palace',alt:'A warm palace courtyard for a wedding ceremony',number:'03',title:'The Wedding',kicker:'ALL ROADS LED US HERE.',description:'With our families beside us and you around us, our forever begins.',time:'12 December · 4:30 PM',place:'The Palace Courtyard, Jaipur',dress:'Indian festive · a touch of gold'}
+};
+document.querySelectorAll('[data-chapter].chapter-choice').forEach(button=>button.addEventListener('click',()=>{
+  const chapter=ceremonyChapters[button.dataset.chapter];
+  document.querySelectorAll('.chapter-choice').forEach(choice=>choice.setAttribute('aria-pressed',String(choice===button)));
+  $('#chapter-preview').dataset.chapter=button.dataset.chapter;
+  const picture=$('#chapter-image');
+  picture.src=`assets/${chapter.image}.webp`;picture.alt=chapter.alt;
+  picture.style.animation='none';
+  requestAnimationFrame(()=>{picture.style.animation='';});
+  $('#chapter-number').textContent=`CHAPTER ${chapter.number}`;
+  for(const key of ['title','kicker','description','time','place','dress']) $(`#chapter-${key}`).textContent=chapter[key];
+}));
+renderArrival();

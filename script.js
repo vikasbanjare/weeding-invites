@@ -83,7 +83,12 @@ if (stored && typeof stored === 'object') {
   }
 }
 if (!['royal', 'moonlit', 'garden'].includes(state.theme)) state.theme = defaults.theme;
-const requestedStyle = new URLSearchParams(location.search).get('style');
+const requestedDetails = new URLSearchParams(location.search);
+const requestedStyle = requestedDetails.get('style');
+for (const key of ['nameOne', 'nameTwo']) {
+  const value = requestedDetails.get(key);
+  if (value && value.trim()) state[key] = value.trim().slice(0, 22);
+}
 if (['royal', 'moonlit', 'garden'].includes(requestedStyle)) state.theme = requestedStyle;
 if (!Object.hasOwn(celebrationLabels, state.celebration)) state.celebration = defaults.celebration;
 for (const [key, input] of Object.entries(fields)) input.value = state[key];
