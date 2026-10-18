@@ -14,7 +14,8 @@ const example = {
   ],
 };
 
-const storageKey = 'invitation-studio-palace-v1';
+const activeDesign = window.INVITATION_DESIGN;
+const storageKey = activeDesign ? `invitation-studio-${activeDesign.id}-v1` : 'invitation-studio-palace-v1';
 const maxEvents = 8;
 const dialog = document.getElementById('editor-dialog');
 const form = document.getElementById('palace-editor');
@@ -49,7 +50,7 @@ function normalize(raw) {
 
 function fromHash() {
   const encoded = location.hash.startsWith('#invite=') ? location.hash.slice(8) : '';
-  if (!encoded || encoded.length > 12000) return null;
+  if (!encoded || encoded.length > 24000) return null;
   try {
     const base64 = encoded.replace(/-/g, '+').replace(/_/g, '/');
     const bytes = Uint8Array.from(atob(base64), (character) => character.charCodeAt(0));
@@ -58,13 +59,23 @@ function fromHash() {
 }
 
 function fromStorage() {
+  if (activeDesign?.embedded) return structuredClone(example);
   try { return normalize(JSON.parse(localStorage.getItem(storageKey))); }
   catch { return structuredClone(example); }
 }
 
 let invitation = fromHash() || fromStorage();
+if (activeDesign && !location.hash.startsWith('#invite=')) {
+  const initialParams = new URLSearchParams(location.search);
+  for (const key of ['nameOne', 'nameTwo']) {
+    if (initialParams.get(key)?.trim()) invitation[key] = clean(initialParams.get(key), 28, invitation[key]);
+    initialParams.delete(key);
+  }
+  history.replaceState(null, '', `${location.pathname}?${initialParams}${location.hash}`);
+}
 
 function persist() {
+  if (activeDesign?.embedded) return;
   try { localStorage.setItem(storageKey, JSON.stringify(invitation)); }
   catch { /* The invitation still works when browser storage is unavailable. */ }
 }
@@ -123,7 +134,7 @@ function render() {
   document.getElementById('main-map-link').href = mapsLink(invitation.venue);
   const wedding = invitation.events.find((event) => /wedding|phera|shaadi|vivah/i.test(event.title)) || invitation.events[invitation.events.length - 1];
   document.querySelector('[data-wedding-date]').textContent = formatDate(wedding.date).toUpperCase();
-  document.title = `${invitation.nameOne} & ${invitation.nameTwo} — The Palace Edit`;
+  document.title = `${invitation.nameOne} & ${invitation.nameTwo} — ${activeDesign?.name || "The Palace Edit"}`;
   fitHeroTitle();
   renderEvents();
   persist();
@@ -134,12 +145,14 @@ function fitHeroTitle() {
   title.style.removeProperty('font-size');
   let size = Number.parseFloat(getComputedStyle(title).fontSize);
   const mobile = innerWidth < 681;
-  while ((title.scrollWidth > title.clientWidth || (mobile && title.clientHeight > 125)) && size > (mobile ? 28 : 36)) {
+  const maxHeight = activeDesign?.embedded ? hero.offsetHeight * .45 : activeDesign ? (mobile ? 240 : hero.offsetHeight * .5) : 125;
+  while ((title.scrollWidth > title.clientWidth || ((mobile || activeDesign) && title.clientHeight > maxHeight)) && size > (activeDesign ? 18 : mobile ? 28 : 36)) {
     size -= 2;
     title.style.fontSize = `${size}px`;
   }
 }
 window.addEventListener('resize', fitHeroTitle);
+document.fonts.ready.then(fitHeroTitle);
 
 let revealObserver;
 function revealElements() {
@@ -156,7 +169,7 @@ function revealElements() {
 }
 
 function updateDepth(pointerX = 0, pointerY = 0) {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.body.dataset.motion === 'off') return;
   const scroll = Math.min(window.scrollY, hero.offsetHeight);
   hero.style.setProperty('--bg-x', `${pointerX * -12}px`);
   hero.style.setProperty('--bg-y', `${scroll * .18 + pointerY * -8}px`);
@@ -226,7 +239,8 @@ function shareUrl() {
   const bytes = new TextEncoder().encode(JSON.stringify(invitation));
   let binary = '';
   bytes.forEach((byte) => { binary += String.fromCharCode(byte); });
-  const base = ['localhost', '127.0.0.1'].includes(location.hostname) ? 'https://vikasbanjare.github.io/weeding-invites/palace.html' : location.href.split('#')[0];
+  const local = ['localhost', '127.0.0.1'].includes(location.hostname) || location.protocol === 'file:';
+  const base = local ? `https://vikasbanjare.github.io/weeding-invites/${activeDesign ? 'invitation.html?design=' + activeDesign.id : 'palace.html'}` : location.href.split('#')[0];
   return `${base}#invite=${btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')}`;
 }
 
@@ -245,7 +259,12 @@ async function copyText(value) {
 
 document.getElementById('copy-link').addEventListener('click', async () => {
   try { await copyText(shareUrl()); exportNote.textContent = 'Invitation link copied. Anyone with this link can read its details.'; }
-  catch { exportNote.textContent = 'Copy is unavailable in this browser. Use your browser’s Share action for this page.'; }
+  catch {
+    exportNote.textContent = 'Copy is unavailable. Select and copy your invitation link below.';
+    let field = document.getElementById('manual-share-link');
+    if (!field) { field = create('textarea'); field.id = 'manual-share-link'; field.setAttribute('aria-label', 'Your invitation link'); field.readOnly = true; field.style.cssText = 'display:block;width:min(100%,650px);margin:15px auto;padding:12px;'; exportNote.after(field); }
+    field.value = shareUrl(); field.focus(); field.select();
+  }
 });
 
 document.getElementById('share-whatsapp').addEventListener('click', () => {
@@ -276,7 +295,7 @@ document.getElementById('download-calendar').addEventListener('click', () => {
     lines.push('BEGIN:VEVENT', `UID:palace-${index}-${event.date}@invitation-studio.example`, `DTSTAMP:${stamp}`, `DTSTART:${icsUtc(start)}`, `DTEND:${icsUtc(end)}`, `SUMMARY:${icsEscape(`${event.title} · ${invitation.nameOne} & ${invitation.nameTwo}`)}`, `LOCATION:${icsEscape(`${event.place}, ${invitation.venue}, ${invitation.city}`)}`, `DESCRIPTION:${icsEscape(`${event.description} Dress note: ${event.attire}. Please confirm details with your hosts.`)}`, 'END:VEVENT');
   });
   lines.push('END:VCALENDAR');
-  saveBlob(new Blob([lines.join('\r\n') + '\r\n'], { type: 'text/calendar;charset=utf-8' }), 'palace-celebrations.ics');
+  saveBlob(new Blob([lines.join('\r\n') + '\r\n'], { type: 'text/calendar;charset=utf-8' }), `${activeDesign?.id || 'palace'}-celebrations.ics`);
   exportNote.textContent = 'Calendar file downloaded. Each event uses India Standard Time.';
 });
 
@@ -290,7 +309,10 @@ function loadImage(src) {
   });
 }
 async function getArtwork() {
-  if (!artwork.background || !artwork.couple) [artwork.background, artwork.couple] = await Promise.all([loadImage('assets/palace-courtyard.webp'), loadImage('assets/palace-couple.webp')]);
+  if (!artwork.background) {
+    [artwork.background, artwork.couple] = await Promise.all([loadImage(activeDesign?.background || 'assets/palace-courtyard.webp'), !activeDesign || activeDesign.couple ? loadImage('assets/palace-couple.webp') : Promise.resolve(null)]);
+  }
+  await document.fonts.ready;
   return artwork;
 }
 
@@ -327,6 +349,7 @@ function drawNames(ctx, width, height) {
 }
 
 function drawFrame(ctx, width, height, phase, progress = 0) {
+  if (window.drawDesignFrame) return window.drawDesignFrame(ctx, width, height, phase, progress, invitation, artwork, { formatDate, formatTime });
   const { background, couple } = artwork;
   ctx.fillStyle = '#151b29';
   ctx.fillRect(0, 0, width, height);
@@ -437,3 +460,10 @@ document.getElementById('download-video').addEventListener('click', async (event
 });
 
 render();
+
+window.updateInvitePreview = (nameOne, nameTwo) => {
+  if (!activeDesign?.embedded) return;
+  invitation.nameOne = clean(nameOne, 28, 'Meera');
+  invitation.nameTwo = clean(nameTwo, 28, 'Arjun');
+  render();
+};

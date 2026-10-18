@@ -24,9 +24,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Prepare static site
         run: |
-          mkdir -p public/assets/fonts
-          cp index.html home.css home.js studio.html styles.css script.js palace.html palace.css palace.js favicon.svg public/
+          mkdir -p public/assets/fonts public/assets/scenes public/assets/previews
+          cp designs.js invitation.html invitation.css invitation.js index.html home.css home.js studio.html styles.css script.js palace.html palace.css palace.js favicon.svg public/
           cp assets/*.webp public/assets/
+          cp assets/scenes/*.svg public/assets/scenes/
+          cp assets/previews/*.webp public/assets/previews/
           cp assets/fonts/* public/assets/fonts/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
