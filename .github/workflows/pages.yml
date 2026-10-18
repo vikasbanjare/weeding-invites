@@ -25,8 +25,8 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p public/assets
-          cp index.html styles.css script.js palace.html palace.css palace.js favicon.svg public/
-          cp assets/royal-palace.webp assets/moonlit-mehfil.webp assets/botanical-mandap.webp assets/palace-courtyard.webp assets/palace-couple.webp public/assets/
+          cp index.html home.css home.js studio.html styles.css script.js palace.html palace.css palace.js favicon.svg public/
+          cp assets/*.webp public/assets/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

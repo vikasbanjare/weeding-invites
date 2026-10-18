@@ -83,6 +83,8 @@ if (stored && typeof stored === 'object') {
   }
 }
 if (!['royal', 'moonlit', 'garden'].includes(state.theme)) state.theme = defaults.theme;
+const requestedStyle = new URLSearchParams(location.search).get('style');
+if (['royal', 'moonlit', 'garden'].includes(requestedStyle)) state.theme = requestedStyle;
 if (!Object.hasOwn(celebrationLabels, state.celebration)) state.celebration = defaults.celebration;
 for (const [key, input] of Object.entries(fields)) input.value = state[key];
 render();

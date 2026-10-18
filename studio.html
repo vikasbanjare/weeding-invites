@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f0e8" />
+    <meta name="description" content="Explore cinematic Indian wedding invitation styles with animated depth and live personalization." />
+    <title>Invitation Studio — Cinematic Wedding Templates</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body data-theme="royal" data-motion="on">
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <header class="site-header page-width">
+      <a class="brand" href="./" aria-label="Invitation Studio home">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span><strong>Invitation</strong><small>STUDIO</small></span>
+      </a>
+      <span class="header-note">A collection of celebrations</span>
+      <span class="header-pill"><span class="header-pill-dot"></span> Interactive concepts</span>
+    </header>
+
+    <main class="page-width">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span> THE SIGNATURE COLLECTION <span class="intro-index">01 / 03</span></p>
+        <h1 id="page-title">An invitation <em>worth opening.</em></h1>
+        <p class="intro-copy">Explore three free style previews, then step into a signature invitation built as a place you can wander through.</p>
+      </section>
+
+      <section class="studio" aria-label="Wedding invitation template studio">
+        <aside class="styles-panel panel" aria-labelledby="styles-heading">
+          <div class="panel-heading">
+            <span class="section-number">01</span>
+            <div><p class="panel-overline">CURATED STYLES</p><h2 id="styles-heading">Choose a world</h2></div>
+          </div>
+          <p class="panel-intro">Each style has its own atmosphere, color story, and motion.</p>
+
+          <div class="style-list" role="group" aria-label="Invitation style">
+            <button class="style-option is-selected" type="button" data-style="royal" aria-pressed="true">
+              <span class="style-thumb"><img src="assets/royal-palace.webp" alt="" /></span>
+              <span class="style-copy"><span class="style-name">The Royal Court</span><span class="style-detail">Regal · Heritage · Gold</span></span>
+              <span class="style-arrow" aria-hidden="true"></span>
+            </button>
+            <button class="style-option" type="button" data-style="moonlit" aria-pressed="false">
+              <span class="style-thumb"><img src="assets/moonlit-mehfil.webp" alt="" /></span>
+              <span class="style-copy"><span class="style-name">Moonlit Mehfil</span><span class="style-detail">Celestial · Luminous · Blue</span></span>
+              <span class="style-arrow" aria-hidden="true"></span>
+            </button>
+            <button class="style-option" type="button" data-style="garden" aria-pressed="false">
+              <span class="style-thumb"><img src="assets/botanical-mandap.webp" alt="" /></span>
+              <span class="style-copy"><span class="style-name">The Garden Vow</span><span class="style-detail">Botanical · Soft · Romantic</span></span>
+              <span class="style-arrow" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="style-note">
+            <span class="note-symbol" aria-hidden="true">✳</span>
+            <p>Move over the invitation to explore its depth. Every style is designed to feel alive on a phone.</p>
+          </div>
+        </aside>
+
+        <section class="preview-panel" aria-labelledby="preview-heading">
+          <div class="preview-topline"><span id="preview-heading">LIVE PREVIEW</span><span class="preview-topline-right"><i></i> ANIMATED DEPTH</span></div>
+          <div class="preview-frame">
+            <div class="preview-card" id="preview-card" aria-label="Invitation preview">
+              <div class="scene-stack" aria-hidden="true">
+                <img class="scene-image is-active" data-scene="royal" src="assets/royal-palace.webp" alt="" />
+                <img class="scene-image" data-scene="moonlit" src="assets/moonlit-mehfil.webp" alt="" />
+                <img class="scene-image" data-scene="garden" src="assets/botanical-mandap.webp" alt="" />
+              </div>
+              <div class="scene-shade" aria-hidden="true"></div>
+              <div class="scene-light" aria-hidden="true"></div>
+              <div class="particles" id="particles" aria-hidden="true"></div>
+              <div class="inner-border" aria-hidden="true"></div>
+
+              <div class="card-top">
+                <div class="card-emblem"><span>✦</span></div>
+                <p class="card-ceremony" id="card-ceremony">THE WEDDING CELEBRATION</p>
+              </div>
+
+              <div class="card-center">
+                <div class="tiny-ornament" aria-hidden="true"><span></span><b id="ornament-glyph">✦</b><span></span></div>
+                <p class="card-prelude">TOGETHER WITH THEIR FAMILIES</p>
+                <h2 class="couple-names"><span id="name-one-preview">Ananya</span><span class="ampersand">&amp;</span><span id="name-two-preview">Aarav</span></h2>
+                <p class="card-invite">joyfully invite you to celebrate<br />their new beginning</p>
+              </div>
+
+              <div class="card-bottom">
+                <div class="bottom-rule" aria-hidden="true"><span>✦</span></div>
+                <p class="card-date" id="date-preview">12 DECEMBER 2026</p>
+                <p class="card-venue" id="venue-preview">THE LEELA PALACE</p>
+                <p class="card-city" id="city-preview">JAIPUR, INDIA</p>
+                <p class="card-footer">WE CAN'T WAIT TO CELEBRATE WITH YOU</p>
+              </div>
+            </div>
+          </div>
+          <div class="preview-actions">
+            <button class="quiet-button" id="motion-toggle" type="button" aria-pressed="true"><span class="button-icon" aria-hidden="true">◌</span> Motion on</button>
+            <button class="quiet-button" id="fullscreen-button" type="button"><span class="button-icon" aria-hidden="true">⛶</span> Full screen</button>
+          </div>
+        </section>
+
+        <aside class="editor-panel panel" aria-labelledby="editor-heading">
+          <div class="panel-heading">
+            <span class="section-number">02</span>
+            <div><p class="panel-overline">PERSONALISE IT</p><h2 id="editor-heading">Your details</h2></div>
+          </div>
+          <p class="panel-intro">Change the words and watch your chosen invitation update instantly.</p>
+          <form class="editor-form" id="editor-form">
+            <div class="field-grid">
+              <label class="field"><span>First name</span><input id="name-one" name="nameOne" maxlength="22" autocomplete="off" value="Ananya" /></label>
+              <label class="field"><span>Second name</span><input id="name-two" name="nameTwo" maxlength="22" autocomplete="off" value="Aarav" /></label>
+            </div>
+            <label class="field"><span>Celebration</span><select id="celebration" name="celebration"><option value="wedding">Wedding celebration</option><option value="sangeet">Sangeet night</option><option value="engagement">Engagement ceremony</option><option value="reception">Wedding reception</option></select></label>
+            <label class="field"><span>Date</span><input id="date" name="date" type="date" value="2026-12-12" /></label>
+            <label class="field"><span>Venue</span><input id="venue" name="venue" maxlength="42" value="The Leela Palace" /></label>
+            <label class="field"><span>City</span><input id="city" name="city" maxlength="36" value="Jaipur, India" /></label>
+            <div class="form-divider"></div>
+            <button class="reset-button" id="reset-button" type="button"><span aria-hidden="true">↺</span> Reset to example</button>
+          </form>
+          <div class="editor-footnote"><span class="footnote-icon" aria-hidden="true">✧</span><p>Concept preview. Your edits are saved in this browser.</p></div>
+        </aside>
+      </section>
+      <section class="signature-feature" aria-labelledby="signature-title">
+        <div class="signature-art" aria-hidden="true"><img src="assets/palace-courtyard.webp" alt="" loading="lazy" /><span>THE PALACE EDIT</span></div>
+        <div class="signature-copy"><p class="signature-overline">BEYOND THE CARD · SIGNATURE CONCEPT</p><h2 id="signature-title">An invitation you <em>step inside.</em></h2><p>A scrollable palace story with an Indian couple, a complete ceremony programme, directions, and a downloadable motion keepsake.</p><a href="palace.html">Explore the palace experience <span aria-hidden="true">↗</span></a></div>
+      </section>
+      <div class="closing-line"><span>THOUGHTFULLY MADE FOR THE MOMENTS THAT MATTER</span><span>✦</span><span>THE INVITATION STUDIO</span></div>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

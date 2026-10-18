@@ -3,133 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f5f0e8" />
-    <meta name="description" content="Explore cinematic Indian wedding invitation styles with animated depth and live personalization." />
-    <title>Invitation Studio — Cinematic Wedding Templates</title>
+    <meta name="theme-color" content="#f7f3ec" />
+    <meta name="description" content="Explore 50 Indian wedding invitation concepts across heritage, modern, botanical, paper and destination styles. Preview digital invitations and discover beautifully considered stationery." />
+    <meta property="og:title" content="Invitation Studio — Invitations worth keeping" />
+    <meta property="og:description" content="Wedding invitations for every kind of celebration. Explore 50 digital and paper design concepts." />
+    <meta property="og:image" content="https://vikasbanjare.github.io/weeding-invites/assets/palace-preview.webp" />
+    <title>Invitation Studio — Wedding Invitations Worth Keeping</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <link rel="preload" href="assets/paper-marigold.webp" as="image" />
+    <link rel="stylesheet" href="home.css" />
+    <script src="home.js" defer></script>
   </head>
-  <body data-theme="royal" data-motion="on">
-    <div class="ambient ambient-one" aria-hidden="true"></div>
-    <div class="ambient ambient-two" aria-hidden="true"></div>
-
-    <header class="site-header page-width">
-      <a class="brand" href="./" aria-label="Invitation Studio home">
-        <span class="brand-mark" aria-hidden="true">✦</span>
-        <span><strong>Invitation</strong><small>STUDIO</small></span>
-      </a>
-      <span class="header-note">A collection of celebrations</span>
-      <span class="header-pill"><span class="header-pill-dot"></span> Interactive concepts</span>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="announcement"><span>✦</span> A new way to invite the people who matter most <span>✦</span></div>
+    <header class="site-header" id="top">
+      <a class="brand" href="./" aria-label="Invitation Studio home"><span class="brand-mark" aria-hidden="true">✺</span><span class="brand-name">Invitation <em>Studio</em><small>THE ART OF CELEBRATING</small></span></a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation"><a href="#collections">Collections</a><a href="#catalog">All designs</a><a href="#services">What we create</a><a href="#process">How it works</a></nav>
+      <a class="header-cta" href="#catalog">Find your invitation <span aria-hidden="true">↗</span></a>
     </header>
 
-    <main class="page-width">
-      <section class="intro" aria-labelledby="page-title">
-        <p class="eyebrow"><span class="eyebrow-line"></span> THE SIGNATURE COLLECTION <span class="intro-index">01 / 03</span></p>
-        <h1 id="page-title">An invitation <em>worth opening.</em></h1>
-        <p class="intro-copy">Explore three free style previews, then step into a signature invitation built as a place you can wander through.</p>
+    <main id="main">
+      <section class="home-hero" aria-labelledby="hero-title">
+        <div class="hero-content"><p class="overline"><span class="mini-line"></span> FOR EVERY WAY LOVE IS CELEBRATED</p><h1 id="hero-title">An invitation as <em>unforgettable</em> as the day.</h1><p class="hero-description">From a little card to a world you can step inside. Explore considered Indian wedding invitations across paper, pixels and motion.</p><div class="hero-actions"><a class="button button-gold" href="#catalog">Explore 50 designs <span aria-hidden="true">↗</span></a><a class="button button-text-light" href="palace.html">Enter the palace experience <span aria-hidden="true">→</span></a></div><div class="hero-count"><strong>50</strong><span>curated design concepts<br />across five collections</span><i></i><strong>04</strong><span>live invitation<br />experiences to explore</span></div></div>
+        <div class="hero-gallery" aria-label="Preview of paper, modern and palace invitation styles"><div class="hero-card hero-card-back"><img src="assets/paper-marigold.webp" alt="Hand-painted marigold paper invitation style" /><span class="hero-card-copy"><small>THE MARIGOLD LETTER</small><b>Meera <i>&amp;</i> Arjun</b><small>20 FEBRUARY 2027</small></span></div><div class="hero-card hero-card-front"><img src="assets/modern-arches.webp" alt="Modern geometric invitation style" /><span class="hero-card-copy modern-copy"><small>THE MODERN EDIT</small><b>Meera <i>&amp;</i> Arjun</b><small>AN INVITATION TO CELEBRATE</small></span></div><div class="hero-seal" aria-hidden="true">MADE<br />WITH<br />HEART <span>✦</span></div></div>
+        <a class="hero-scroll" href="#collections">SCROLL TO DISCOVER <span aria-hidden="true">↓</span></a>
       </section>
 
-      <section class="studio" aria-label="Wedding invitation template studio">
-        <aside class="styles-panel panel" aria-labelledby="styles-heading">
-          <div class="panel-heading">
-            <span class="section-number">01</span>
-            <div><p class="panel-overline">CURATED STYLES</p><h2 id="styles-heading">Choose a world</h2></div>
-          </div>
-          <p class="panel-intro">Each style has its own atmosphere, color story, and motion.</p>
+      <div class="promise-strip" aria-label="Invitation features"><span>✦ &nbsp; INDIAN CELEBRATIONS, THOUGHTFULLY TOLD</span><span>✦ &nbsp; PAPER &amp; DIGITAL WORLDS</span><span>✦ &nbsp; MADE TO SHARE AND KEEP</span></div>
 
-          <div class="style-list" role="group" aria-label="Invitation style">
-            <button class="style-option is-selected" type="button" data-style="royal" aria-pressed="true">
-              <span class="style-thumb"><img src="assets/royal-palace.webp" alt="" /></span>
-              <span class="style-copy"><span class="style-name">The Royal Court</span><span class="style-detail">Regal · Heritage · Gold</span></span>
-              <span class="style-arrow" aria-hidden="true"></span>
-            </button>
-            <button class="style-option" type="button" data-style="moonlit" aria-pressed="false">
-              <span class="style-thumb"><img src="assets/moonlit-mehfil.webp" alt="" /></span>
-              <span class="style-copy"><span class="style-name">Moonlit Mehfil</span><span class="style-detail">Celestial · Luminous · Blue</span></span>
-              <span class="style-arrow" aria-hidden="true"></span>
-            </button>
-            <button class="style-option" type="button" data-style="garden" aria-pressed="false">
-              <span class="style-thumb"><img src="assets/botanical-mandap.webp" alt="" /></span>
-              <span class="style-copy"><span class="style-name">The Garden Vow</span><span class="style-detail">Botanical · Soft · Romantic</span></span>
-              <span class="style-arrow" aria-hidden="true"></span>
-            </button>
-          </div>
+      <section class="intro-section page-shell" aria-labelledby="intro-title"><div class="section-side"><p class="section-kicker">THE INVITATION STUDIO</p><span class="section-index">01 / OUR APPROACH</span></div><div class="intro-main"><h2 id="intro-title">Your story deserves <em>more than a template.</em></h2><p>Some celebrations call for a quiet, beautifully printed card. Others deserve a cinematic entrance on a phone. We bring both worlds together in one curated collection, with room for every ceremony, every tradition and every kind of love.</p><div class="intro-values"><div><span>01</span><h3>Made for your story</h3><p>Designs shaped around real names, events and family details.</p></div><div><span>02</span><h3>Made for the moment</h3><p>From handmade-paper character to modern digital depth.</p></div><div><span>03</span><h3>Made to reach everyone</h3><p>Clear details for guests, with an easy path to share.</p></div></div></div></section>
 
-          <div class="style-note">
-            <span class="note-symbol" aria-hidden="true">✳</span>
-            <p>Move over the invitation to explore its depth. Every style is designed to feel alive on a phone.</p>
-          </div>
-        </aside>
+      <section class="collections-section" id="collections" aria-labelledby="collections-title"><div class="page-shell"><div class="section-top"><div><p class="section-kicker">FIVE DISTINCT WORLDS</p><h2 id="collections-title">Find the world that <em>feels like yours.</em></h2></div><p>Fifty concepts, chosen for the different ways a wedding can look and feel. Begin with a mood; refine the details later.</p></div><div class="collection-grid"><a class="collection-tile collection-heritage" href="#catalog" data-collection-link="Heritage"><span>01 / 10 DESIGNS</span><div><h3>Heritage</h3><p>Palaces, craft and ceremony</p><b>EXPLORE ↗</b></div></a><a class="collection-tile collection-modern" href="#catalog" data-collection-link="Modern"><span>02 / 10 DESIGNS</span><div><h3>Modern</h3><p>Bold type and a fresh point of view</p><b>EXPLORE ↗</b></div></a><a class="collection-tile collection-botanical" href="#catalog" data-collection-link="Botanical"><span>03 / 10 DESIGNS</span><div><h3>Botanical</h3><p>Flowers, gardens and soft colour</p><b>EXPLORE ↗</b></div></a><a class="collection-tile collection-paper" href="#catalog" data-collection-link="Paper"><span>04 / 10 DESIGNS</span><div><h3>Paper &amp; print</h3><p>The beauty of something you can hold</p><b>EXPLORE ↗</b></div></a><a class="collection-tile collection-destination" href="#catalog" data-collection-link="Destination"><span>05 / 10 DESIGNS</span><div><h3>Destinations</h3><p>Invitations with a sense of place</p><b>EXPLORE ↗</b></div></a></div></div></section>
 
-        <section class="preview-panel" aria-labelledby="preview-heading">
-          <div class="preview-topline"><span id="preview-heading">LIVE PREVIEW</span><span class="preview-topline-right"><i></i> ANIMATED DEPTH</span></div>
-          <div class="preview-frame">
-            <div class="preview-card" id="preview-card" aria-label="Invitation preview">
-              <div class="scene-stack" aria-hidden="true">
-                <img class="scene-image is-active" data-scene="royal" src="assets/royal-palace.webp" alt="" />
-                <img class="scene-image" data-scene="moonlit" src="assets/moonlit-mehfil.webp" alt="" />
-                <img class="scene-image" data-scene="garden" src="assets/botanical-mandap.webp" alt="" />
-              </div>
-              <div class="scene-shade" aria-hidden="true"></div>
-              <div class="scene-light" aria-hidden="true"></div>
-              <div class="particles" id="particles" aria-hidden="true"></div>
-              <div class="inner-border" aria-hidden="true"></div>
-
-              <div class="card-top">
-                <div class="card-emblem"><span>✦</span></div>
-                <p class="card-ceremony" id="card-ceremony">THE WEDDING CELEBRATION</p>
-              </div>
-
-              <div class="card-center">
-                <div class="tiny-ornament" aria-hidden="true"><span></span><b id="ornament-glyph">✦</b><span></span></div>
-                <p class="card-prelude">TOGETHER WITH THEIR FAMILIES</p>
-                <h2 class="couple-names"><span id="name-one-preview">Ananya</span><span class="ampersand">&amp;</span><span id="name-two-preview">Aarav</span></h2>
-                <p class="card-invite">joyfully invite you to celebrate<br />their new beginning</p>
-              </div>
-
-              <div class="card-bottom">
-                <div class="bottom-rule" aria-hidden="true"><span>✦</span></div>
-                <p class="card-date" id="date-preview">12 DECEMBER 2026</p>
-                <p class="card-venue" id="venue-preview">THE LEELA PALACE</p>
-                <p class="card-city" id="city-preview">JAIPUR, INDIA</p>
-                <p class="card-footer">WE CAN'T WAIT TO CELEBRATE WITH YOU</p>
-              </div>
-            </div>
-          </div>
-          <div class="preview-actions">
-            <button class="quiet-button" id="motion-toggle" type="button" aria-pressed="true"><span class="button-icon" aria-hidden="true">◌</span> Motion on</button>
-            <button class="quiet-button" id="fullscreen-button" type="button"><span class="button-icon" aria-hidden="true">⛶</span> Full screen</button>
-          </div>
-        </section>
-
-        <aside class="editor-panel panel" aria-labelledby="editor-heading">
-          <div class="panel-heading">
-            <span class="section-number">02</span>
-            <div><p class="panel-overline">PERSONALISE IT</p><h2 id="editor-heading">Your details</h2></div>
-          </div>
-          <p class="panel-intro">Change the words and watch your chosen invitation update instantly.</p>
-          <form class="editor-form" id="editor-form">
-            <div class="field-grid">
-              <label class="field"><span>First name</span><input id="name-one" name="nameOne" maxlength="22" autocomplete="off" value="Ananya" /></label>
-              <label class="field"><span>Second name</span><input id="name-two" name="nameTwo" maxlength="22" autocomplete="off" value="Aarav" /></label>
-            </div>
-            <label class="field"><span>Celebration</span><select id="celebration" name="celebration"><option value="wedding">Wedding celebration</option><option value="sangeet">Sangeet night</option><option value="engagement">Engagement ceremony</option><option value="reception">Wedding reception</option></select></label>
-            <label class="field"><span>Date</span><input id="date" name="date" type="date" value="2026-12-12" /></label>
-            <label class="field"><span>Venue</span><input id="venue" name="venue" maxlength="42" value="The Leela Palace" /></label>
-            <label class="field"><span>City</span><input id="city" name="city" maxlength="36" value="Jaipur, India" /></label>
-            <div class="form-divider"></div>
-            <button class="reset-button" id="reset-button" type="button"><span aria-hidden="true">↺</span> Reset to example</button>
-          </form>
-          <div class="editor-footnote"><span class="footnote-icon" aria-hidden="true">✧</span><p>Concept preview. Your edits are saved in this browser.</p></div>
-        </aside>
+      <section class="catalog-section page-shell" id="catalog" aria-labelledby="catalog-title"><div class="section-top catalog-heading"><div><p class="section-kicker">THE COMPLETE COLLECTION</p><h2 id="catalog-title">Fifty ways to <em>say it beautifully.</em></h2></div><p>Browse the collection, preview a design with your names and save the ones you love. Our four live experiences are marked for you.</p></div>
+        <div class="catalog-toolbar"><div class="collection-filters" role="group" aria-label="Filter designs by collection"><button class="filter-chip is-active" type="button" data-filter="All" aria-pressed="true">All 50</button><button class="filter-chip" type="button" data-filter="Heritage" aria-pressed="false">Heritage</button><button class="filter-chip" type="button" data-filter="Modern" aria-pressed="false">Modern</button><button class="filter-chip" type="button" data-filter="Botanical" aria-pressed="false">Botanical</button><button class="filter-chip" type="button" data-filter="Paper" aria-pressed="false">Paper</button><button class="filter-chip" type="button" data-filter="Destination" aria-pressed="false">Destinations</button><button class="filter-chip" type="button" data-filter="Saved" aria-pressed="false">Saved <span id="saved-count">0</span></button></div><div class="catalog-tools"><label class="search-field"><span class="visually-hidden">Search designs</span><span aria-hidden="true">⌕</span><input id="catalog-search" type="search" placeholder="Search styles" autocomplete="off" /></label><label class="format-field"><span class="visually-hidden">Filter by format</span><select id="format-filter"><option value="All">All formats</option><option value="Paper">Paper</option><option value="Digital">Digital</option><option value="Website">Website</option><option value="Motion">Motion</option></select></label></div></div>
+        <div class="catalog-results"><p id="result-count" role="status" aria-live="polite">Showing designs</p><button id="download-shortlist" type="button" disabled>Download saved design brief ↓</button></div><div class="template-grid" id="template-grid"></div><div class="catalog-more"><button class="button button-outline" id="show-more" type="button">Show more designs <span aria-hidden="true">↓</span></button><p id="catalog-progress"></p></div><div class="catalog-empty" id="catalog-empty" hidden><span>✦</span><h3>No designs found</h3><p>Try another collection or a shorter search.</p><button type="button" id="clear-filters">Clear filters</button></div>
       </section>
-      <section class="signature-feature" aria-labelledby="signature-title">
-        <div class="signature-art" aria-hidden="true"><img src="assets/palace-courtyard.webp" alt="" loading="lazy" /><span>THE PALACE EDIT</span></div>
-        <div class="signature-copy"><p class="signature-overline">BEYOND THE CARD · SIGNATURE CONCEPT</p><h2 id="signature-title">An invitation you <em>step inside.</em></h2><p>A scrollable palace story with an Indian couple, a complete ceremony programme, directions, and a downloadable motion keepsake.</p><a href="palace.html">Explore the palace experience <span aria-hidden="true">↗</span></a></div>
-      </section>
-      <div class="closing-line"><span>THOUGHTFULLY MADE FOR THE MOMENTS THAT MATTER</span><span>✦</span><span>THE INVITATION STUDIO</span></div>
+
+      <section class="paper-section" id="paper" aria-labelledby="paper-title"><div class="page-shell paper-grid"><div class="paper-copy"><p class="section-kicker">THE TACTILE COLLECTION</p><h2 id="paper-title">For the joy of <em>holding on.</em></h2><p>Paper has a language of its own. Explore deckled edges, soft cotton stock, translucent vellum and the quiet shine of foil through our print-inspired concepts.</p><a class="text-link" href="#catalog" data-collection-link="Paper">Explore paper designs <span aria-hidden="true">↗</span></a><small>Finishes shown are visual concepts. Physical print ordering is not active yet.</small></div><div class="paper-swatches" aria-label="Paper finish examples"><div class="paper-swatch swatch-deckle"><span>01 / DECKLED EDGE</span><b>Where the<br /><i>story begins</i></b></div><div class="paper-swatch swatch-foil"><span>02 / FOIL DETAIL</span><b>M <i>&amp;</i> A</b><small>TOGETHER, ALWAYS</small></div><div class="paper-swatch swatch-vellum"><span>03 / SOFT VELLUM</span><b>Meera<br /><i>&amp; Arjun</i></b></div><div class="paper-swatch swatch-letterpress"><span>04 / LETTERPRESS</span><b>THE ART OF<br /><i>CELEBRATING</i></b></div></div></div></section>
+
+      <section class="signature-section" aria-labelledby="signature-title"><div class="signature-image"><img src="assets/palace-preview.webp" alt="The Palace Edit digital invitation with a couple standing in a warmly lit palace" loading="lazy" /></div><div class="signature-copy"><p class="section-kicker">A SIGNATURE EXPERIENCE</p><h2 id="signature-title">An invitation you <em>step inside.</em></h2><p>A scrollable palace story with a couple portrait, ceremony chapters, directions and a motion keepsake. Take a look at what a digital invitation can become.</p><ul><li>Immersive layered artwork</li><li>Editable multi-event programme</li><li>Video, image and calendar downloads</li></ul><a class="button button-gold" href="palace.html">Experience the Palace Edit <span aria-hidden="true">↗</span></a></div></section>
+
+      <section class="services-section page-shell" id="services" aria-labelledby="services-title"><div class="section-top"><div><p class="section-kicker">WHAT WE CREATE</p><h2 id="services-title">Every part of the <em>invitation story.</em></h2></div><p>One creative direction can travel from a card in hand to a story on a screen. Explore the working concepts and the services being developed around them.</p></div><div class="services-grid"><article><span class="service-symbol">▣</span><span class="service-status">LIVE CONCEPT</span><h3>Invitation websites</h3><p>Scroll-ready pages with a clear programme, directions and a shareable link.</p><a href="palace.html">Explore a website ↗</a></article><article><span class="service-symbol">▤</span><span class="service-status">DESIGN CONCEPTS</span><h3>Paper invitation suites</h3><p>Coordinated invitation, save-the-date and event cards with tactile finish directions.</p><a href="#paper">See paper styles ↗</a></article><article><span class="service-symbol">▷</span><span class="service-status">LIVE CONCEPT</span><h3>Motion invitations</h3><p>A short, downloadable story for sharing on a phone, built from ceremony details.</p><a href="palace.html#keepsake">See motion export ↗</a></article><article><span class="service-symbol">✎</span><span class="service-status">IN DEVELOPMENT</span><h3>Bespoke illustration</h3><p>Artist-led portraits, regional visual stories and later, approved character animation.</p><a href="#process">See our approach ↗</a></article><article><span class="service-symbol">✉</span><span class="service-status">IN DEVELOPMENT</span><h3>Guest experience</h3><p>Event-level RSVP, travel notes, maps and updates from one invitation home.</p><a href="palace.html#celebrations">See event details ↗</a></article><article><span class="service-symbol">अ</span><span class="service-status">IN DEVELOPMENT</span><h3>Languages &amp; wording</h3><p>Considered family wording and native-script layouts, reviewed with the people they represent.</p><a href="#catalog">Find a style ↗</a></article></div><p class="services-note">This is a design-stage website. The live links above are working previews; physical print orders, payments and RSVP collection are not active.</p></section>
+
+      <section class="process-section" id="process" aria-labelledby="process-title"><div class="page-shell"><div class="section-top"><div><p class="section-kicker">THE WAY FORWARD</p><h2 id="process-title">A thoughtful path from <em>idea to invitation.</em></h2></div><p>Our intended service flow gives each celebration a clear design, review and delivery stage. Today you can explore and shortlist the concepts.</p></div><div class="process-steps"><div><span>01</span><h3>Find your direction</h3><p>Explore fifty concepts, filter by mood and format, and save your favourites.</p></div><div><span>02</span><h3>Make it personal</h3><p>Try your names in a preview and shape the events, language and visual details.</p></div><div><span>03</span><h3>Approve every detail</h3><p>Review wording, dates and likeness before an invitation goes out.</p></div><div><span>04</span><h3>Share the moment</h3><p>Give guests a clear link, and keep an image or video version close.</p></div></div></div></section>
+
+      <section class="faq-section page-shell" id="faq" aria-labelledby="faq-title"><div><p class="section-kicker">GOOD TO KNOW</p><h2 id="faq-title">A few things you <em>may wonder.</em></h2><p>We would rather show exactly what works today than promise a feature before it is ready.</p></div><div class="faq-list"><details><summary>Are all fifty designs ready to purchase?<span>＋</span></summary><p>The fifty designs are curated visual concepts you can browse, preview and save. Three free card styles and the Palace Edit are interactive live experiences. Checkout and production ordering are still being built.</p></details><details><summary>Can I add my own names and events?<span>＋</span></summary><p>Yes, in the live Palace Edit you can change names and up to eight ceremonies. The three free previews also let you change names and key details. Other catalog designs currently have a name preview and shortlist option.</p></details><details><summary>Can I share an invitation on WhatsApp?<span>＋</span></summary><p>The Palace Edit can copy a personalized hosted link or open a WhatsApp share. Its link contains the invitation details and can be read by anyone you send it to. A private, short-link publishing system comes later.</p></details><details><summary>Can I download a video or print a card?<span>＋</span></summary><p>The Palace Edit downloads a browser-recorded MP4 where supported, or WebM otherwise, plus a PNG card. Print-inspired designs are visual concepts; physical printing and print-ready files are not yet available.</p></details><details><summary>Will you make animated characters of us?<span>＋</span></summary><p>Character animation is a bespoke service direction, separate from the static couple illustration in the Palace Edit. It needs reference photos, consent, a storyboard, likeness approval and a reviewed final render.</p></details></div></section>
+
+      <section class="closing-cta"><div class="page-shell"><span>✦</span><p class="section-kicker">LET THE STORY BEGIN</p><h2>The first impression of <em>forever.</em></h2><p>Find a design you love, or step into the first immersive invitation experience.</p><div><a class="button button-gold" href="#catalog">Browse the collection ↗</a><a class="button button-outline-light" href="palace.html">Visit the Palace Edit ↗</a></div></div></section>
     </main>
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <footer class="site-footer"><div class="page-shell footer-main"><div><a class="brand footer-brand" href="./"><span class="brand-mark" aria-hidden="true">✺</span><span class="brand-name">Invitation <em>Studio</em><small>THE ART OF CELEBRATING</small></span></a><p>Invitations with room for every kind of story.</p></div><div><h3>Explore</h3><a href="#collections">Collections</a><a href="#catalog">All designs</a><a href="studio.html">Free style studio</a><a href="palace.html">Palace Edit</a></div><div><h3>Discover</h3><a href="#paper">Paper collection</a><a href="#services">What we create</a><a href="#process">How it works</a><a href="#faq">Questions</a></div></div><div class="page-shell footer-bottom"><span>© 2026 INVITATION STUDIO · CONCEPT WEBSITE</span><span>MADE FOR THE MOMENTS THAT MATTER</span><a href="#top">BACK TO TOP ↑</a></div></footer>
+
+    <dialog class="design-dialog" id="design-dialog" aria-labelledby="dialog-design-title"><div class="dialog-shell"><button class="dialog-close" id="close-design" type="button" aria-label="Close design preview">×</button><div class="dialog-art" id="dialog-art"></div><div class="dialog-copy"><p class="section-kicker" id="dialog-collection">THE COLLECTION</p><h2 id="dialog-design-title">Invitation design</h2><p id="dialog-description"></p><div class="dialog-tags" id="dialog-tags"></div><div class="dialog-fields"><label>Your first name <input id="preview-name-one" maxlength="24" value="Meera" /></label><label>Your second name <input id="preview-name-two" maxlength="24" value="Arjun" /></label></div><p class="dialog-note">Preview names appear only in this browser. Full editing is available in the live designs.</p><div class="dialog-actions"><button class="button button-dark" id="dialog-save" type="button">Save this design <span aria-hidden="true">♡</span></button><a class="button button-outline" id="dialog-live" href="studio.html">Open live experience ↗</a></div><div class="dialog-navigation"><button id="previous-design" type="button">← Previous design</button><span id="dialog-position">01 / 50</span><button id="next-design" type="button">Next design →</button></div></div></div></dialog>
   </body>
 </html>

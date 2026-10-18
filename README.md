@@ -1,28 +1,19 @@
 # Invitation Studio
 
-![Three invitation style previews](assets/demo-preview.webp)
+An Indian wedding invitation concept site with a full editorial homepage, 50 browsable design directions, three free interactive card styles, and one scrollable signature invitation.
 
-An Indian wedding invitation prototype with three free style previews and one scrollable signature concept, **The Palace Edit**.
+Visit the [live homepage](https://vikasbanjare.github.io/weeding-invites/). The catalog is organized into Heritage, Modern, Botanical, Paper and Destination collections. Visitors can search, filter by format, try their names on every design, save a shortlist in their browser, and download that shortlist as a text brief. Each paper, vellum, foil, linen and letterpress treatment is a visual direction rather than a physical printed product. Original artwork includes a marigold paper study, modern geometric arches, and a Chettinad-inspired courtyard.
 
-- **The Royal Court:** palace architecture, burgundy, and warm gold.
-- **Moonlit Mehfil:** celestial blue courtyard and lantern light.
-- **The Garden Vow:** botanical mandap, ivory, and blush florals.
+The [free style studio](https://vikasbanjare.github.io/weeding-invites/studio.html) contains Royal Court, Moonlit Mehfil and Garden Vow. Names, occasion, date and location update live. The [Palace Edit](https://vikasbanjare.github.io/weeding-invites/palace.html) adds a scrollable palace setting, fictional couple portrait, editable ceremony programme, travel directions, a shareable invitation link and downloadable keepsakes. It supports up to eight events, each with its own date, time, place, description and dress note, and respects reduced-motion preferences.
 
-The free scenes use original generated artwork, animated lighting and particles, and perspective-based depth. The names, occasion, date, venue, and city update live.
+The Palace Edit's **Copy invitation link** and **Share on WhatsApp** actions encode invitation details in a public URL fragment. Anyone with that URL can read them; social preview cards remain generic. **Download motion invite** records a personalized 540 × 960 video in the browser, using MP4 where supported and WebM otherwise. A PNG card and `.ics` calendar are also available. Chromium successfully rendered an H.264 MP4 with five events on 18 October 2026.
 
-The [Palace Edit](https://vikasbanjare.github.io/weeding-invites/palace.html) is a palace-inspired, layered invitation with a fictional Indian couple portrait, five sample ceremonies, travel directions, editable event details, and downloadable keepsakes. Its editor supports up to eight ceremonies with event-specific date, time, place, description, and dress note. It respects reduced-motion preferences.
+The 50 catalog entries are selectable design concepts, with four live experiences among them. Checkout, physical printing, print-ready files, a guest RSVP backend, private invitation hosting, bespoke character animation and production ordering are still in development. The names, dates, venues and illustrated people in the previews are fictional.
 
-![The Palace Edit premium invitation preview](assets/palace-preview.webp)
-
-The gallery is hosted at <https://vikasbanjare.github.io/weeding-invites/>. The Palace Edit uses browser storage for local changes. **Copy invitation link** or **Share on WhatsApp** places the details in a public URL fragment, so anyone with that URL can read them. This is a prototype sharing mechanism, not a private account or production publishing system; social preview cards remain generic.
-
-**Download motion invite** records the personalized artwork and ceremony programme in the browser. It uses MP4 if supported and otherwise WebM. The PNG card and `.ics` calendar are other download options. Checked in Chromium on 18 October 2026: a 540 × 960 H.264 MP4 with five events rendered successfully. Other browsers may choose WebM or lack recording support.
-
-Run it locally with no install step:
+Run locally with no install step:
 
 ```sh
-cd /workspace/weeding-invites
 python3 -m http.server 4173
 ```
 
-Open the gallery at `http://localhost:4173/` and the premium concept at `http://localhost:4173/palace.html` from a browser on the same machine. The example names, dates, venue rooms, and illustrated people are fictional. There is no payment, guest RSVP backend, upload, private invitation hosting, or character animation yet.
+Open `http://localhost:4173/` from a browser on the same machine. GitHub Pages deploys the static site from `.github/workflows/pages.yml` after pushes to `main`.
