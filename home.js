@@ -74,9 +74,14 @@ let search = '';
 let visibleCount = 12;
 let currentId = null;
 let returnFocus = null;
+const featuredNames = ['Royal Court','Moonlit Mehfil','Garden Vow','Palace Edit','Modern Arches','Chettinad Morning','The Edit','Noir Type','Cotton Rag','Desert Sky','Monsoon Garden','Coastal Dawn'];
+const featured = [...catalog].sort((a,b)=>{
+  const first=featuredNames.indexOf(a.name), second=featuredNames.indexOf(b.name);
+  return (first<0?100+Number(a.id.slice(-2)):first) - (second<0?100+Number(b.id.slice(-2)):second);
+});
 
 function filtered() {
-  return catalog.filter(item =>
+  return (collection === 'All' ? featured : catalog).filter(item =>
     (collection === 'All' || (collection === 'Saved' ? saved.has(item.id) : item.collection === collection)) &&
     (format === 'All' || item.format === format) &&
     (!search || `${item.name} ${item.collection} ${item.format} ${item.finish} ${item.description}`.toLowerCase().includes(search))
@@ -86,13 +91,18 @@ function filtered() {
 function makeStage(item, preview = false) {
   const stage = document.createElement('div');
   stage.className = 'template-stage';
-  for (const key of ['tone','art','finish','layout']) stage.dataset[key] = item[key] || 'none';
-  stage.innerHTML = '<div class="template-sheet"><div class="sheet-border"></div><div class="sheet-content"><span class="sheet-mark"></span><span class="sheet-eyebrow">TOGETHER WITH THEIR FAMILIES</span><span class="sheet-names"><span class="preview-first"></span><i> &amp; </i><span class="preview-second"></span></span><span class="sheet-date">YOU ARE INVITED TO CELEBRATE</span><span class="sheet-venue">A day to remember · 2027</span><span class="sheet-flourish">✦ &nbsp; ✦ &nbsp; ✦</span></div></div>';
-  stage.querySelector('.sheet-mark').textContent = item.motif;
-  stage.querySelector('.preview-first').textContent = preview ? ($('#preview-name-one').value.trim() || 'Meera') : 'Meera';
-  stage.querySelector('.preview-second').textContent = preview ? ($('#preview-name-two').value.trim() || 'Arjun') : 'Arjun';
+  for (const key of ['tone','art','finish','layout','collection']) stage.dataset[key] = item[key] || 'none';
+  stage.style.setProperty('--stage-position',`${35+Number(item.id.slice(-2))*13%43}% center`);
+  stage.innerHTML = '<div class="stage-image"></div><div class="stage-shade"></div><div class="stage-sculpture"></div><div class="stage-grid"></div><div class="stage-content"><span class="stage-top"></span><span class="stage-mark"></span><span class="stage-names"><span class="stage-name-one"></span><i> &amp; </i><span class="stage-name-two"></span></span><span class="stage-caption"></span><span class="stage-index"></span></div>';
+  stage.querySelector('.stage-top').textContent = `${item.collection} / ${item.format}`;
+  stage.querySelector('.stage-mark').textContent = item.motif;
+  stage.querySelector('.stage-name-one').textContent = preview ? ($('#preview-name-one').value.trim() || 'Meera') : 'Meera';
+  stage.querySelector('.stage-name-two').textContent = preview ? ($('#preview-name-two').value.trim() || 'Arjun') : 'Arjun';
+  stage.querySelector('.stage-caption').textContent = item.name;
+  stage.querySelector('.stage-index').textContent = preview ? item.id.slice(-2) : '';
+  if (item.live && !preview) stage.querySelector('.stage-top').textContent = '';
   if (!preview) {
-    if (item.live) { const badge=document.createElement('span'); badge.className='template-live'; badge.textContent='LIVE PREVIEW'; stage.append(badge); }
+    if (item.live) { const badge=document.createElement('span'); badge.className='template-live'; badge.textContent='LIVE EXPERIENCE'; stage.append(badge); }
     const badge=document.createElement('span'); badge.className='template-format'; badge.textContent=item.format.toUpperCase(); stage.append(badge);
   }
   return stage;
@@ -103,6 +113,17 @@ function makeCard(item) {
   const open = document.createElement('button'); open.className='template-open'; open.type='button';
   open.setAttribute('aria-label',`Preview ${item.name}, ${item.format} invitation`);
   open.append(makeStage(item)); open.addEventListener('click',()=>openDesign(item.id));
+  open.addEventListener('pointermove',event=>{
+    if(event.pointerType!=='mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const rect=open.getBoundingClientRect();
+    const x=(event.clientX-rect.left)/rect.width-.5, y=(event.clientY-rect.top)/rect.height-.5;
+    open.firstElementChild.style.setProperty('--tilt-x',`${(x*5).toFixed(2)}deg`);
+    open.firstElementChild.style.setProperty('--tilt-y',`${(-y*5).toFixed(2)}deg`);
+  });
+  open.addEventListener('pointerleave',()=>{
+    open.firstElementChild.style.removeProperty('--tilt-x');
+    open.firstElementChild.style.removeProperty('--tilt-y');
+  });
   const meta = document.createElement('div'); meta.className='template-meta';
   const labels = document.createElement('div');
   const title = document.createElement('h3'); title.textContent=item.name;
@@ -154,7 +175,7 @@ function updateDialog() {
   for (const value of [item.format,`${item.finish} effect`,item.live?'Live experience':'Design concept']) {
     const tag=document.createElement('span'); tag.textContent=value; tags.append(tag);
   }
-  const save=$('#dialog-save'); save.innerHTML=saved.has(item.id)?'Saved to shortlist <span aria-hidden="true">♥</span>':'Save this design <span aria-hidden="true">♡</span>';
+  const save=$('#dialog-save'); save.innerHTML=saved.has(item.id)?'Saved to shortlist <span aria-hidden="true">♥</span>':'Save this direction <span aria-hidden="true">♡</span>';
   save.setAttribute('aria-pressed',String(saved.has(item.id)));
   const live=$('#dialog-live'); live.hidden=!item.live;
   if (item.live) live.href=item.live;
@@ -215,4 +236,62 @@ $('#menu-toggle').addEventListener('click',()=>{
 document.querySelectorAll('#main-nav a').forEach(link=>link.addEventListener('click',()=>{
   $('#menu-toggle').setAttribute('aria-expanded','false');$('#main-nav').classList.remove('is-open');
 }));
+
+const hero=$('.hero');
+const heroLabels={royal:'01 / ROYAL COURT',moonlit:'02 / MOONLIT MEHFIL',garden:'03 / GARDEN VOW'};
+document.querySelectorAll('.hero-choice').forEach(button=>button.addEventListener('click',()=>{
+  const scene=button.dataset.scene;
+  document.querySelectorAll('.hero-choice').forEach(choice=>{
+    const active=choice===button;
+    choice.classList.toggle('is-active',active);
+    choice.setAttribute('aria-pressed',String(active));
+  });
+  document.querySelectorAll('.hero-image').forEach(image=>image.classList.toggle('is-active',image.dataset.heroImage===scene));
+  $('#hero-image-caption').textContent=heroLabels[scene];
+}));
+hero.addEventListener('pointermove',event=>{
+  if(event.pointerType!=='mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const rect=hero.getBoundingClientRect();
+  hero.style.setProperty('--pointer-x',`${((event.clientX/rect.width-.5)*-11).toFixed(1)}px`);
+  hero.style.setProperty('--pointer-y',`${((event.clientY/rect.height-.5)*-11).toFixed(1)}px`);
+  hero.style.setProperty('--pointer-rotate',`${((event.clientX/rect.width-.5)*1.8).toFixed(2)}deg`);
+});
+hero.addEventListener('pointerleave',()=>{
+  hero.style.removeProperty('--pointer-x');hero.style.removeProperty('--pointer-y');hero.style.removeProperty('--pointer-rotate');
+});
+
+const worldStory=$('#world-story');
+const worldSlides=[...document.querySelectorAll('.world-slide')];
+const worldMarkers=[...document.querySelectorAll('.world-progress span')];
+let scrollQueued=false;
+function updateWorld() {
+  scrollQueued=false;
+  if(window.matchMedia('(max-width: 650px)').matches) {
+    worldSlides.forEach(slide=>slide.removeAttribute('aria-hidden'));
+    return;
+  }
+  const travel=Math.max(1,worldStory.offsetHeight-window.innerHeight);
+  const progress=Math.max(0,Math.min(1,-worldStory.getBoundingClientRect().top/travel));
+  const index=Math.min(worldSlides.length-1,Math.floor(progress*worldSlides.length));
+  worldSlides.forEach((slide,position)=>{
+    const active=position===index;
+    slide.classList.toggle('is-active',active);
+    slide.setAttribute('aria-hidden',String(!active));
+    if(active) {
+      const local=progress*worldSlides.length-index;
+      slide.style.setProperty('--scene-scale',String(1.14-.1*local));
+      slide.style.setProperty('--scene-shift',`${((.5-local)*42).toFixed(1)}px`);
+    }
+  });
+  worldMarkers.forEach((marker,position)=>marker.classList.toggle('is-active',position===index));
+}
+window.addEventListener('scroll',()=>{
+  if(!scrollQueued){scrollQueued=true;requestAnimationFrame(updateWorld);}
+},{passive:true});
+window.addEventListener('resize',updateWorld);
+const header=$('.site-header');
+function updateHeader(){header.classList.toggle('is-scrolled',window.scrollY>hero.offsetHeight-100);}
+window.addEventListener('scroll',updateHeader,{passive:true});
+updateHeader();
+updateWorld();
 render();
