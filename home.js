@@ -41,7 +41,7 @@ function makeStage(item, preview = false) {
   if (item.live && !preview) stage.querySelector('.stage-top').textContent = '';
   if (!preview) {
     stage.dataset.pagePreview='true';
-    const thumbnail=document.createElement('img');thumbnail.className='page-thumbnail';thumbnail.src=`assets/previews/${item.id}.webp?v=20261019d`;thumbnail.alt='';thumbnail.loading='lazy';thumbnail.decoding='async';stage.prepend(thumbnail);
+    const thumbnail=document.createElement('img');thumbnail.className='page-thumbnail';thumbnail.src=`assets/previews/${item.id}.webp?v=20261019e`;thumbnail.alt='';thumbnail.loading='lazy';thumbnail.decoding='async';stage.prepend(thumbnail);
     if (item.live) { const badge=document.createElement('span'); badge.className='template-live'; badge.textContent='LIVE EXPERIENCE'; stage.append(badge); }
     const badge=document.createElement('span'); badge.className='template-format'; badge.textContent=item.format.toUpperCase(); stage.append(badge);
   }
@@ -208,8 +208,8 @@ document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener
  chosenFilm=button.dataset.film;const choice=filmOptions[chosenFilm];
  document.querySelectorAll('[data-film]').forEach(option=>option.setAttribute('aria-pressed',String(option===button)));
  film.pause();delete filmButton.dataset.failed;
- film.poster=`assets/previews/${choice.design}.webp?v=20261019d`;film.src=`assets/films/${choice.file}.mp4?v=20261019d`;film.setAttribute('aria-label',`Sample ${choice.name} invitation film`);film.load();
- $('#showroom-open').href=`invitation.html?design=${choice.design}&v=20261019d`;$('#film-status').textContent=`INVITATION FILM / ${choice.name.toUpperCase()}`;
+ film.poster=`assets/previews/${choice.design}.webp?v=20261019e`;film.src=`assets/films/${choice.file}.mp4?v=20261019e`;film.setAttribute('aria-label',`Sample ${choice.name} invitation film`);film.load();
+ $('#showroom-open').href=`invitation.html?design=${choice.design}&v=20261019e`;$('#film-status').textContent=`INVITATION FILM / ${choice.name.toUpperCase()}`;
  if(!userPaused)playFilm();
 }));
 if('IntersectionObserver' in window)new IntersectionObserver(entries=>{filmVisible=entries[0].isIntersecting;if(filmVisible&&!userPaused&&!document.hidden)playFilm();else film.pause();},{threshold:.15}).observe(film);

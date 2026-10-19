@@ -9,11 +9,11 @@ with sync_playwright() as playwright:
     errors = []
     page.on("pageerror", lambda error: errors.append(str(error)))
 
-    for design, opening in (("01", "door"), ("33", "paper"), ("41", "door")):
+    for design, opening in (("01", "door"), ("21", "floral"), ("33", "paper"), ("41", "door")):
         page.goto(f"{BASE}/invitation.html?design=design-{design}&nameOne=Anika&nameTwo=Kabir")
         assert page.locator("#reveal-seal").get_attribute("aria-expanded") == "false"
         assert page.locator("body").evaluate("el => el.classList.contains('entrance-closed')")
-        cover = ".paper-cover" if opening == "paper" else ".royal-gate-story"
+        cover = {"paper": ".paper-cover", "floral": ".floral-door-story"}.get(opening, ".royal-gate-story")
         assert page.locator(cover).is_visible()
         assert "Anika" in page.locator(cover).inner_text()
         page.locator("#reveal-seal").click()

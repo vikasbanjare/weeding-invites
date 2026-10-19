@@ -101,7 +101,7 @@ function loadPreview() {
   if (!hasOpening && previewView === 'inside') $('[data-preview="cover"]').click();
   $('#preview-design-name').textContent = item.name;
   $('#preview-full-link').href = `invitation.html?design=${design}`;
-  frame.src = `invitation.html?design=${design}&embed=1&v=20261019d`;
+  frame.src = `invitation.html?design=${design}&embed=1&v=20261019e`;
   refreshPreview();
 }
 frame.addEventListener('load', sendPreview);
@@ -133,7 +133,7 @@ function renderDesigns() {
     button.setAttribute('aria-pressed', String(item.id === design));
     button.setAttribute('aria-label', `Choose ${item.name}, ${item.collection} design`);
     const image = document.createElement('img');
-    image.src = `assets/previews/${item.id}.webp?v=20261019d`;
+    image.src = `assets/previews/${item.id}.webp?v=20261019e`;
     image.alt = '';
     image.loading = 'lazy';
     image.decoding = 'async';
