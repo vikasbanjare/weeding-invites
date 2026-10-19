@@ -5,6 +5,8 @@ const example = {
   city: 'Samode, Rajasthan',
   venue: 'Samode Palace',
   address: 'Samode Palace, Samode, Rajasthan, India',
+  message: 'From the colour of haldi to the glow of the wedding lights, every moment is better with you there.',
+  rsvpPhone: '',
   events: [
     { title: 'Mehendi & welcome', date: '2027-02-18', time: '16:00', place: 'The Garden Courtyard', description: 'An afternoon of mehendi, music, and the first happy hellos.', attire: 'Colourful Indian festive wear' },
     { title: 'Haldi', date: '2027-02-19', time: '11:00', place: 'The Inner Courtyard', description: 'A sunlit morning with family, flowers, and a little turmeric.', attire: 'Shades of yellow and ivory' },
@@ -27,6 +29,11 @@ function clean(value, maxLength, fallback = '') {
   return typeof value === 'string' ? value.replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, maxLength) || fallback : fallback;
 }
 
+function cleanPhone(value) {
+  const digits = typeof value === 'string' ? value.replace(/\D/g, '') : '';
+  return digits.length >= 8 && digits.length <= 15 ? digits : '';
+}
+
 function normalize(raw) {
   if (!raw || typeof raw !== 'object') return structuredClone(example);
   const events = Array.isArray(raw.events) ? raw.events.slice(0, maxEvents).map((event) => ({
@@ -44,6 +51,8 @@ function normalize(raw) {
     city: clean(raw.city, 65, example.city),
     venue: clean(raw.venue, 85, example.venue),
     address: clean(raw.address, 150, example.address),
+    message: clean(raw.message, 240, example.message),
+    rsvpPhone: cleanPhone(raw.rsvpPhone),
     events: events.length ? events : structuredClone(example.events),
   };
 }
@@ -102,6 +111,90 @@ function create(tag, className, content) {
   return element;
 }
 
+const countdown = create('div', 'celebration-countdown');
+countdown.setAttribute('aria-label', 'Time until the next celebration');
+document.querySelector('.ceremony-section .section-heading').append(countdown);
+function updateCountdown() {
+  const now = Date.now();
+  const next = invitation.events.map((event) => ({
+    title: event.title,
+    starts: new Date(`${event.date}T${event.time}:00+05:30`).getTime(),
+  })).filter((event) => Number.isFinite(event.starts) && event.starts > now)
+    .sort((a, b) => a.starts - b.starts)[0];
+  if (!next) {
+    countdown.textContent = 'THE CELEBRATION LIVES ON';
+    return;
+  }
+  const minutes = Math.max(0, Math.floor((next.starts - now) / 60000));
+  const days = Math.floor(minutes / 1440);
+  const hours = Math.floor(minutes % 1440 / 60);
+  const remain = minutes % 60;
+  countdown.replaceChildren(
+    create('span', 'countdown-label', `UNTIL ${next.title.toUpperCase()}`),
+    create('strong', '', String(days).padStart(2, '0')),
+    create('span', '', 'DAYS'),
+    create('strong', '', String(hours).padStart(2, '0')),
+    create('span', '', 'HRS'),
+    create('strong', '', String(remain).padStart(2, '0')),
+    create('span', '', 'MIN'),
+  );
+}
+setInterval(updateCountdown, 60000);
+
+const rsvpPanel = create('div', 'rsvp-panel');
+rsvpPanel.innerHTML = '<div><p class="eyebrow">A NOTE TO OUR HOSTS</p><h3>Will you join us?</h3><p>Choose your celebrations and send your reply through WhatsApp.</p></div><button class="outline-link" type="button" id="open-rsvp">REPLY TO THE INVITATION <span aria-hidden="true">→</span></button>';
+document.getElementById('event-list').after(rsvpPanel);
+const rsvpDialog = create('dialog', 'editor-dialog rsvp-dialog');
+rsvpDialog.setAttribute('aria-labelledby', 'rsvp-title');
+rsvpDialog.innerHTML = '<form id="rsvp-form"><div class="dialog-top"><div><p class="eyebrow">YOUR RESPONSE</p><h2 id="rsvp-title">Reply to the invitation</h2></div><button class="dialog-close" type="button" aria-label="Close RSVP">×</button></div><p class="dialog-intro">Your reply opens in WhatsApp for you to review and send. This site does not collect guest responses.</p><div class="editor-fields"><label class="wide-field">Your name <input name="guestName" maxlength="60" required autocomplete="name" /></label><label>Response <select name="attending"><option value="yes">Joyfully accepts</option><option value="no">Sends regrets</option></select></label><label>Guests including you <input name="partySize" type="number" min="1" max="20" value="1" required /></label><fieldset class="wide-field rsvp-events"><legend>Celebrations you can attend</legend><div id="rsvp-events"></div></fieldset><label class="wide-field">A note for the hosts <textarea name="note" maxlength="240" rows="3" placeholder="Optional"></textarea></label></div><div class="dialog-actions"><button class="reset-example" type="button" id="cancel-rsvp">Cancel</button><button class="gold-button" type="submit">Continue to WhatsApp →</button></div><a id="rsvp-fallback" hidden target="_blank" rel="noopener noreferrer">Open your WhatsApp message ↗</a></form>';
+document.body.append(rsvpDialog);
+const rsvpForm = rsvpDialog.querySelector('form');
+function renderRsvpEvents() {
+  const list = rsvpDialog.querySelector('#rsvp-events');
+  list.replaceChildren();
+  invitation.events.forEach((event, index) => {
+    const label = create('label');
+    const checkbox = create('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = String(index);
+    checkbox.checked = true;
+    label.append(checkbox, create('span', '', `${event.title} · ${formatDate(event.date)}`));
+    list.append(label);
+  });
+}
+rsvpPanel.querySelector('button').addEventListener('click', () => {
+  rsvpForm.reset();
+  renderRsvpEvents();
+  rsvpDialog.querySelector('#rsvp-fallback').hidden = true;
+  rsvpDialog.showModal();
+});
+rsvpDialog.querySelector('.dialog-close').addEventListener('click', () => rsvpDialog.close());
+rsvpDialog.querySelector('#cancel-rsvp').addEventListener('click', () => rsvpDialog.close());
+rsvpDialog.addEventListener('click', (event) => { if (event.target === rsvpDialog) rsvpDialog.close(); });
+rsvpForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (!rsvpForm.reportValidity() || !invitation.rsvpPhone) return;
+  const guest = clean(rsvpForm.elements.guestName.value, 60);
+  const attending = rsvpForm.elements.attending.value === 'yes';
+  const selected = [...rsvpDialog.querySelectorAll('#rsvp-events input:checked')]
+    .map((input) => invitation.events[Number(input.value)]).filter(Boolean);
+  if (attending && !selected.length) {
+    rsvpDialog.querySelector('#rsvp-events input')?.focus();
+    return;
+  }
+  const count = Math.max(1, Math.min(20, Number(rsvpForm.elements.partySize.value) || 1));
+  const lines = [`Hello! This is ${guest}, replying to ${invitation.nameOne} & ${invitation.nameTwo}'s invitation.`,
+    attending ? `We joyfully accept for ${count} ${count === 1 ? 'guest' : 'guests'}.` : 'We are sorry we cannot attend.',
+    ...(attending ? ['Celebrations:', ...selected.map((item) => `• ${item.title}, ${formatDate(item.date)}`)] : [])];
+  const note = clean(rsvpForm.elements.note.value, 240);
+  if (note) lines.push(`Note: ${note}`);
+  const url = `https://wa.me/${invitation.rsvpPhone}?text=${encodeURIComponent(lines.join('\n'))}`;
+  const fallback = rsvpDialog.querySelector('#rsvp-fallback');
+  fallback.href = url;
+  fallback.hidden = false;
+  window.open(url, '_blank', 'noopener,noreferrer');
+});
+
 function renderEvents() {
   const list = document.getElementById('event-list');
   list.replaceChildren();
@@ -131,12 +224,15 @@ function render() {
   document.querySelector('[data-families]').textContent = invitation.families;
   document.querySelector('[data-venue]').textContent = invitation.venue;
   document.querySelector('[data-address]').textContent = invitation.address;
+  document.querySelector('[data-invitation-message]').textContent = invitation.message;
   document.getElementById('main-map-link').href = mapsLink(invitation.venue);
   const wedding = invitation.events.find((event) => /wedding|phera|shaadi|vivah/i.test(event.title)) || invitation.events[invitation.events.length - 1];
   document.querySelector('[data-wedding-date]').textContent = formatDate(wedding.date).toUpperCase();
   document.title = `${invitation.nameOne} & ${invitation.nameTwo} — ${activeDesign?.name || "The Palace Edit"}`;
   fitHeroTitle();
   renderEvents();
+  updateCountdown();
+  rsvpPanel.hidden = !invitation.rsvpPhone;
   persist();
 }
 
@@ -212,7 +308,9 @@ function numberEvents() {
 }
 
 function fillEditor(data) {
-  for (const key of ['nameOne', 'nameTwo', 'families', 'city', 'venue', 'address']) form.querySelector(`[name="${key}"]`).value = data[key];
+  for (const key of ['nameOne', 'nameTwo', 'families', 'city', 'venue', 'address', 'message']) form.querySelector(`[name="${key}"]`).value = data[key];
+  form.querySelector('[name="rsvpPhone"]').value = data.rsvpPhone ? `+${data.rsvpPhone}` : '';
+  document.getElementById('wording-preset').value = '';
   eventFields.replaceChildren();
   data.events.forEach(addEventFields);
 }
@@ -222,11 +320,19 @@ document.getElementById('close-editor').addEventListener('click', () => dialog.c
 dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
 document.getElementById('add-event').addEventListener('click', () => addEventFields());
 document.getElementById('reset-example').addEventListener('click', () => fillEditor(example));
+const wordingPresets = {
+  warm: 'With our families beside us, we would love to celebrate every joyful moment with you.',
+  royal: 'Across the courtyards and beneath the lights, we invite you to share a celebration to remember.',
+  modern: 'We are getting married. Join us for good company, happy moments, and the start of our next chapter.',
+};
+document.getElementById('wording-preset').addEventListener('change', (event) => {
+  if (wordingPresets[event.target.value]) form.querySelector('[name="message"]').value = wordingPresets[event.target.value];
+});
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   if (!form.reportValidity()) return;
   const data = {};
-  for (const key of ['nameOne', 'nameTwo', 'families', 'city', 'venue', 'address']) data[key] = form.querySelector(`[name="${key}"]`).value;
+  for (const key of ['nameOne', 'nameTwo', 'families', 'city', 'venue', 'address', 'message', 'rsvpPhone']) data[key] = form.querySelector(`[name="${key}"]`).value;
   data.events = [...eventFields.children].map((fieldset) => Object.fromEntries([...fieldset.querySelectorAll('input')].map((input) => [input.name, input.value])));
   invitation = normalize(data);
   history.replaceState(null, '', location.pathname + location.search);

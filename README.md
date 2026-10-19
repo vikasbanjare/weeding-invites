@@ -10,6 +10,8 @@ The Palace Edit's **Copy invitation link** and **Share on WhatsApp** actions enc
 
 All 50 catalog entries open `invitation.html?design=design-NN`. Ten layout families (royal, courtyard, editorial, sculpture, botanical, paper, ribbon, nocturne, landscape and museum) combine distinct palettes, scenes, typography and seven ceremony arrangements. Every page supports editing up to eight events, separate local drafts per design, URL-based sharing, a PNG card, calendar and browser-recorded video. The opt-in “Play the story” control moves through the full website; scrolling, touch, Escape or opening the editor pauses it. Motion can be turned off and reduced-motion preferences are respected. These are layered CSS/parallax scenes, not real-time 3D models. Checkout, physical printing, print-ready files, a guest RSVP backend, private invitation hosting, bespoke character animation and production ordering are still in development. The names, dates, venues and illustrated people in the previews are fictional.
 
+The 19 October reference pass is recorded in [DESIGN.md](DESIGN.md). The full invitations now show a countdown to the next ceremony. Hosts can edit their invitation message, start from three wording suggestions and optionally add a WhatsApp RSVP number. If a number is set, guests can select ceremonies and party size, add a note and open a prepared WhatsApp message to review and send. Responses stay in WhatsApp; there is no RSVP database. The phone number is part of the public invitation link and visible to recipients.
+
 Run locally with no install step:
 
 ```sh
