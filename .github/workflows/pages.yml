@@ -25,7 +25,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p public/assets/fonts public/assets/scenes public/assets/previews public/assets/films
-          cp showroom.css designs.js invitation.html invitation.css invitation.js royal-gate.css signature-invites.css index.html home.css home.js studio.html styles.css script.js palace.html palace.css palace.js builder.html builder.css builder.js favicon.svg public/
+          cp showroom.css designs.js invitation.html invitation.css invitation.js royal-gate.css signature-invites.css floral-door.css index.html home.css home.js studio.html styles.css script.js palace.html palace.css palace.js builder.html builder.css builder.js favicon.svg public/
           cp assets/*.webp public/assets/
           cp assets/films/*.mp4 public/assets/films/
           cp assets/scenes/*.svg public/assets/scenes/
