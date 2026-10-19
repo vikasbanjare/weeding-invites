@@ -28,6 +28,12 @@ This pass adds a live countdown to the next ceremony, editable invitation wordin
 
 The next implementation step adds a four-part guided creator (`builder.html`) with a live cover and schedule preview. Visitors can filter and search all 50 designs, enter their story, add and reorder up to eight ceremonies, attach an HTTPS directions URL per event, and review a finished invitation link. Drafts save locally per design. Homepage creation links lead into the builder, and the full invitation can transfer its current data back for guided edits. On phones, form controls precede the expanded preview so the first action is visible immediately.
 
+The follow-up visual pass extracts four distinct directions from the supplied pages: Aamantran's royal architectural presentation, PaperPlanes' tactile stationery and film presentation, ShaadiPath's layered wedding website previews, and InviteStory's tap-to-open architectural video. The InviteStory HTML contains a static poster, a `doorVideo` MP4, ambient dust/lantern layers, a tap overlay, and a freeze-frame canvas. PaperPlanes' home page exposes multiple autoplaying product MP4s with poster images. Direct retrieval of the reference video and screenshot URLs returned HTTP 403, and the live interaction session timed out, so exact frame timing and pixel treatment could not be inspected. The implementations below follow observed page structure and source markup, plus original local artwork.
+
+Royal Court (`design-01`) and Palace Edit (`design-41`) now begin with a decorated architectural cover and a guest-controlled door opening. Vellum Layer (`design-33`) starts as a folded translucent letter and opens into the existing layered paper scene. Garden Vow (`design-21`) represents the living-scene direction; Desert Sky (`design-45`) surfaces its wedding date and venue above the fold. The homepage groups these four live examples, and the creator previews closed/opened states where a cover exists. These directions share the same editing, event, sharing and export capabilities.
+
+The homepage Royal Court film now begins with an original rendered door-opening sequence and continues into the existing ceremony chapters. The page itself uses CSS motion for the interactive opening; the MP4 is a sample for browsing and has no imported footage from the reference sites.
+
 | Reference function | Local state |
 | --- | --- |
 | Try names, large live design preview | Catalog quick look and guided creator live preview |

@@ -84,7 +84,10 @@ function previewPayload() {
   };
 }
 function sendPreview() {
-  if (frame.contentWindow) frame.contentWindow.postMessage({ type: 'invitation-preview-data', invitation: previewPayload() }, location.origin);
+  if (frame.contentWindow) {
+    frame.contentWindow.postMessage({ type: 'invitation-preview-data', invitation: previewPayload() }, location.origin);
+    frame.contentWindow.postMessage({ type: 'invitation-preview-cover', open: previewView === 'inside' }, location.origin);
+  }
 }
 function refreshPreview() {
   sendPreview();
@@ -93,9 +96,12 @@ function refreshPreview() {
 }
 function loadPreview() {
   const item = previewDesign();
+  const hasOpening = ['design-01', 'design-33', 'design-41'].includes(design);
+  $('[data-preview="inside"]').hidden = !hasOpening;
+  if (!hasOpening && previewView === 'inside') $('[data-preview="cover"]').click();
   $('#preview-design-name').textContent = item.name;
   $('#preview-full-link').href = `invitation.html?design=${design}`;
-  frame.src = `invitation.html?design=${design}&embed=1&v=20261019`;
+  frame.src = `invitation.html?design=${design}&embed=1&v=20261019d`;
   refreshPreview();
 }
 frame.addEventListener('load', sendPreview);
@@ -127,7 +133,7 @@ function renderDesigns() {
     button.setAttribute('aria-pressed', String(item.id === design));
     button.setAttribute('aria-label', `Choose ${item.name}, ${item.collection} design`);
     const image = document.createElement('img');
-    image.src = `assets/previews/${item.id}.webp`;
+    image.src = `assets/previews/${item.id}.webp?v=20261019d`;
     image.alt = '';
     image.loading = 'lazy';
     image.decoding = 'async';
@@ -279,8 +285,9 @@ function renderReview() {
 document.querySelectorAll('[data-preview]').forEach((button) => button.addEventListener('click', () => {
   previewView = button.dataset.preview;
   document.querySelectorAll('[data-preview]').forEach((choice) => choice.setAttribute('aria-pressed', String(choice === button)));
-  frame.hidden = previewView !== 'cover';
+  frame.hidden = previewView === 'schedule';
   $('#schedule-preview').hidden = previewView !== 'schedule';
+  sendPreview();
 }));
 
 const headings = [

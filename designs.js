@@ -59,5 +59,5 @@ window.invitationCatalog = [
   ['The Museum','Destination','Website','ivory','royal','matte','editorial','Ⅰ','A curated walk through architecture and memory.'],
   ['Blue Hour','Destination','Motion','blue','moonlit','silk','vignette','☾','A twilight reveal with luminous type and atmosphere.']
 ].map(([name,collection,format,tone,art,finish,layout,motif,description,live],index)=>({
-  id:`design-${String(index+1).padStart(2,'0')}`,name,collection,format,tone,art,finish,layout,motif,description,live:`invitation.html?design=design-${String(index+1).padStart(2,'0')}&v=20261019`
+  id:`design-${String(index+1).padStart(2,'0')}`,name,collection,format,tone,art,finish,layout,motif,description,live:`invitation.html?design=design-${String(index+1).padStart(2,'0')}&v=20261019d`
 }));

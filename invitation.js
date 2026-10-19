@@ -81,7 +81,7 @@ const storyHeadings={royal:'A celebration worthy of <em>our forever.</em>',court
 document.getElementById('story-title').innerHTML=storyHeadings[family];
 document.querySelector('.story-lead').innerHTML='<span data-families></span> joyfully invite you to celebrate the wedding of <span data-name-one></span> and <span data-name-two></span>. Join us for the people, places and little moments that make a lifetime.';
 document.querySelector('.story-window-caption').textContent=selectedDesign.name.toUpperCase();
-document.getElementById('next-invitation').href=`invitation.html?design=design-${String(designNumber%50+1).padStart(2,'0')}&v=20261019`;
+document.getElementById('next-invitation').href=`invitation.html?design=design-${String(designNumber%50+1).padStart(2,'0')}&v=20261019d`;
 const particles=document.querySelector('.scene-particles');
 for(let i=0;i<14;i++){const dot=document.createElement('i');dot.style.cssText=`--x:${(i*31+7)%100}%;--y:${(i*47+13)%100}%;--delay:${-i*.9}s;--duration:${9+i%5}s`;particles.append(dot);}
 
@@ -138,8 +138,12 @@ let entranceTimer;
 document.getElementById('reveal-seal').addEventListener('click',()=>{
  setPlaying(false);clearTimeout(entranceTimer);
  const button=document.getElementById('reveal-seal');
+ if(interactiveCover && document.body.classList.contains('entrance-closed')){
+  document.body.classList.remove('entrance-closed');button.setAttribute('aria-expanded','true');button.setAttribute('aria-label','Replay the invitation entrance');button.textContent='Replay entrance ↻';
+  return;
+ }
  document.body.classList.add('entrance-closed');button.setAttribute('aria-expanded','false');button.textContent='Opening your invitation…';
- entranceTimer=setTimeout(()=>{document.body.classList.remove('entrance-closed');button.setAttribute('aria-expanded','true');button.textContent='Replay entrance ↻';},document.body.dataset.motion==='off'?50:700);
+ entranceTimer=setTimeout(()=>{document.body.classList.remove('entrance-closed');button.setAttribute('aria-expanded','true');button.textContent='Replay entrance ↻';},document.body.dataset.motion==='off'?50:interactiveCover?1100:700);
 });
 updateScene();
 
@@ -225,8 +229,17 @@ invitationHero.addEventListener('pointermove',event=>{
 });
 invitationHero.addEventListener('pointerleave',resetLight);
 depthButton.addEventListener('click',()=>{if(document.body.dataset.motion==='off')resetLight();});
-// The opening never blocks navigation or editing, and is skipped for reduced motion.
-if(!reducedMotion.matches){
+// Royal designs begin as an invitation cover. Other designs keep their short automatic reveal.
+const royalGate=['design-01','design-41'].includes(design.id);
+const paperUnfold=design.id==='design-33';
+const interactiveCover=royalGate || paperUnfold;
+if(interactiveCover){
+ document.body.classList.add('entrance-closed');
+ const button=document.getElementById('reveal-seal');
+ button.setAttribute('aria-expanded','false');
+ button.setAttribute('aria-label',paperUnfold?'Unfold the invitation':'Open the invitation');
+ button.textContent=paperUnfold?'Unfold the invitation ✦':'Tap to open invitation ✦';
+}else if(!reducedMotion.matches){
  document.body.classList.add('entrance-closed');
  document.fonts.ready.then(()=>requestAnimationFrame(()=>document.body.classList.remove('entrance-closed')));
 }
@@ -235,4 +248,5 @@ window.addEventListener('message',event=>{
  if(!design.embedded || event.source!==window.parent || event.origin!==location.origin)return;
  if(event.data?.type==='invitation-preview' && typeof event.data.nameOne==='string' && typeof event.data.nameTwo==='string')window.updateInvitePreview?.(event.data.nameOne,event.data.nameTwo);
  if(event.data?.type==='invitation-preview-data')window.updateInvitePreviewData?.(event.data.invitation);
+ if(event.data?.type==='invitation-preview-cover' && interactiveCover)document.body.classList.toggle('entrance-closed',!event.data.open);
 });

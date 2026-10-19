@@ -1,0 +1,24 @@
+.paper-cover,.hero-feature{display:none}
+/* Vellum Layer: an original folded stationery cover inspired by tactile invitation films. */
+body[data-design="design-33"] .entrance-panel{display:none}
+body[data-design="design-33"] .paper-cover{display:flex;position:absolute;z-index:7;inset:14% 22% 14%;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:20px;padding:50px 8%;color:#553e43;background:linear-gradient(145deg,#fffaf4f2,#eeddddf0 63%,#faf5eff5);border:1px solid #c7afa7;box-shadow:0 28px 80px #392b354d,0 4px 20px #765f6866,inset 0 0 0 15px #fff5ec80;backdrop-filter:blur(15px);transform:translateY(-125%) rotate(-12deg);opacity:0;transition:transform 1.4s cubic-bezier(.2,.7,.1,1),opacity .9s;pointer-events:none}
+body[data-design="design-33"] .paper-cover:before{content:"";position:absolute;inset:17px;border:1px solid #bba7a3a6;pointer-events:none}
+body[data-design="design-33"] .paper-cover:after{content:"";position:absolute;left:0;right:0;top:0;height:28%;background:linear-gradient(160deg,#fffefa66,#d6b8b552);clip-path:polygon(0 0,100% 0,50% 100%);border-bottom:1px solid #b69d9a;pointer-events:none}
+body[data-design="design-33"].entrance-closed .paper-cover{transform:translateY(0) rotate(-3deg);opacity:1}
+.paper-cover-crest{font:38px Georgia,serif;color:#9e7c75}
+.paper-cover-label,.paper-cover-note{font:700 clamp(7px,.75vw,10px)/1.5 'Instrument Sans',Arial,sans-serif;letter-spacing:.27em}
+.paper-cover-names{display:flex;flex-direction:column;align-items:center;max-width:100%;font:normal clamp(51px,7vw,103px)/.9 'Instrument Serif',Georgia,serif;letter-spacing:-.05em}
+.paper-cover-names span{max-width:100%;overflow-wrap:anywhere}
+.paper-cover-names i{font-size:.45em;line-height:1.2;color:#ae8792}
+.paper-cover-rule{width:86px;height:1px;background:#a78e88}
+body[data-design="design-33"] .reveal-seal{z-index:9;bottom:11%;border:1px solid #6f515d;background:#fff7f0;color:#573b47;border-radius:2px;box-shadow:0 8px 30px #4d3d4840;padding:15px 23px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+body[data-design="design-33"].entrance-closed .hero-heading{opacity:.12}
+body[data-design="design-33"] .hero-bottom{z-index:8}
+/* Desert Sky: a clear, venue-led invitation website cover. */
+body[data-design="design-45"] .hero-heading{top:17%}
+body[data-design="design-45"] .hero-heading h1{line-height:.84}
+body[data-design="design-45"] .hero-feature{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:13px;max-width:500px;margin:36px auto 0;padding-top:20px;border-top:1px solid #f6e6c67d;color:#fff0d8;font:700 clamp(9px,.9vw,12px)/1.5 'Instrument Sans',Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase}
+body[data-design="design-45"] .hero-feature b{color:#e6c48d;font-size:17px;font-weight:400}
+body[data-design="design-45"] .scene-index{font-size:clamp(130px,21vw,350px);right:4%;bottom:8%;opacity:.12}
+@media(max-width:680px){body[data-design="design-33"] .paper-cover{inset:18% 9% 18%;padding:45px 12%;gap:16px}.paper-cover-names{font-size:clamp(52px,15vw,76px)}.paper-cover-label,.paper-cover-note{font-size:7px;letter-spacing:.15em}body[data-design="design-33"] .reveal-seal{bottom:13%;font-size:9px;padding:14px 18px}body[data-design="design-45"] .hero-feature{margin:24px auto 0;padding-top:15px;gap:8px;font-size:9px;max-width:270px}body[data-design="design-45"] .hero-feature b{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){body[data-design="design-33"] .paper-cover{transition:none}}

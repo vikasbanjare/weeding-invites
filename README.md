@@ -14,6 +14,10 @@ The 19 October reference pass is recorded in [DESIGN.md](DESIGN.md). The full in
 
 The [guided creator](https://vikasbanjare.github.io/weeding-invites/builder.html) now connects browsing to a finished invitation in four steps: choose from the 50 designs, write the couple's story, arrange up to eight ceremonies, and review/share. It has a live cover and schedule preview, collection filters, quick ceremony additions, per-event HTTPS directions links, wording starters, local draft saving, and an optional WhatsApp RSVP number. The homepage's primary create actions and every catalog card enter this flow; the full invitation still has a quick editor and can hand its current details back to the guided creator. Drafts are stored in the current browser, and the public link carries invitation details in its URL fragment. There is no account or private storage.
 
+Four featured directions now link to complete examples on the homepage: Royal Court's ornate tap-to-open doors, Vellum Layer's unfolding stationery cover, Garden Vow's layered floral setting, and Desert Sky's venue-led destination website. Royal Court and the Palace Edit catalog design (`design-41`) use the same original door entrance; Vellum Layer has a separate paper interaction. The guided creator can switch these previews between closed and opened states. The artwork and CSS animation are original to this project, while the reference sites informed the interaction and presentation. These are browser animations, not copies of the reference videos.
+
+The Royal Court sample film on the homepage now begins with the same original door opening before moving into the ceremony chapters. It is a 540 × 960 H.264 MP4 with no audio and remains muted and user-controllable on the homepage.
+
 Run locally with no install step:
 
 ```sh
@@ -34,6 +38,8 @@ Development notes:
 With the local server running, use `python3 tests/invitations_smoke.py` to test all fifty routes, desktop/mobile layouts, origin-clean export canvases, editor persistence, eight-event programmes, live preview draft isolation, fresh-context sharing, playback, downloads and catalog navigation. This check requires the Python Playwright package and Chromium at `/usr/bin/chromium`; there is no runtime dependency for the website. Set `INVITE_PREVIEWS=1` to regenerate catalog thumbnails (also requires Pillow).
 
 Use `python3 tests/builder_smoke.py` to test the guided path from design selection through public-link opening, including mobile layout and draft recovery.
+
+Use `python3 tests/signature_smoke.py` to check the tap-to-open covers, builder preview states, featured designs and mobile layout.
 
 Video verification: representative portrait, vellum and vector landscape designs produced playable 540 × 960 H.264 MP4 files with five ceremony chapters in Chromium on 18 October 2026. Video is a separately rendered animated keepsake; browser export support varies.
 

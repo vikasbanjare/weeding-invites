@@ -237,6 +237,10 @@ function render() {
   document.getElementById('main-map-link').href = mapsLink(invitation.venue);
   const wedding = invitation.events.find((event) => /wedding|phera|shaadi|vivah/i.test(event.title)) || invitation.events[invitation.events.length - 1];
   document.querySelector('[data-wedding-date]').textContent = formatDate(wedding.date).toUpperCase();
+  const featureDate = document.getElementById('hero-feature-date');
+  if (featureDate) featureDate.textContent = formatDate(wedding.date);
+  const featurePlace = document.getElementById('hero-feature-place');
+  if (featurePlace) featurePlace.textContent = `${invitation.venue} · ${invitation.city}`;
   document.title = `${invitation.nameOne} & ${invitation.nameTwo} — ${activeDesign?.name || "The Palace Edit"}`;
   fitHeroTitle();
   renderEvents();
