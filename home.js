@@ -12,7 +12,7 @@ let search = '';
 let visibleCount = 12;
 let currentId = null;
 let returnFocus = null;
-const featuredNames = ['Royal Court','Moonlit Mehfil','Garden Vow','Palace Edit','Modern Arches','Chettinad Morning','The Edit','Noir Type','Cotton Rag','Desert Sky','Monsoon Garden','Coastal Dawn'];
+const featuredNames = ['Royal Court','Vellum Layer','Modern Arches','Garden Vow','Desert Sky','The Museum','Moonlit Mehfil','Cotton Rag','Coastal Dawn','Chettinad Morning','The Edit','Fern Study'];
 const featured = [...catalog].sort((a,b)=>{
   const first=featuredNames.indexOf(a.name), second=featuredNames.indexOf(b.name);
   return (first<0?100+Number(a.id.slice(-2)):first) - (second<0?100+Number(b.id.slice(-2)):second);
@@ -69,7 +69,8 @@ function makeCard(item) {
   const title = document.createElement('h3'); title.textContent=item.name;
   const subtitle = document.createElement('p'); subtitle.textContent=`${item.collection} / ${item.finish} finish`;
   const quick=document.createElement('button');quick.type='button';quick.className='quick-look';quick.textContent='Quick look & personalize →';quick.setAttribute('aria-label',`Quick look at ${item.name}`);quick.addEventListener('click',()=>openDesign(item.id));
-  labels.append(title,subtitle,quick);
+  const visit=document.createElement('a');visit.className='open-invitation-link';visit.href=item.live;visit.textContent='Open invitation →';
+  labels.append(title,subtitle,visit,quick);
   const save = document.createElement('button'); save.className='save-design'; save.type='button';
   save.setAttribute('aria-label',`${saved.has(item.id) ? 'Remove' : 'Save'} ${item.name} ${saved.has(item.id) ? 'from' : 'to'} shortlist`);
   save.setAttribute('aria-pressed',String(saved.has(item.id)));
@@ -113,7 +114,7 @@ function updateDialog() {
   const sendNames=()=>frame.contentWindow?.postMessage({type:'invitation-preview',nameOne:$('#preview-name-one').value.trim()||'Meera',nameTwo:$('#preview-name-two').value.trim()||'Arjun'},location.origin==='null'?'*':location.origin);
   if(!frame || frame.dataset.design!==item.id){
     frame=document.createElement('iframe');frame.className='live-design-frame';frame.dataset.design=item.id;frame.title=`${item.name} invitation preview`;frame.tabIndex=-1;frame.setAttribute('inert','');
-    const previewParams=new URLSearchParams({design:item.id,embed:'1',nameOne:$('#preview-name-one').value.trim()||'Meera',nameTwo:$('#preview-name-two').value.trim()||'Arjun'});
+    const previewParams=new URLSearchParams({v:'20261019',design:item.id,embed:'1',nameOne:$('#preview-name-one').value.trim()||'Meera',nameTwo:$('#preview-name-two').value.trim()||'Arjun'});
     frame.src=`invitation.html?${previewParams}`;frame.addEventListener('load',sendNames);previewHost.replaceChildren(frame);
   }else sendNames();
   $('#dialog-collection').textContent=`${item.collection.toUpperCase()} COLLECTION / ${item.format.toUpperCase()}`;
@@ -127,7 +128,7 @@ function updateDialog() {
   save.setAttribute('aria-pressed',String(saved.has(item.id)));
   const live=$('#dialog-live'); live.hidden=!item.live;
   if (item.live) {
-    const params=new URLSearchParams({design:item.id,nameOne:$('#preview-name-one').value.trim() || 'Meera',nameTwo:$('#preview-name-two').value.trim() || 'Arjun'});
+    const params=new URLSearchParams({v:'20261019',design:item.id,nameOne:$('#preview-name-one').value.trim() || 'Meera',nameTwo:$('#preview-name-two').value.trim() || 'Arjun'});
     live.href=`invitation.html?${params}`;live.textContent='Open complete invitation →';
   }
   const list=filtered(); const position=list.findIndex(design=>design.id===item.id);
@@ -189,27 +190,32 @@ document.querySelectorAll('#main-nav a').forEach(link=>link.addEventListener('cl
 }));
 
 const hero=$('.hero');
-const heroLabels={royal:'01 / ROYAL COURT',moonlit:'02 / MOONLIT MEHFIL',garden:'03 / GARDEN VOW'};
-document.querySelectorAll('.hero-choice').forEach(button=>button.addEventListener('click',()=>{
-  const scene=button.dataset.scene;
-  document.querySelectorAll('.hero-choice').forEach(choice=>{
-    const active=choice===button;
-    choice.classList.toggle('is-active',active);
-    choice.setAttribute('aria-pressed',String(active));
-  });
-  document.querySelectorAll('.hero-image').forEach(image=>image.classList.toggle('is-active',image.dataset.heroImage===scene));
-  $('#hero-image-caption').textContent=heroLabels[scene];
+if ($('#showroom-video')) {
+const filmOptions={royal:{file:'royal-court',design:'design-01',name:'Royal Court'},paper:{file:'vellum-layer',design:'design-33',name:'Vellum Layer'},desert:{file:'desert-sky',design:'design-45',name:'Desert Sky'}};
+const film=$('#showroom-video');
+const filmButton=$('#showroom-play');
+const filmMotion=matchMedia('(prefers-reduced-motion: reduce)');
+let chosenFilm='royal',userPaused=filmMotion.matches,filmVisible=true;
+function updateFilmButton(){const active=!film.paused;filmButton.innerHTML=active?'Pause film <span class="pause-icon" aria-hidden="true"></span>':'Play sample <span aria-hidden="true">▷</span>';filmButton.setAttribute('aria-pressed',String(active));}
+async function playFilm(){try{await film.play();}catch{updateFilmButton();}}
+film.addEventListener('play',updateFilmButton);film.addEventListener('pause',updateFilmButton);
+film.addEventListener('error',()=>{filmButton.textContent='Open invitation →';filmButton.dataset.failed='true';});
+filmButton.addEventListener('click',()=>{if(filmButton.dataset.failed){location.href=$('#showroom-open').href;return;}userPaused=!film.paused;if(userPaused)film.pause();else playFilm();});
+document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener('click',()=>{
+ chosenFilm=button.dataset.film;const choice=filmOptions[chosenFilm];
+ document.querySelectorAll('[data-film]').forEach(option=>option.setAttribute('aria-pressed',String(option===button)));
+ film.pause();delete filmButton.dataset.failed;
+ film.poster=`assets/previews/${choice.design}.webp`;film.src=`assets/films/${choice.file}.mp4`;film.setAttribute('aria-label',`Sample ${choice.name} invitation film`);film.load();
+ $('#showroom-open').href=`invitation.html?design=${choice.design}&v=20261019`;$('#film-status').textContent=`INVITATION FILM / ${choice.name.toUpperCase()}`;
+ if(!userPaused)playFilm();
 }));
-hero.addEventListener('pointermove',event=>{
-  if(event.pointerType!=='mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const rect=hero.getBoundingClientRect();
-  hero.style.setProperty('--pointer-x',`${((event.clientX/rect.width-.5)*-11).toFixed(1)}px`);
-  hero.style.setProperty('--pointer-y',`${((event.clientY/rect.height-.5)*-11).toFixed(1)}px`);
-  hero.style.setProperty('--pointer-rotate',`${((event.clientX/rect.width-.5)*1.8).toFixed(2)}deg`);
-});
-hero.addEventListener('pointerleave',()=>{
-  hero.style.removeProperty('--pointer-x');hero.style.removeProperty('--pointer-y');hero.style.removeProperty('--pointer-rotate');
-});
+if('IntersectionObserver' in window)new IntersectionObserver(entries=>{filmVisible=entries[0].isIntersecting;if(filmVisible&&!userPaused&&!document.hidden)playFilm();else film.pause();},{threshold:.15}).observe(film);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)film.pause();else if(filmVisible&&!userPaused)playFilm();});
+filmMotion.addEventListener('change',event=>{userPaused=event.matches;if(userPaused)film.pause();else if(filmVisible)playFilm();});
+hero.addEventListener('pointermove',event=>{if(event.pointerType!=='mouse'||filmMotion.matches)return;const rect=hero.getBoundingClientRect();hero.style.setProperty('--display-tilt',`${((event.clientX-rect.left)/rect.width-.5)*4}deg`);});
+hero.addEventListener('pointerleave',()=>hero.style.removeProperty('--display-tilt'));
+
+}
 
 const worldStory=$('#world-story');
 const worldSlides=[...document.querySelectorAll('.world-slide')];

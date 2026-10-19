@@ -81,7 +81,7 @@ const storyHeadings={royal:'A celebration worthy of <em>our forever.</em>',court
 document.getElementById('story-title').innerHTML=storyHeadings[family];
 document.querySelector('.story-lead').innerHTML='<span data-families></span> joyfully invite you to celebrate the wedding of <span data-name-one></span> and <span data-name-two></span>. Join us for the people, places and little moments that make a lifetime.';
 document.querySelector('.story-window-caption').textContent=selectedDesign.name.toUpperCase();
-document.getElementById('next-invitation').href=`invitation.html?design=design-${String(designNumber%50+1).padStart(2,'0')}`;
+document.getElementById('next-invitation').href=`invitation.html?design=design-${String(designNumber%50+1).padStart(2,'0')}&v=20261019`;
 const particles=document.querySelector('.scene-particles');
 for(let i=0;i<14;i++){const dot=document.createElement('i');dot.style.cssText=`--x:${(i*31+7)%100}%;--y:${(i*47+13)%100}%;--delay:${-i*.9}s;--duration:${9+i%5}s`;particles.append(dot);}
 
@@ -93,16 +93,16 @@ const playButton=document.getElementById('play-story');
 const depthButton=document.getElementById('toggle-depth');
 function setPlaying(active){
  playing=active;document.body.classList.toggle('is-playing',active);
- playButton.setAttribute('aria-pressed',String(active));playButton.innerHTML=active?'Ⅱ Pause story':'▷ Play the story';
+ playButton.setAttribute('aria-pressed',String(active));playButton.innerHTML=active?'Pause story':'▷ Play the story';
  document.getElementById('playback-status').textContent=active?'Playing the invitation. Scroll or press Escape to pause.':'Story paused. You can explore at your own pace.';
  if(!active)cancelAnimationFrame(playFrame);
 }
 function scrollProgress(){return Math.min(1,Math.max(0,scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)));}
 function playTour(now){
  if(!playing)return;
- const progress=Math.min(1,tourStartProgress+(now-tourStarted)/65000);
+ const progress=Math.min(1,tourStartProgress+(now-tourStarted)/(document.body.dataset.motion==='on'?65000:20000));
  const total=document.documentElement.scrollHeight-innerHeight;
- if(!reducedMotion.matches && document.body.dataset.motion==='on') window.scrollTo({top:progress*total,behavior:'instant'});
+ if(document.body.dataset.motion==='on') window.scrollTo({top:progress*total,behavior:'instant'});
  else {const section=tourSections[Math.min(4,Math.floor(progress*5))];document.getElementById(section).scrollIntoView({behavior:'instant'});}
  document.getElementById('cinema-progress').style.width=`${progress*100}%`;
  if(progress>=1){setPlaying(false);document.getElementById('playback-status').textContent='The story is complete. Download a keepsake or replay.';}else playFrame=requestAnimationFrame(playTour);
@@ -139,7 +139,7 @@ document.getElementById('reveal-seal').addEventListener('click',()=>{
  setPlaying(false);clearTimeout(entranceTimer);
  const button=document.getElementById('reveal-seal');
  document.body.classList.add('entrance-closed');button.setAttribute('aria-expanded','false');button.textContent='Opening your invitation…';
- entranceTimer=setTimeout(()=>{document.body.classList.remove('entrance-closed');button.setAttribute('aria-expanded','true');button.textContent='Replay entrance ↻';},reducedMotion.matches?50:700);
+ entranceTimer=setTimeout(()=>{document.body.classList.remove('entrance-closed');button.setAttribute('aria-expanded','true');button.textContent='Replay entrance ↻';},document.body.dataset.motion==='off'?50:700);
 });
 updateScene();
 
@@ -215,7 +215,7 @@ window.drawDesignFrame = function(ctx,width,height,phase,progress,data,artwork,f
 const invitationHero=document.querySelector('.palace-hero');
 function resetLight(){for(const key of ['--paper-rx','--paper-ry','--paper-x','--light-x'])invitationHero.style.removeProperty(key);}
 invitationHero.addEventListener('pointermove',event=>{
- if(event.pointerType!=='mouse'||document.body.dataset.motion==='off'||reducedMotion.matches)return;
+ if(event.pointerType!=='mouse'||document.body.dataset.motion==='off')return;
  const rect=invitationHero.getBoundingClientRect();
  const x=(event.clientX-rect.left)/rect.width-.5,y=(event.clientY-rect.top)/rect.height-.5;
  invitationHero.style.setProperty('--paper-rx',`${-y*5}deg`);

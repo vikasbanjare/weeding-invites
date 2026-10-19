@@ -169,7 +169,7 @@ function revealElements() {
 }
 
 function updateDepth(pointerX = 0, pointerY = 0) {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.body.dataset.motion === 'off') return;
+  if (activeDesign ? document.body.dataset.motion === 'off' : matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const scroll = Math.min(window.scrollY, hero.offsetHeight);
   hero.style.setProperty('--bg-x', `${pointerX * -12}px`);
   hero.style.setProperty('--bg-y', `${scroll * .18 + pointerY * -8}px`);
