@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f3eee6" />
+    <meta name="description" content="Create a personal Indian wedding invitation with a live design preview, ceremony details, and a link ready to share." />
+    <title>Create your invitation — Invitation Studio</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="builder.css?v=20261019" />
+    <script src="designs.js?v=20261019" defer></script>
+    <script src="builder.js?v=20261019" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#builder-main">Skip to creator</a>
+    <header class="builder-header">
+      <a class="builder-brand" href="./" aria-label="Invitation Studio home"><span class="brand-mark" aria-hidden="true">✦</span><span>INVITATION<br /><strong>STUDIO</strong></span></a>
+      <span class="header-label">THE INVITATION CREATOR</span>
+      <a class="header-exit" href="./#catalog">Explore collection <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main class="builder-layout" id="builder-main">
+      <aside class="builder-steps" aria-label="Creation steps">
+        <p class="side-eyebrow">A STORY IN FOUR STEPS</p>
+        <h1>Make it<br /><em>yours.</em></h1>
+        <p class="side-description">Choose a world, add the details, and see it come to life.</p>
+        <nav aria-label="Creator progress">
+          <button type="button" class="step-link is-active" data-step="0" aria-current="step"><span>01</span><b>Choose design</b><small>Find your atmosphere</small></button>
+          <button type="button" class="step-link" data-step="1"><span>02</span><b>Your story</b><small>Names, words and place</small></button>
+          <button type="button" class="step-link" data-step="2"><span>03</span><b>Celebrations</b><small>Every date and detail</small></button>
+          <button type="button" class="step-link" data-step="3"><span>04</span><b>Review &amp; share</b><small>The finishing touches</small></button>
+        </nav>
+        <p class="draft-note" id="draft-note" role="status">Your draft saves in this browser.</p>
+      </aside>
+
+      <section class="builder-workspace" aria-labelledby="step-title">
+        <div class="workspace-topline"><span id="step-overline">01 / CHOOSE DESIGN</span><span id="step-counter">STEP 1 OF 4</span></div>
+        <div class="step-panel" data-panel="0">
+          <p class="section-kicker">THE FIRST IMPRESSION</p>
+          <h2 id="step-title">Which world<br /><em>feels like yours?</em></h2>
+          <p class="section-intro">Each design opens as a complete invitation website. Change your mind while you create.</p>
+          <label class="design-search"><span class="sr-only">Search designs</span><span aria-hidden="true">⌕</span><input id="design-search" type="search" placeholder="Search a mood, place or name" autocomplete="off" /></label>
+          <div class="design-filters" id="design-filters" role="group" aria-label="Filter design collection"></div>
+          <div class="design-grid" id="design-grid"></div>
+          <p class="design-count" id="design-count" role="status"></p>
+        </div>
+
+        <div class="step-panel" data-panel="1" hidden>
+          <p class="section-kicker">THE PEOPLE &amp; THE PLACE</p>
+          <h2 id="story-title">Start with<br /><em>your story.</em></h2>
+          <p class="section-intro">These words appear on your invitation. You can return and edit them at any time.</p>
+          <div class="field-grid">
+            <label>Your name <input id="name-one" maxlength="28" required autocomplete="off" placeholder="e.g. Meera" /></label>
+            <label>Their name <input id="name-two" maxlength="28" required autocomplete="off" placeholder="e.g. Arjun" /></label>
+            <label class="field-wide">Inviting families <input id="families" maxlength="100" required placeholder="e.g. The Shah and Mehta families" /></label>
+            <label>City or region <input id="city" maxlength="65" required placeholder="e.g. Jaipur, Rajasthan" /></label>
+            <label>Primary venue <input id="venue" maxlength="85" required placeholder="e.g. Samode Palace" /></label>
+            <label class="field-wide">Address or travel note <input id="address" maxlength="150" required placeholder="The full address guests need" /></label>
+            <label class="field-wide">A note to your guests <textarea id="message" maxlength="240" rows="4" placeholder="The invitation in your own words"></textarea></label>
+          </div>
+          <div class="wording-panel"><p>NEED A STARTING LINE?</p><div class="wording-options" role="group" aria-label="Invitation wording suggestions"><button type="button" data-wording="warm">Warm &amp; family led</button><button type="button" data-wording="royal">Regal celebration</button><button type="button" data-wording="modern">Modern &amp; simple</button></div><small>Choosing a line replaces the note above. You can edit it afterward.</small></div>
+        </div>
+
+        <div class="step-panel" data-panel="2" hidden>
+          <p class="section-kicker">THE DAYS WE'LL REMEMBER</p>
+          <h2 id="events-title">Every moment<br /><em>has its place.</em></h2>
+          <p class="section-intro">Start with the wedding, then add the gatherings around it. Each ceremony gets its own date, place and directions.</p>
+          <div class="event-quick-add"><span>QUICK ADD</span><div id="event-presets" role="group" aria-label="Add a ceremony"></div></div>
+          <div id="builder-events" class="builder-events"></div>
+          <button id="add-custom-event" class="add-event-button" type="button">+ Add another ceremony</button>
+          <p class="event-help">Up to eight ceremonies. Times are shown in India Standard Time.</p>
+        </div>
+
+        <div class="step-panel" data-panel="3" hidden>
+          <p class="section-kicker">THE FINISHING TOUCHES</p>
+          <h2 id="review-title">Ready to<br /><em>open the doors?</em></h2>
+          <p class="section-intro">Check the details, decide how guests can reply, and open the complete invitation.</p>
+          <label class="rsvp-field">Host WhatsApp number for replies <input id="rsvp-phone" type="tel" inputmode="tel" maxlength="22" pattern="[+0-9 ()-]{8,22}" placeholder="+91 98765 43210" /><small>Optional. Guests choose their ceremonies and review a prepared WhatsApp message. The number will be visible to anyone with your invitation link.</small></label>
+          <div class="review-card" id="review-card" aria-live="polite"></div>
+          <div class="review-actions"><button type="button" class="review-primary" id="open-full-invitation">Open complete invitation <span aria-hidden="true">→</span></button><button type="button" class="review-secondary" id="copy-builder-link">Copy invitation link <span aria-hidden="true">↗</span></button></div>
+          <p class="share-note" id="share-note" role="status">Your details stay in this browser until you share a link. Anyone with that link can read them. Social previews show a generic design image.</p>
+        </div>
+
+        <div class="step-footer"><button type="button" id="step-back" class="step-back" hidden>← Back</button><span id="step-hint">Select a design to continue</span><button type="button" id="step-next" class="step-next">Continue <span aria-hidden="true">→</span></button></div>
+      </section>
+
+      <aside class="builder-preview" aria-label="Live invitation preview">
+        <div class="preview-heading"><div><span>LIVE PREVIEW</span><h2 id="preview-design-name">Royal Court</h2></div><span class="preview-live"><i></i> YOUR INVITATION</span></div>
+        <div class="preview-tabs" role="group" aria-label="Preview view"><button type="button" data-preview="cover" aria-pressed="true">Cover</button><button type="button" data-preview="schedule" aria-pressed="false">Schedule</button></div>
+        <div class="phone-shell" id="phone-shell"><div class="phone-screen"><iframe id="invitation-preview" title="Live invitation cover preview" loading="eager"></iframe><div class="schedule-preview" id="schedule-preview" hidden></div></div></div>
+        <p class="preview-caption">A live sample. Open the complete invitation to explore every chapter, map and keepsake.</p>
+        <a id="preview-full-link" class="preview-full-link" href="invitation.html?design=design-01">Explore this design <span aria-hidden="true">↗</span></a>
+      </aside>
+    </main>
+    <div id="builder-toast" class="builder-toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

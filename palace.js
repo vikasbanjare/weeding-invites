@@ -34,6 +34,14 @@ function cleanPhone(value) {
   return digits.length >= 8 && digits.length <= 15 ? digits : '';
 }
 
+function cleanMapUrl(value) {
+  if (typeof value !== 'string' || !value.trim()) return '';
+  try {
+    const url = new URL(value.trim());
+    return url.protocol === 'https:' && url.href.length <= 400 ? url.href : '';
+  } catch { return ''; }
+}
+
 function normalize(raw) {
   if (!raw || typeof raw !== 'object') return structuredClone(example);
   const events = Array.isArray(raw.events) ? raw.events.slice(0, maxEvents).map((event) => ({
@@ -43,6 +51,7 @@ function normalize(raw) {
     place: clean(event?.place, 75),
     description: clean(event?.description, 180),
     attire: clean(event?.attire, 90),
+    mapUrl: cleanMapUrl(event?.mapUrl),
   })).filter((event) => event.title && event.date && event.time && event.place) : [];
   return {
     nameOne: clean(raw.nameOne, 28, example.nameOne),
@@ -208,7 +217,7 @@ function renderEvents() {
     const time = create('time', '', formatDate(event.date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }));
     time.dateTime = `${event.date}T${event.time}:00+05:30`;
     const link = create('a', '', 'DIRECTIONS ↗');
-    link.href = mapsLink(`${event.place}, ${invitation.venue}`);
+    link.href = event.mapUrl || mapsLink(`${event.place}, ${invitation.venue}`);
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     details.append(time, create('span', 'event-time', `${formatTime(event.time)} IST`), create('span', 'event-place', `${event.place} · ${invitation.venue}`), link);
@@ -290,7 +299,7 @@ hero.addEventListener('pointermove', (event) => {
 });
 window.addEventListener('scroll', () => updateDepth(pointerX, pointerY), { passive: true });
 
-function addEventFields(event = { title: '', date: '', time: '', place: '', description: '', attire: '' }) {
+function addEventFields(event = { title: '', date: '', time: '', place: '', description: '', attire: '', mapUrl: '' }) {
   if (eventFields.children.length >= maxEvents) return;
   const fieldset = document.getElementById('event-fields-template').content.firstElementChild.cloneNode(true);
   for (const input of fieldset.querySelectorAll('input')) input.value = event[input.name] || '';
@@ -573,3 +582,16 @@ window.updateInvitePreview = (nameOne, nameTwo) => {
   invitation.nameTwo = clean(nameTwo, 28, 'Arjun');
   render();
 };
+window.updateInvitePreviewData = (data) => {
+  if (!activeDesign?.embedded || !data || typeof data !== 'object') return;
+  invitation = normalize(data);
+  render();
+};
+document.querySelectorAll('[data-guided-builder]').forEach((link) => {
+  const designId = activeDesign?.id || 'design-41';
+  link.href = `builder.html?design=${designId}`;
+  link.addEventListener('click', () => {
+    try { sessionStorage.setItem('invitation-studio-builder-transfer', JSON.stringify({ design: designId, invitation })); }
+    catch { /* The creator still opens with its saved draft. */ }
+  });
+});

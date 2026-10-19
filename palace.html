@@ -12,15 +12,16 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="assets/palace-courtyard.webp" as="image" />
     <link rel="preload" href="assets/palace-couple.webp" as="image" />
-    <link rel="stylesheet" href="palace.css?v=20261019b" />
-    <script src="palace.js?v=20261019b" defer></script>
+    <link rel="stylesheet" href="palace.css?v=20261019c" />
+    <script src="palace.js?v=20261019c" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#story">Skip to invitation</a>
     <header class="palace-nav">
       <a class="nav-back" href="./" aria-label="Back to Invitation Studio">← <span>Invitation Studio</span></a>
       <a class="nav-monogram" href="#beginning" aria-label="The Palace Edit, back to top">✦ <span>THE PALACE EDIT</span> ✦</a>
-      <button class="nav-edit" id="open-editor" type="button">Personalise <span aria-hidden="true">↗</span></button>
+      <a class="nav-build" data-guided-builder href="builder.html?design=design-41">Guided setup <span aria-hidden="true">→</span></a>
+      <button class="nav-edit" id="open-editor" type="button">Quick edit <span aria-hidden="true">↗</span></button>
     </header>
 
     <main>
@@ -86,7 +87,7 @@
     <dialog class="editor-dialog" id="editor-dialog" aria-labelledby="dialog-title">
       <form id="palace-editor" method="dialog">
         <div class="dialog-top"><div><p class="eyebrow">MAKE THIS STORY YOURS</p><h2 id="dialog-title">Personalise the invitation</h2></div><button class="dialog-close" id="close-editor" type="button" aria-label="Close editor">×</button></div>
-        <p class="dialog-intro">Update the sample details, then download a card or motion invite. Nothing is sent to a server.</p>
+        <p class="dialog-intro">Update the sample details here, or <a data-guided-builder href="builder.html?design=design-41">use the guided creator</a>. Nothing is sent to a server.</p>
         <div class="editor-fields">
           <label>First name <input name="nameOne" maxlength="28" required /></label>
           <label>Second name <input name="nameTwo" maxlength="28" required /></label>
@@ -104,7 +105,7 @@
       </form>
     </dialog>
     <template id="event-fields-template">
-      <fieldset class="event-fieldset"><legend></legend><button class="remove-event" type="button">Remove</button><div class="editor-fields"><label>Ceremony <input name="title" maxlength="50" required /></label><label>Date <input name="date" type="date" required /></label><label>Start time (IST) <input name="time" type="time" required /></label><label>Place / room <input name="place" maxlength="75" required /></label><label class="wide-field">What guests should know <input name="description" maxlength="180" /></label><label class="wide-field">Dress note <input name="attire" maxlength="90" /></label></div></fieldset>
+      <fieldset class="event-fieldset"><legend></legend><button class="remove-event" type="button">Remove</button><div class="editor-fields"><label>Ceremony <input name="title" maxlength="50" required /></label><label>Date <input name="date" type="date" required /></label><label>Start time (IST) <input name="time" type="time" required /></label><label>Place / room <input name="place" maxlength="75" required /></label><label class="wide-field">Directions link (optional) <input name="mapUrl" type="url" pattern="https://.*" title="Enter a secure https:// link" maxlength="400" placeholder="https://maps.app.goo.gl/…" /></label><label class="wide-field">What guests should know <input name="description" maxlength="180" /></label><label class="wide-field">Dress note <input name="attire" maxlength="90" /></label></div></fieldset>
     </template>
   </body>
 </html>

@@ -232,6 +232,7 @@ if(!reducedMotion.matches){
 }
 
 window.addEventListener('message',event=>{
- if(!design.embedded || event.source!==window.parent || event.origin!==location.origin || event.data?.type!=='invitation-preview')return;
- if(typeof event.data.nameOne==='string' && typeof event.data.nameTwo==='string')window.updateInvitePreview?.(event.data.nameOne,event.data.nameTwo);
+ if(!design.embedded || event.source!==window.parent || event.origin!==location.origin)return;
+ if(event.data?.type==='invitation-preview' && typeof event.data.nameOne==='string' && typeof event.data.nameTwo==='string')window.updateInvitePreview?.(event.data.nameOne,event.data.nameTwo);
+ if(event.data?.type==='invitation-preview-data')window.updateInvitePreviewData?.(event.data.invitation);
 });

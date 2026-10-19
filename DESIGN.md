@@ -26,12 +26,14 @@ The existing project already has 50 complete website designs, ten layout familie
 
 This pass adds a live countdown to the next ceremony, editable invitation wording with three quick presets, and optional WhatsApp RSVP. Guests choose the ceremonies, party size and a note, then review a prepared message in WhatsApp. The RSVP number is included in the public invitation link. There is no RSVP database or dashboard.
 
+The next implementation step adds a four-part guided creator (`builder.html`) with a live cover and schedule preview. Visitors can filter and search all 50 designs, enter their story, add and reorder up to eight ceremonies, attach an HTTPS directions URL per event, and review a finished invitation link. Drafts save locally per design. Homepage creation links lead into the builder, and the full invitation can transfer its current data back for guided edits. On phones, form controls precede the expanded preview so the first action is visible immediately.
+
 | Reference function | Local state |
 | --- | --- |
-| Try names, large live design preview | Existing catalog quick look and full invitation |
+| Try names, large live design preview | Catalog quick look and guided creator live preview |
 | Category browsing and material directions | Existing filters, 50 designs and paper studies |
 | Door reveal and multi-scene story | Existing homepage and invitation scenes |
-| Ceremony itinerary, maps, iCal | Existing invitation editor and exports |
+| Ceremony itinerary, maps, iCal | Guided ceremony step, full invitation editor and exports |
 | Countdown | Added for the next upcoming ceremony |
 | Wording suggestions | Added three editable neutral presets |
 | Guest response | Added WhatsApp handoff with event selection |

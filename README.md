@@ -12,6 +12,8 @@ All 50 catalog entries open `invitation.html?design=design-NN`. Ten layout famil
 
 The 19 October reference pass is recorded in [DESIGN.md](DESIGN.md). The full invitations now show a countdown to the next ceremony. Hosts can edit their invitation message, start from three wording suggestions and optionally add a WhatsApp RSVP number. If a number is set, guests can select ceremonies and party size, add a note and open a prepared WhatsApp message to review and send. Responses stay in WhatsApp; there is no RSVP database. The phone number is part of the public invitation link and visible to recipients.
 
+The [guided creator](https://vikasbanjare.github.io/weeding-invites/builder.html) now connects browsing to a finished invitation in four steps: choose from the 50 designs, write the couple's story, arrange up to eight ceremonies, and review/share. It has a live cover and schedule preview, collection filters, quick ceremony additions, per-event HTTPS directions links, wording starters, local draft saving, and an optional WhatsApp RSVP number. The homepage's primary create actions and every catalog card enter this flow; the full invitation still has a quick editor and can hand its current details back to the guided creator. Drafts are stored in the current browser, and the public link carries invitation details in its URL fragment. There is no account or private storage.
+
 Run locally with no install step:
 
 ```sh
@@ -30,6 +32,8 @@ Development notes:
 - Social preview metadata is generic; personalized invitation details live in the shared URL fragment.
 
 With the local server running, use `python3 tests/invitations_smoke.py` to test all fifty routes, desktop/mobile layouts, origin-clean export canvases, editor persistence, eight-event programmes, live preview draft isolation, fresh-context sharing, playback, downloads and catalog navigation. This check requires the Python Playwright package and Chromium at `/usr/bin/chromium`; there is no runtime dependency for the website. Set `INVITE_PREVIEWS=1` to regenerate catalog thumbnails (also requires Pillow).
+
+Use `python3 tests/builder_smoke.py` to test the guided path from design selection through public-link opening, including mobile layout and draft recovery.
 
 Video verification: representative portrait, vellum and vector landscape designs produced playable 540 × 960 H.264 MP4 files with five ceremony chapters in Chromium on 18 October 2026. Video is a separately rendered animated keepsake; browser export support varies.
 

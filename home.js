@@ -70,7 +70,8 @@ function makeCard(item) {
   const subtitle = document.createElement('p'); subtitle.textContent=`${item.collection} / ${item.finish} finish`;
   const quick=document.createElement('button');quick.type='button';quick.className='quick-look';quick.textContent='Quick look & personalize →';quick.setAttribute('aria-label',`Quick look at ${item.name}`);quick.addEventListener('click',()=>openDesign(item.id));
   const visit=document.createElement('a');visit.className='open-invitation-link';visit.href=item.live;visit.textContent='Open invitation →';
-  labels.append(title,subtitle,visit,quick);
+  const createLink=document.createElement('a');createLink.className='create-invitation-link';createLink.href=`builder.html?design=${item.id}`;createLink.textContent='Create with this design ↗';
+  labels.append(title,subtitle,visit,createLink,quick);
   const save = document.createElement('button'); save.className='save-design'; save.type='button';
   save.setAttribute('aria-label',`${saved.has(item.id) ? 'Remove' : 'Save'} ${item.name} ${saved.has(item.id) ? 'from' : 'to'} shortlist`);
   save.setAttribute('aria-pressed',String(saved.has(item.id)));
@@ -127,6 +128,8 @@ function updateDialog() {
   const save=$('#dialog-save'); save.innerHTML=saved.has(item.id)?'Saved to shortlist <span aria-hidden="true">♥</span>':'Save this direction <span aria-hidden="true">♡</span>';
   save.setAttribute('aria-pressed',String(saved.has(item.id)));
   const live=$('#dialog-live'); live.hidden=!item.live;
+  const createParams=new URLSearchParams({design:item.id,nameOne:$('#preview-name-one').value.trim() || 'Meera',nameTwo:$('#preview-name-two').value.trim() || 'Arjun'});
+  $('#dialog-create').href=`builder.html?${createParams}`;
   if (item.live) {
     const params=new URLSearchParams({v:'20261019',design:item.id,nameOne:$('#preview-name-one').value.trim() || 'Meera',nameTwo:$('#preview-name-two').value.trim() || 'Arjun'});
     live.href=`invitation.html?${params}`;live.textContent='Open complete invitation →';
@@ -283,7 +286,7 @@ $('#arrival-form').addEventListener('submit',event=>{
   const [nameOne,nameTwo]=arrivalDetails();
   const designIds={royal:'design-01',moonlit:'design-42',garden:'design-21'};
   const params=new URLSearchParams({design:designIds[document.querySelector('[name="arrival-scene"]:checked').value],nameOne,nameTwo});
-  location.href=`invitation.html?${params}`;
+  location.href=`builder.html?${params}`;
 });
 const finishDescriptions={
   cotton:'Soft grain. Blind impressions. An understated invitation with room to breathe.',

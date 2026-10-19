@@ -9,7 +9,7 @@ with sync_playwright() as p:
  page.goto('http://127.0.0.1:4173',wait_until='networkidle')
  page.wait_for_function('document.querySelector("#showroom-video").currentTime>0.2')
  page.screenshot(path='/tmp/showroom-desktop.png')
- assert page.evaluate('document.querySelector(".hero").nextElementSibling.id')=='catalog'
+ assert page.evaluate('document.querySelector(".hero").nextElementSibling.classList.contains("creation-path")')
  page.locator('#showroom-play').click()
  assert page.locator('#showroom-video').evaluate('(v)=>v.paused')
  for key,design in [('paper','design-33'),('desert','design-45'),('royal','design-01')]:
