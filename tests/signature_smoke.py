@@ -9,7 +9,7 @@ with sync_playwright() as playwright:
     errors = []
     page.on("pageerror", lambda error: errors.append(str(error)))
 
-    for design, opening in (("01", "door"), ("21", "floral"), ("33", "paper"), ("41", "door")):
+    for design, opening in (("01", "door"), ("21", "floral"), ("24", "floral"), ("42", "floral"), ("33", "paper"), ("41", "door")):
         page.goto(f"{BASE}/invitation.html?design=design-{design}&nameOne=Anika&nameTwo=Kabir")
         assert page.locator("#reveal-seal").get_attribute("aria-expanded") == "false"
         assert page.locator("body").evaluate("el => el.classList.contains('entrance-closed')")
@@ -36,9 +36,16 @@ with sync_playwright() as playwright:
     page.locator('[data-preview="cover"]').click()
     page.wait_for_function("document.querySelector('#invitation-preview').contentDocument.body.classList.contains('entrance-closed')")
 
+    for design in ("21", "24", "42"):
+        page.goto(f"{BASE}/builder.html?design=design-{design}")
+        page.wait_for_function("document.querySelector('#invitation-preview').contentDocument?.body?.classList.contains('entrance-closed')")
+        assert page.locator('[data-preview="inside"]').is_visible()
+        page.locator('[data-preview="inside"]').click()
+        page.wait_for_function("!document.querySelector('#invitation-preview').contentDocument.body.classList.contains('entrance-closed')")
+
     page.goto(BASE)
-    assert page.locator(".signature-grid article").count() == 4
+    assert page.locator(".signature-grid article").count() == 6
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
     assert not errors, errors
     browser.close()
-    print("Signature invitation covers, preview controls, four featured designs, and mobile layout passed.")
+    print("Signature invitation covers, preview controls, six featured designs, and mobile layout passed.")

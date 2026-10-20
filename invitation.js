@@ -232,7 +232,8 @@ depthButton.addEventListener('click',()=>{if(document.body.dataset.motion==='off
 // Royal designs begin as an invitation cover. Other designs keep their short automatic reveal.
 const royalGate=['design-01','design-41'].includes(design.id);
 const paperUnfold=design.id==='design-33';
-const floralDoor=design.id==='design-21';
+const floralDoor=['design-21','design-24','design-42'].includes(design.id);
+if(floralDoor)document.body.classList.add('has-scene-door');
 const interactiveCover=royalGate || paperUnfold || floralDoor;
 if(interactiveCover){
  document.body.classList.add('entrance-closed');

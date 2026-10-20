@@ -27,7 +27,7 @@ window.invitationCatalog = [
   ['Garden Vow','Botanical','Digital','sage','garden','cotton','arch','❀','An airy botanical mandap wrapped in soft florals.','studio.html?style=garden'],
   ['Marigold Poem','Botanical','Paper','ivory','marigold','deckle','border','✿','Hand-painted marigolds on a soft handmade-paper ground.'],
   ['Jasmine Letter','Botanical','Paper','ivory','','cotton','corner','✿','A delicate jasmine-inspired note in cream and green.'],
-  ['Wild Garden','Botanical','Digital','sage','garden','matte','split','❀','An abundant garden with room for a joyful announcement.'],
+  ['Jasmine Courtyard','Botanical','Digital','rose','garden','matte','split','❀','Ivory doors open into a jasmine and coral ceremony garden.'],
   ['Pressed Petals','Botanical','Paper','rose','','vellum','offset','✿','Translucent layers and the feel of saved flowers.'],
   ['Gulmohar','Botanical','Paper','clay','marigold','linen','band','✾','Sunlit red-orange blooms and natural fibre character.'],
   ['Mogra Morning','Botanical','Digital','sand','','silk','arch','❁','Quiet white blossoms for a morning ceremony.'],

@@ -20,7 +20,7 @@ body{background:var(--paper)}.site-header,.site-header.is-scrolled{height:86px;b
 .signature-heading h2{font:normal clamp(45px,5vw,76px)/.98 'Instrument Serif',Georgia,serif;letter-spacing:-.05em;margin:0;flex:1}
 .signature-heading h2 em{font-weight:normal;color:#d7b484}
 .signature-heading>p:last-child{max-width:260px;color:#d6c9bd;line-height:1.6;font-size:13px;margin:0}
-.signature-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.signature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
 .signature-grid article{border:1px solid #e8d4b636;background:#fffaf80a;min-width:0}
 .signature-image{display:block;aspect-ratio:3/4;overflow:hidden;background:#47313c}
 .signature-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s ease}

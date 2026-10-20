@@ -1,29 +1,31 @@
-/* Original floral doorway for Garden Vow. The paired images share one composition. */
+/* Three original invitation entrances. The opened artwork contains a ceremony scene, not another door. */
 .floral-door{display:none}
-body[data-design="design-21"] .palace-hero{background:#12120f}
-body[data-design="design-21"] .hero-backdrop{filter:brightness(.35) saturate(.7)}
-body[data-design="design-21"] .floral-door{display:block;position:absolute;z-index:7;top:8%;bottom:8%;left:50%;width:min(45vw,410px);transform:translateX(-50%);overflow:hidden;border-radius:18px;background:#b89972 url('assets/floral-door-open.webp') center/100% 100% no-repeat;box-shadow:0 25px 80px #070605b9,0 0 0 1px #e7c69066;perspective:1100px;pointer-events:none}
-body[data-design="design-21"] .floral-door-wing{position:absolute;top:0;bottom:0;width:50%;background-image:url('assets/floral-door-closed.webp');background-size:200% 100%;background-repeat:no-repeat;transition:transform 1.8s cubic-bezier(.22,.72,.14,1),opacity 1.6s ease;backface-visibility:hidden}
-body[data-design="design-21"] .floral-door-left{left:0;background-position:left center;transform-origin:left center;transform:rotateY(-106deg);opacity:0}
-body[data-design="design-21"] .floral-door-right{right:0;background-position:right center;transform-origin:right center;transform:rotateY(106deg);opacity:0}
-body[data-design="design-21"].entrance-closed .floral-door-wing{transform:rotateY(0);opacity:1}
-body[data-design="design-21"] .floral-door-story{position:absolute;left:8%;right:8%;bottom:18%;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;color:#fff5df;text-shadow:0 2px 15px #111,0 1px 4px #111;background:linear-gradient(transparent,#10130b93);padding:25px 4px 10px;opacity:0;transform:translateY(12px);transition:opacity .45s,transform .45s}
-body[data-design="design-21"].entrance-closed .floral-door-story{opacity:1;transform:none;transition-delay:.4s}
-body[data-design="design-21"] .floral-door-story>span{font:700 9px/1.5 'Instrument Sans',Arial,sans-serif;letter-spacing:.22em}
-body[data-design="design-21"] .floral-door-story strong{font:normal clamp(32px,3.7vw,54px)/1 'Instrument Serif',Georgia,serif;letter-spacing:-.04em}
-body[data-design="design-21"] .floral-door-story strong i{font-size:.62em;font-weight:normal}
-body[data-design="design-21"] .floral-door-invite{position:absolute;inset:12% 10%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;text-align:center;color:#fff6d9;text-shadow:0 2px 10px #16120b,0 0 30px #16120b;background:radial-gradient(ellipse,#151811a8,transparent 70%);opacity:1;transition:opacity .5s 1s}
-body[data-design="design-21"].entrance-closed .floral-door-invite{opacity:0;transition-delay:0s}
-body[data-design="design-21"] .floral-door-invite>span{font:700 10px/1.7 'Instrument Sans',Arial,sans-serif;letter-spacing:.18em;max-width:260px}
-body[data-design="design-21"] .floral-door-invite strong{display:flex;flex-direction:column;align-items:center;font:normal clamp(38px,4.5vw,62px)/.9 'Instrument Serif',Georgia,serif}
-body[data-design="design-21"] .floral-door-invite strong i{font-size:.65em;line-height:1.2;font-weight:normal}
-body[data-design="design-21"] .hero-heading{z-index:6;transition:opacity .65s,transform .65s}
-body[data-design="design-21"] .hero-heading{opacity:0}
-body[data-design="design-21"] .reveal-seal{z-index:9;bottom:7%;background:#d8b778;color:#252019;border:1px solid #f8e1ad;border-radius:4px;padding:13px 22px;box-shadow:0 10px 30px #0009}
-body[data-design="design-21"].entrance-closed .hero-bottom{opacity:.3}
-body[data-design="design-21"] .entrance-panel{display:none}
-body[data-embed="true"][data-design="design-21"] .floral-door{top:2%;bottom:2%;width:min(92%,410px)}
-body[data-embed="true"][data-design="design-21"] .floral-door-story>span{font-size:6px}
-body[data-embed="true"][data-design="design-21"] .floral-door-story strong{font-size:clamp(23px,8vw,42px)}
-@media(max-width:680px){body[data-design="design-21"] .floral-door{top:10%;bottom:13%;width:min(85vw,390px)}body[data-design="design-21"] .reveal-seal{bottom:17%;font-size:9px;padding:12px 16px}body[data-design="design-21"] .floral-door-story{bottom:19%}body[data-design="design-21"] .floral-door-story strong{font-size:clamp(33px,9vw,48px)}body[data-design="design-21"] .floral-door-invite strong{font-size:clamp(37px,10vw,52px)}body[data-design="design-21"] .floral-door-invite>span{font-size:8px}}
-@media(prefers-reduced-motion:reduce){body[data-design="design-21"] .floral-door-wing,body[data-design="design-21"] .floral-door-story{transition:none}}
+body[data-design="design-21"]{--door-closed:url('assets/floral-door-closed.webp');--door-open:url('assets/floral-door-open.webp');--door-button:#d8b778;--door-ink:#fff6dc}
+body[data-design="design-24"]{--door-closed:url('assets/jasmine-door-closed.webp');--door-open:url('assets/jasmine-door-open.webp');--door-button:#f2ded0;--door-ink:#533238}
+body[data-design="design-42"]{--door-closed:url('assets/moonlit-door-closed.webp');--door-open:url('assets/moonlit-door-open.webp');--door-button:#d4ad66;--door-ink:#fff4d6}
+body.has-scene-door .palace-hero{background:#12120f}
+body.has-scene-door .hero-backdrop{filter:brightness(.28) saturate(.6)}
+body.has-scene-door .floral-door{display:block;position:absolute;z-index:7;top:8%;bottom:8%;left:50%;width:min(45vw,410px);transform:translateX(-50%);overflow:hidden;border-radius:18px;background:#b89972 var(--door-open) center/100% 100% no-repeat;box-shadow:0 25px 80px #070605b9,0 0 0 1px #e7c69066;perspective:1100px;pointer-events:none}
+body.has-scene-door .floral-door-wing{position:absolute;top:0;bottom:0;width:50%;background-image:var(--door-closed);background-size:200% 100%;background-repeat:no-repeat;transition:transform 1.8s cubic-bezier(.22,.72,.14,1),opacity 1.6s ease;backface-visibility:hidden}
+body.has-scene-door .floral-door-left{left:0;background-position:left center;transform-origin:left center;transform:rotateY(-106deg);opacity:0}
+body.has-scene-door .floral-door-right{right:0;background-position:right center;transform-origin:right center;transform:rotateY(106deg);opacity:0}
+body.has-scene-door.entrance-closed .floral-door-wing{transform:rotateY(0);opacity:1}
+body.has-scene-door .floral-door-story{position:absolute;left:8%;right:8%;bottom:18%;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;color:#fff5df;text-shadow:0 2px 15px #111,0 1px 4px #111;background:linear-gradient(transparent,#10130b93);padding:25px 4px 10px;opacity:0;transform:translateY(12px);transition:opacity .45s,transform .45s}
+body.has-scene-door.entrance-closed .floral-door-story{opacity:1;transform:none;transition-delay:.4s}
+body.has-scene-door .floral-door-story>span{font:700 9px/1.5 'Instrument Sans',Arial,sans-serif;letter-spacing:.22em}
+body.has-scene-door .floral-door-story strong{font:normal clamp(32px,3.7vw,54px)/1 'Instrument Serif',Georgia,serif;letter-spacing:-.04em}
+body.has-scene-door .floral-door-story strong i{font-size:.62em;font-weight:normal}
+body.has-scene-door .floral-door-invite{position:absolute;inset:12% 10%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;text-align:center;color:#fff6d9;text-shadow:0 2px 10px #16120b,0 0 30px #16120b;background:radial-gradient(ellipse,#151811a8,transparent 70%);opacity:1;transition:opacity .5s 1s}
+body.has-scene-door.entrance-closed .floral-door-invite{opacity:0;transition-delay:0s}
+body.has-scene-door .floral-door-invite>span{font:700 10px/1.7 'Instrument Sans',Arial,sans-serif;letter-spacing:.18em;max-width:260px}
+body.has-scene-door .floral-door-invite strong{display:flex;flex-direction:column;align-items:center;font:normal clamp(38px,4.5vw,62px)/.9 'Instrument Serif',Georgia,serif}
+body.has-scene-door .floral-door-invite strong i{font-size:.65em;line-height:1.2;font-weight:normal}
+body.has-scene-door .hero-heading{opacity:0}
+body.has-scene-door .reveal-seal{z-index:9;bottom:7%;background:var(--door-button);color:#252019;border:1px solid #f8e1ad;border-radius:4px;padding:13px 22px;box-shadow:0 10px 30px #0009}
+body.has-scene-door.entrance-closed .hero-bottom{opacity:.3}
+body.has-scene-door .entrance-panel{display:none}
+body[data-embed="true"].has-scene-door .floral-door{top:2%;bottom:2%;width:min(92%,410px)}
+body[data-embed="true"].has-scene-door .floral-door-story>span{font-size:6px}
+body[data-embed="true"].has-scene-door .floral-door-story strong{font-size:clamp(23px,8vw,42px)}
+@media(max-width:680px){body.has-scene-door .floral-door{top:10%;bottom:13%;width:min(85vw,390px)}body.has-scene-door .reveal-seal{bottom:17%;font-size:9px;padding:12px 16px}body.has-scene-door .floral-door-story{bottom:19%}body.has-scene-door .floral-door-story strong{font-size:clamp(33px,9vw,48px)}body.has-scene-door .floral-door-invite strong{font-size:clamp(37px,10vw,52px)}body.has-scene-door .floral-door-invite>span{font-size:8px}}
+@media(prefers-reduced-motion:reduce){body.has-scene-door .floral-door-wing,body.has-scene-door .floral-door-story{transition:none}}
