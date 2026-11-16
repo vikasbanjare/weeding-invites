@@ -40,6 +40,36 @@ def bell(f,dur=3.0):
 def riser(dur):
     n=int(dur*SR); x=rng.uniform(-1,1,n); x=np.diff(x,prepend=0)  # brighter noise
     return x*(np.linspace(0,1,n)**2.5)*.25
+
+def whoosh(dur=1.0,peak=.5,f0=300,f1=5000):
+    n=int(dur*SR); x=rng.uniform(-1,1,n); y=np.empty(n); z=0.0
+    for i in range(n):
+        p=i/n; f=f0+(f1-f0)*np.sin(np.pi*p)   # cutoff rises then falls
+        a=1-np.exp(-2*np.pi*f/SR); z+=a*(x[i]-z); y[i]=z
+    e=np.sin(np.pi*np.linspace(0,1,n)**peak*1.0)**2
+    return y*e*2.2
+def sparkle(dur=1.2,k=14):
+    n=int(dur*SR); out=np.zeros(n)
+    for _ in range(k):
+        t0=int(rng.uniform(0,dur*.85)*SR); f=rng.choice([2093,2637,3136,3951,4699]); m=int(.35*SR); t=np.arange(m)/SR
+        ping=np.sin(2*np.pi*f*t)*np.exp(-t*14)*rng.uniform(.25,.7)
+        j=min(n,t0+m); out[t0:j]+=ping[:j-t0]
+    return out*.5
+def sub(): 
+    n=int(.7*SR); t=np.arange(n)/SR; return np.sin(2*np.pi*(52+30*np.exp(-t*18))*t)*np.exp(-t*5)
+SFX={'A':dict(arch=.15,names=[2.0,3.35],date=4.85,sweep=5.7),
+     'B':dict(arch=.1,names=[1.75,2.95],date=4.25,sweep=5.55,extra=[3.65]),
+     'C':dict(arch=.15,names=[1.95,2.95],date=4.35,sweep=5.75)}
+def add_sfx(buf,key):
+    c=SFX[key]
+    place(buf,whoosh(1.5,1,250,3500),c['arch'],.55,-.2)
+    for i,t in enumerate(c['names']):
+        place(buf,whoosh(.9,1,400,6000),t-.1,.5,-.3+.6*i); place(buf,sub(),t+.25,.7)
+    for t in c.get('extra',[]): place(buf,whoosh(.8,1,500,7000),t,.4,.2)
+    place(buf,whoosh(.7,1,500,5500),c['date']-.1,.4,.3)
+    place(buf,whoosh(1.5,1,800,9000),c['sweep']-.3,.45,0)
+    place(buf,sparkle(1.6),c['sweep'],.8,.1); place(buf,sparkle(1.2,8),c['date']+.3,.5,-.2)
+
 def reverb(buf,wet=.3,length=2.2):
     n=int(length*SR); ir=rng.normal(size=n)*np.exp(-np.arange(n)/SR*2.6); ir[:int(.012*SR)]*=.2
     out=np.empty_like(buf)
@@ -63,7 +93,8 @@ def render(name,root,scale,phrase,hits,bell_t,bell_f,chord_t,tempo_tins):
     # resolving chord (Sa-Ga-Pa-Sa') pad swell + bell
     for k,r in enumerate((1,scale[2],1.5,2)):
         d=pad(root*2*r,DUR-chord_t)*env(int((DUR-chord_t)*SR),.35,1.0,1.4); place(buf,d,chord_t,.16)
-    buf=reverb(buf,.32)
+    add_sfx(buf,name)
+    buf=reverb(buf,.30)
     buf*= env(N,.05,.7,1.0)   # master fade in/out
     buf/= np.abs(buf).max()/.88
     return buf
