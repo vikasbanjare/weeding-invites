@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Pali Temple — Avinash &amp; Divya</title>
+<link rel="stylesheet" href="../fonts2/fonts.css">
+<style>*{margin:0;padding:0}html,body{width:1080px;height:1920px;overflow:hidden;background:#000}svg{display:block}</style>
+</head><body>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#0c1230"/><stop offset=".45" stop-color="#1d2050"/><stop offset=".66" stop-color="#5a2a55"/><stop offset=".74" stop-color="#b8584a"/><stop offset=".78" stop-color="#1a1a3a"/><stop offset="1" stop-color="#0a0d22"/>
+  </linearGradient>
+  <linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="200" y1="300" x2="880" y2="1300">
+    <stop offset="0" stop-color="#b8874a"/><stop offset=".35" stop-color="#f7dea6"/><stop offset=".6" stop-color="#c9954f"/><stop offset="1" stop-color="#f0cf8e"/>
+  </linearGradient>
+  <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2348"/><stop offset="1" stop-color="#16132e"/></linearGradient>
+  <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffd59a" stop-opacity=".9"/><stop offset=".35" stop-color="#f08a5a" stop-opacity=".35"/><stop offset="1" stop-color="#f08a5a" stop-opacity="0"/></radialGradient>
+  <filter id="water" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".004 .06" numOctaves="2" seed="3" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="22" xChannelSelector="R" yChannelSelector="G"/>
+    <feGaussianBlur stdDeviation=".8"/>
+  </filter>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="softglow" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 .8 0 0 0 0 0 .5 0 0 0 0 0 .6 0" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="fadeRef" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <mask id="refMask"><rect x="0" y="1290" width="1080" height="250" fill="url(#fadeRef)"/></mask>
+</defs>
+<rect width="1080" height="1920" fill="url(#sky)"/>
+<g id="stars"></g>
+<circle cx="540" cy="1260" r="420" fill="url(#sun)"/>
+<g id="temple" filter="url(#softglow)"></g>
+<g mask="url(#refMask)"><g filter="url(#water)"><use href="#temple" transform="translate(0 2580) scale(1 -1)"/></g></g>
+<rect x="0" y="1289" width="1080" height="2" fill="url(#gold)" opacity=".8"/>
+<g id="diyas" filter="url(#glow)"></g>
+
+<g text-anchor="middle">
+  <text x="540" y="128" font-family="Eczar" font-weight="600" font-size="34" fill="#f0cf8e">॥ सगाई के नेवता ॥</text>
+  <text x="540" y="300" font-family="Bodoni Moda" font-style="italic" font-size="120" fill="url(#gold)" letter-spacing="-2">Avinash <tspan font-size="68" fill="#e8a46a" dy="-16">&amp;</tspan><tspan dy="16"> Divya</tspan></text>
+  <text x="540" y="366" font-family="Rozha One" font-size="44" fill="#e9c88f">अविनाश  ·  दिव्या</text>
+  <text x="540" y="1600" font-family="Bodoni Moda" font-size="66" fill="#f7e6c4">Sunday, 22 November 2026</text>
+  <text x="540" y="1662" font-family="Manrope" font-weight="600" font-size="22" letter-spacing="10" fill="#e9c88f">11 AM ONWARDS</text>
+  <text x="540" y="1754" font-family="Bodoni Moda" font-style="italic" font-size="56" fill="#f7e6c4">Aas Manglam, Korba</text>
+  <text x="540" y="1810" font-family="Eczar" font-size="30" fill="#e9c88f">रविवार, सुबह 11 बजे से · आस मंगलम, कोरबा</text>
+</g>
+</svg>
+<script>
+const $=id=>document.getElementById(id);
+let sd=21;const rnd=()=>(sd=(sd*16807)%2147483647)/2147483647;
+(function(){let s='';for(let i=0;i<140;i++){const y=rnd()*900;s+=`<circle cx="${rnd()*1080}" cy="${y}" r="${rnd()*1.6+.3}" fill="#fff4dc" opacity="${(.2+rnd()*.7)*(1-y/1000)}"/>`}$('stars').innerHTML=s;})();
+// Nagara temple, frontal elevation, gold line-art (base at y=1290)
+(function(){
+  const G='url(#gold)', cx=540, base=1290; let s='';
+  const L=(d,w=2,o=1)=>s+=`<path d="${d}" stroke="${G}" stroke-width="${w}" fill="none" opacity="${o}" stroke-linejoin="round"/>`;
+  // jagati (stepped plinth)
+  [[420,0],[390,22],[360,44],[336,62]].forEach(([hw,y],i)=>{s+=`<rect x="${cx-hw}" y="${base-22-y}" width="${hw*2}" height="22" fill="url(#stone)" stroke="${G}" stroke-width="1.6"/>`;
+    for(let x=cx-hw+14;x<cx+hw;x+=28)L(`M${x} ${base-18-y} v14`,1,.45);});
+  const top=base-84;
+  // walls with pilasters
+  s+=`<rect x="${cx-300}" y="${top-250}" width="600" height="250" fill="url(#stone)"/>`;
+  L(`M${cx-300} ${top} V${top-250} H${cx+300} V${top}`,2.4);
+  [-300,-250,-190,190,250,300].forEach(dx=>L(`M${cx+dx} ${top} V${top-250}`,1.4,.8));
+  for(let y=top-30;y>top-250;y-=36)L(`M${cx-300} ${y} H${cx-190} M${cx+190} ${y} H${cx+300}`,1,.5);
+  // niches with miniature shrines
+  [-245,245].forEach(dx=>{L(`M${cx+dx-34} ${top-40} V${top-150} L${cx+dx} ${top-196} L${cx+dx+34} ${top-150} V${top-40} Z`,1.8);L(`M${cx+dx-20} ${top-60} V${top-140} M${cx+dx+20} ${top-60} V${top-140}`,1,.7);});
+  // doorway: nested frames (shakhas) + steps
+  for(let k=0;k<5;k++){const w=150-k*22,h=230-k*18;L(`M${cx-w/2} ${top} V${top-h} H${cx+w/2} V${top}`,k?1.4:2.6,k?.85:1);}
+  s+=`<rect x="${cx-40}" y="${top-158}" width="80" height="158" fill="#0b0a1c"/>`;
+  s+=`<circle cx="${cx}" cy="${top-60}" r="7" fill="#ffd27a"/>`;
+  L(`M${cx-36} ${top-188} H${cx+36}`,2);
+  // cornice
+  s+=`<rect x="${cx-320}" y="${top-276}" width="640" height="26" fill="url(#stone)" stroke="${G}" stroke-width="2"/>`;
+  for(let x=cx-312;x<cx+312;x+=24)L(`M${x} ${top-270} l12 14 l12 -14`,1,.6);
+  // shikhara: nested curvilinear rathas with bhumi bands
+  const sb=top-276, sh=560;
+  const curve=(hw,ht,w=2,o=1)=>L(`M${cx-hw} ${sb} C${cx-hw} ${sb-ht*.55} ${cx-hw*.55} ${sb-ht*.92} ${cx-hw*.22} ${sb-ht} L${cx+hw*.22} ${sb-ht} C${cx+hw*.55} ${sb-ht*.92} ${cx+hw} ${sb-ht*.55} ${cx+hw} ${sb}`,w,o);
+  s+=`<path d="M${cx-260} ${sb} C${cx-260} ${sb-sh*.55} ${cx-143} ${sb-sh*.92} ${cx-57} ${sb-sh} L${cx+57} ${sb-sh} C${cx+143} ${sb-sh*.92} ${cx+260} ${sb-sh*.55} ${cx+260} ${sb} Z" fill="url(#stone)"/>`;
+  curve(260,sh,2.6);curve(200,sh*.98,1.4,.85);curve(130,sh*.99,1.4,.85);curve(60,sh,1.6,.9);
+  // bhumi bands (horizontal courses) with amalaka-like discs at the corners
+  for(let i=1;i<=9;i++){const t=i/10, y=sb-sh*t, hw=260*(1-Math.pow(t,1.7)*.78);
+    L(`M${cx-hw} ${y} H${cx+hw}`,1.2,.7);
+    [-1,1].forEach(sg=>s+=`<ellipse cx="${cx+sg*(hw-6)}" cy="${y}" rx="${10*(1-t*.5)}" ry="4" fill="none" stroke="${G}" stroke-width="1.2"/>`);}
+  // chaitya-window mesh (gavaksha) on the central ratha
+  for(let i=0;i<5;i++){const y=sb-70-i*92, r=26-i*3;L(`M${cx-r} ${y} A${r} ${r} 0 0 1 ${cx+r} ${y} L${cx+r*.7} ${y+r*.8} L${cx-r*.7} ${y+r*.8} Z`,1.4,.9);}
+  // amalaka + kalash + flag
+  const ay=sb-sh-22;
+  s+=`<ellipse cx="${cx}" cy="${ay}" rx="76" ry="22" fill="url(#stone)" stroke="${G}" stroke-width="2.4"/>`;
+  for(let k=-6;k<=6;k++)L(`M${cx+k*11} ${ay-20} Q${cx+k*13} ${ay} ${cx+k*11} ${ay+20}`,1,.7);
+  L(`M${cx-40} ${ay-24} H${cx+40}`,2);
+  s+=`<path d="M${cx-22} ${ay-26} C${cx-30} ${ay-60} ${cx+30} ${ay-60} ${cx+22} ${ay-26} Z" fill="url(#stone)" stroke="${G}" stroke-width="2"/>`;
+  s+=`<path d="M${cx} ${ay-60} V${ay-104}" stroke="${G}" stroke-width="2"/><circle cx="${cx}" cy="${ay-66}" r="6" fill="${G}"/>`;
+  s+=`<path d="M${cx} ${ay-104} L${cx+48} ${ay-92} L${cx} ${ay-80} Z" fill="#c8322a"/>`;
+  // side mini shrines (urushringa)
+  [-1,1].forEach(sg=>{const x=cx+sg*260, b=sb, h=200;
+    s+=`<path d="M${x-50} ${b} C${x-50} ${b-h*.6} ${x-20} ${b-h*.95} ${x-8} ${b-h} L${x+8} ${b-h} C${x+20} ${b-h*.95} ${x+50} ${b-h*.6} ${x+50} ${b} Z" fill="url(#stone)" stroke="${G}" stroke-width="1.8"/>`;
+    for(let i=1;i<5;i++){const t=i/5;L(`M${x-50*(1-t*.75)} ${b-h*t} H${x+50*(1-t*.75)}`,1,.6)}
+    s+=`<ellipse cx="${x}" cy="${b-h-8}" rx="18" ry="6" fill="none" stroke="${G}" stroke-width="1.6"/>`;});
+  $('temple').innerHTML=`<g transform="translate(540 1290) scale(.8) translate(-540 -1290)">${s}</g>`;
+  // floating diyas on the Hasdeo
+  let d='';[[160,1380],[300,1430],[430,1360],[640,1410],[780,1370],[920,1440],[220,1500],[860,1520],[540,1470]].forEach(([x,y])=>{
+    d+=`<g transform="translate(${x} ${y})"><path d="M-14 0 C-14 9 14 9 14 0 Z" fill="#c9783a"/><path d="M0 -2 C-5 -10 -2 -18 0 -22 C2 -18 5 -10 0 -2 Z" fill="#ffd27a"/></g>`;});
+  $('diyas').innerHTML=d;
+})();
+</script>
+</body></html>

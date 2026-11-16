@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Kosa — Avinash &amp; Divya</title>
+<link rel="stylesheet" href="../fonts2/fonts.css">
+<style>*{margin:0;padding:0}html,body{width:1080px;height:1920px;overflow:hidden;background:#000}svg{display:block}</style>
+</head><body>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920">
+<defs>
+  <linearGradient id="tussar" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#b4844c"/><stop offset=".35" stop-color="#d9b47b"/><stop offset=".6" stop-color="#c99d63"/><stop offset="1" stop-color="#a87841"/>
+  </linearGradient>
+  <linearGradient id="aal" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#5a0d18"/><stop offset=".5" stop-color="#7a1622"/><stop offset="1" stop-color="#560c17"/>
+  </linearGradient>
+  <linearGradient id="zari" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1080" y2="0">
+    <stop offset="0" stop-color="#b98a45"/><stop offset=".3" stop-color="#f6dc9c"/><stop offset=".5" stop-color="#c8964f"/><stop offset=".72" stop-color="#ffe9b3"/><stop offset="1" stop-color="#b98a45"/>
+  </linearGradient>
+  <!-- silk fibre: long horizontal streaks + woven micro-grid -->
+  <filter id="fibre" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".0016 .55" numOctaves="3" seed="8" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .85  0 0 0 1.1 -.45" result="hi"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".004 .9" numOctaves="2" seed="2" result="n2"/>
+    <feColorMatrix in="n2" type="matrix" values="0 0 0 0 .25  0 0 0 0 .12  0 0 0 0 .02  0 0 0 1 -.5" result="lo"/>
+    <feMerge><feMergeNode in="lo"/><feMergeNode in="hi"/></feMerge>
+  </filter>
+  <pattern id="weave" width="4" height="4" patternUnits="userSpaceOnUse">
+    <rect width="4" height="2" fill="#fff" opacity=".05"/><rect width="2" height="4" fill="#000" opacity=".05"/>
+  </pattern>
+  <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".42" stop-color="#fff6dc" stop-opacity="0"/>
+    <stop offset=".5" stop-color="#fff6dc" stop-opacity=".32"/><stop offset=".58" stop-color="#fff6dc" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="emb" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="b"/>
+    <feSpecularLighting in="b" surfaceScale="2.4" specularConstant=".9" specularExponent="18" lighting-color="#fff4d6" result="sp"><feDistantLight azimuth="235" elevation="38"/></feSpecularLighting>
+    <feComposite in="sp" in2="SourceAlpha" operator="in" result="spc"/>
+    <feOffset in="SourceAlpha" dx="0" dy="1.5" result="o"/><feFlood flood-color="#2a0806" flood-opacity=".45"/><feComposite in2="o" operator="in" result="sh"/>
+    <feMerge><feMergeNode in="sh"/><feMergeNode in="SourceGraphic"/><feMergeNode in="spc"/></feMerge>
+  </filter>
+  <filter id="txt" x="-5%" y="-10%" width="110%" height="130%"><feGaussianBlur in="SourceAlpha" stdDeviation="1.2"/><feOffset dx="0" dy="2" result="o"/><feFlood flood-color="#3a1004" flood-opacity=".28"/><feComposite in2="o" operator="in" result="sh"/><feMerge><feMergeNode in="sh"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <radialGradient id="vig" cx="50%" cy="50%" r="70%"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#1e0a02" stop-opacity=".55"/></radialGradient>
+</defs>
+
+<!-- body: tussar silk -->
+<rect width="1080" height="1920" fill="url(#tussar)"/>
+<rect width="1080" height="1920" filter="url(#fibre)" opacity=".5"/>
+<rect width="1080" height="1920" fill="url(#weave)"/>
+
+<!-- top & bottom phera borders -->
+<g id="borderTop"></g>
+<g id="borderBot" transform="translate(1080 1920) rotate(180)"></g>
+
+<!-- woven rosette (jala) -->
+<g id="rosette" transform="translate(540 1135)" filter="url(#emb)"></g>
+
+<g text-anchor="middle" filter="url(#txt)">
+  <text x="540" y="440" font-family="Eczar" font-weight="600" font-size="36" fill="#5e0f1c" letter-spacing="3">सगाई के नेवता</text>
+  <text x="540" y="486" font-family="Manrope" font-weight="600" font-size="19" fill="#5e0f1c" letter-spacing="9" opacity=".85">THE ENGAGEMENT OF</text>
+  <text x="540" y="672" font-family="Bodoni Moda" font-style="italic" font-weight="400" font-size="200" fill="#5e0f1c" letter-spacing="-4">Avinash</text>
+  <text x="540" y="790" font-family="Bodoni Moda" font-style="italic" font-size="96" fill="#9a6a2c">&amp;</text>
+  <text x="540" y="955" font-family="Bodoni Moda" font-style="italic" font-weight="400" font-size="200" fill="#5e0f1c" letter-spacing="-4">Divya</text>
+  <text x="540" y="1310" font-family="Bodoni Moda" font-weight="400" font-size="84" fill="#5e0f1c" letter-spacing="2">22 November 2026</text>
+  <text x="540" y="1372" font-family="Manrope" font-weight="600" font-size="22" fill="#5e0f1c" letter-spacing="9">SUNDAY · 11 AM ONWARDS</text>
+  <text x="540" y="1470" font-family="Bodoni Moda" font-style="italic" font-size="58" fill="#5e0f1c">Aas Manglam, Korba</text>
+  <text x="540" y="1530" font-family="Eczar" font-size="30" fill="#6e2a22">रविवार · सुबह 11 बजे से · आस मंगलम, कोरबा</text>
+</g>
+
+<rect id="sheenR" x="-1080" y="0" width="3240" height="1920" fill="url(#sheen)" style="mix-blend-mode:soft-light"/>
+<rect width="1080" height="1920" fill="url(#vig)"/>
+</svg>
+<script>
+const $=id=>document.getElementById(id);
+function border(){
+  // maroon aal band with zari lines, kumbha (temple-spire) row pointing into the body, and small diamonds
+  let s=`<rect x="0" y="0" width="1080" height="300" fill="url(#aal)"/><rect x="0" y="0" width="1080" height="300" filter="url(#fibre)" opacity=".5"/>`;
+  s+=`<g filter="url(#emb)">`;
+  s+=`<rect x="0" y="46" width="1080" height="4" fill="url(#zari)"/><rect x="0" y="58" width="1080" height="1.6" fill="url(#zari)"/>`;
+  for(let x=-10;x<1090;x+=26) s+=`<path d="M${x} 92 l9 -11 l9 11 l-9 11 z" fill="url(#zari)"/>`;
+  s+=`<rect x="0" y="122" width="1080" height="1.6" fill="url(#zari)"/><rect x="0" y="130" width="1080" height="4" fill="url(#zari)"/>`;
+  // kumbha: stepped temple spires, alternating gold and gold-outline
+  for(let x=0;x<1080+60;x+=60){
+    const h=150, w=52, steps=6; let d=`M${x-w/2} 300`;
+    for(let i=0;i<steps;i++){const y=300-(h/steps)*(i+1)*0.85, xx=x-w/2+(w/2)*(i+1)/steps; d+=` L${xx-3} ${y+((h/steps)*.85)} L${xx-3} ${y} L${xx} ${y}`;}
+    d+=` L${x} ${300-h}`;
+    for(let i=steps-1;i>=0;i--){const y=300-(h/steps)*(i+1)*0.85, xx=x+w/2-(w/2)*(i+1)/steps; d+=` L${xx} ${y} L${xx+3} ${y} L${xx+3} ${y+((h/steps)*.85)}`;}
+    d+=` L${x+w/2} 300 Z`;
+    s+=`<path d="${d}" fill="url(#zari)" transform="translate(0 ${300*2}) scale(1 -1)" opacity="0"/>`;
+    s+=`<path d="${d}" fill="${(x/60)%2? 'url(#zari)':'#e7c486'}" transform="translate(0 0)"/>`;
+    s+=`<circle cx="${x}" cy="${300-h-14}" r="5" fill="url(#zari)"/>`;
+  }
+  s+=`</g>`;
+  s+=`<rect x="0" y="300" width="1080" height="6" fill="url(#zari)"/><rect x="0" y="312" width="1080" height="2" fill="#5e0f1c" opacity=".6"/>`;
+  return s;
+}
+$('borderTop').innerHTML=border();
+$('borderBot').innerHTML=border();
+// rosette: concentric rings of "supplementary weft" dashes
+(function(){let s='';
+  const ring=(r,n,len,w,col)=>{for(let i=0;i<n;i++){const a=i*360/n;s+=`<rect x="${-w/2}" y="${-r-len/2}" width="${w}" height="${len}" rx="${w/2}" fill="${col}" transform="rotate(${a})"/>`}};
+  ring(96,48,14,4,'#5e0f1c'); ring(78,24,22,6,'url(#zari)'); ring(56,16,18,7,'#5e0f1c');
+  for(let i=0;i<8;i++) s+=`<ellipse cx="0" cy="-30" rx="9" ry="22" fill="url(#zari)" transform="rotate(${i*45})"/>`;
+  s+=`<circle r="10" fill="#5e0f1c"/>`;
+  // side rules
+  s+=`<rect x="-440" y="-1.5" width="310" height="3" fill="#5e0f1c" opacity=".7"/><rect x="130" y="-1.5" width="310" height="3" fill="#5e0f1c" opacity=".7"/>`;
+  s+=`<path d="M-130 0 l-10 -8 l-10 8 l10 8z M130 0 l10 -8 l10 8 l-10 8z" fill="url(#zari)"/>`;
+  $('rosette').innerHTML=s;})();
+window.setSheen=p=>$('sheenR').setAttribute('x',-2160+p*2160);
+setSheen(.5);
+</script>
+</body></html>
