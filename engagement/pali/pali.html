@@ -75,15 +75,14 @@
 </g>
 
 <g id="txt" text-anchor="middle">
-  <text id="t-eb" x="540" y="112" font-family="Eczar" font-weight="600" font-size="34" fill="#f0cf8e">॥ सगाई के नेवता ॥</text>
+  <text id="t-eb" x="540" y="104" font-family="Manrope" font-weight="600" font-size="22" letter-spacing="12" fill="#f0cf8e">THE ENGAGEMENT OF</text>
   <text id="t-n1" x="92" y="262" text-anchor="start" font-family="Bodoni Moda" font-style="italic" font-size="150" fill="url(#goldT)" filter="url(#txtGlow)" letter-spacing="-3" data-name="Avinash"></text>
   <text id="t-amp" x="540" y="346" font-family="Bodoni Moda" font-style="italic" font-size="92" fill="#e8a46a">&amp;</text>
   <text id="t-n2" x="990" y="398" text-anchor="end" font-family="Bodoni Moda" font-style="italic" font-size="150" fill="url(#goldT)" filter="url(#txtGlow)" letter-spacing="-3" data-name="Divya"></text>
-  <text id="t-dev" x="96" y="392" text-anchor="start" font-family="Rozha One" font-size="42" fill="#e9c88f">अविनाश · दिव्या</text>
   <text id="t-day" x="540" y="1606" font-family="Manrope" font-weight="600" font-size="22" letter-spacing="12" fill="#e9c88f">SUNDAY</text>
   <text id="t-date" x="540" y="1686" font-family="Bodoni Moda" font-size="74" fill="#f7e6c4">22 November 2026</text>
-  <text id="t-time" x="540" y="1740" font-family="Manrope" font-weight="600" font-size="22" letter-spacing="10" fill="#e9c88f">11 AM ONWARDS  ·  AAS MANGLAM, KORBA</text>
-  <text id="t-hin" x="540" y="1800" font-family="Eczar" font-size="31" fill="#d9b886">रविवार, सुबह 11 बजे से · आस मंगलम, कोरबा</text>
+  <text id="t-time" x="540" y="1742" font-family="Manrope" font-weight="600" font-size="22" letter-spacing="10" fill="#e9c88f">11 AM ONWARDS</text>
+  <text id="t-hin" x="540" y="1818" font-family="Bodoni Moda" font-style="italic" font-size="54" fill="#f7e6c4">Aas Manglam, Korba</text>
   <path id="t-rule" d="M380 1556 H700" stroke="url(#gold)" stroke-width="1.4" pathLength="1"/>
 </g>
 <rect width="1080" height="1920" fill="url(#vig)" pointer-events="none"/>
@@ -273,7 +272,6 @@ function setV(t){t=clamp(t,0,DUR);
       sp.setAttribute('rotate','0');});
     const p0=eO5(P(t,s,1.3)); $(id).setAttribute('transform',`translate(0 ${((1-p0)*36).toFixed(2)})`);});
   { const p=eO(P(t,4.55,.7)); $('t-amp').style.opacity=p; $('t-amp').setAttribute('transform',`translate(540 320) scale(${(.6+.4*p).toFixed(3)}) rotate(${((1-p)*-30).toFixed(1)}) translate(-540 -320)`); }
-  reveal('t-dev',t,5.4,.9,16,6);
   reveal('t-day',t,5.7,.8,14,4); reveal('t-date',t,5.85,1.0,26,8); reveal('t-time',t,6.15,.9,16,5); reveal('t-hin',t,6.35,.9,16,5);
   { const p=eIO(P(t,5.8,1.2)); $('t-rule').setAttribute('stroke-dasharray','1 1'); $('t-rule').setAttribute('stroke-dashoffset',(1-p).toFixed(4)); }
   // gold shimmer sweeps across everything gold

@@ -28,26 +28,26 @@ for f,g,pan in ((Sa/2,.30,-.3),(Sa*3/4,.22,.3),(Sa,.18,-.1)):
     mm.place(buf,tanpura(f,DUR)*mm.env(N,1.6,1.2,1.5),0,g,pan)
 mm.place(buf,water(DUR)*mm.env(N,2.5,1,1),0,.10)
 # linework drawing: rising shimmer + soft plucked ascent (0.2 - 2.4)
-mm.place(buf,mm.riser(2.3)*1.0,0.1,.35)
+mm.place(buf,mm.riser(2.3)*1.0,0.1,.10)
 for k,(tt,deg) in enumerate([(0.35,0),(0.65,2),(0.95,3),(1.25,4),(1.55,6),(1.85,7)]):
     mm.place(buf,mm.pluck(Sa*2*yaman[deg],1.4,.9975,.6)*.6,tt,.32,-.4+k*.16)
-mm.place(buf,mm.sparkle(2.0,18),0.4,.35,.2)
+mm.place(buf,mm.sparkle(2.0,10),0.4,.10,.2)
 # stone fills + dusk glow: low swell
-mm.place(buf,mm.whoosh(1.8,1,180,2200),1.4,.35,0)
+mm.place(buf,mm.whoosh(1.8,1,180,2200),1.4,.10,0)
 # sanctum lamp ignites: temple bell + sub
-mm.place(buf,mm.bell(Sa*4,3.4),3.0,.65,.15); mm.place(buf,mm.sub(),3.02,.55)
+mm.place(buf,mm.bell(Sa*4,3.4),3.0,.30,.15); mm.place(buf,mm.sub(),3.02,.18)
 # diyas float out: tiny chimes
-for i in range(11): mm.place(buf,mm.tin(1400+180*(i%5))*.5,3.35+i*.13,.22,np.sin(i)*.6)
+for i in range(11): mm.place(buf,mm.tin(1400+180*(i%5))*.5,3.35+i*.13,.06,np.sin(i)*.6)
 # names: whoosh + flute phrase (Yaman: Ni Re Ga Ma# Pa ... Sa)
-mm.place(buf,mm.whoosh(1.0,1,400,6500),3.95,.4,-.3); mm.place(buf,mm.whoosh(1.0,1,400,6500),4.6,.4,.3)
+mm.place(buf,mm.whoosh(1.0,1,400,4500),3.95,.10,-.3); mm.place(buf,mm.whoosh(1.0,1,400,4500),4.6,.10,.3)
 phrase=[(4.05,6,-1,.45),(4.35,1,0,.35),(4.6,2,0,.5),(4.95,3,0,.45),(5.3,4,0,.7),(6.0,2,0,.4),(6.35,1,0,.35),(6.7,7,0,1.25)]
 for tt,deg,octv,d in phrase: mm.place(buf,flute(Sa*2*yaman[deg]*2**octv,d+.25),tt,.55,.05)
-mm.place(buf,mm.bell(Sa*8,2.6),4.1,.35,-.2); mm.place(buf,mm.bell(Sa*6,2.6),4.75,.35,.2)
+mm.place(buf,mm.bell(Sa*8,2.6),4.1,.12,-.2); mm.place(buf,mm.bell(Sa*6,2.6),4.75,.12,.2)
 # details reveal + gold shimmer, resolve on Sa
-mm.place(buf,mm.dha(),5.85,.6); mm.place(buf,mm.sparkle(1.8,16),6.0,.5,0)
+mm.place(buf,mm.dha(),5.85,.20); mm.place(buf,mm.sparkle(1.8,8),6.0,.12,0)
 for r,g in ((1,.16),(5/4,.10),(3/2,.12),(2,.10)):
     mm.place(buf,mm.pad(Sa*2*r,DUR-6.2)*mm.env(int((DUR-6.2)*SR),.4,.8,1.4),6.2,g)
-mm.place(buf,mm.bell(Sa*4,2.0),6.7,.4)
+mm.place(buf,mm.bell(Sa*4,2.0),6.7,.18)
 buf=mm.reverb(buf,.34,2.6)
 buf*=mm.env(N,.04,.6,1.0); buf/=np.abs(buf).max()/.9
 mm.save(sys.argv[1],buf); print('ok')
