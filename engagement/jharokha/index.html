@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Jharokha — Avinash &amp; Divya</title>
+<link rel="stylesheet" href="../fonts2/fonts.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#frame{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}
+#cam{position:absolute;inset:0;transform-origin:540px 860px}
+#fg{position:absolute;inset:0;transform-origin:540px 900px}
+#cv,#fx{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#ui{position:absolute;inset:0}
+</style></head><body>
+<div id="frame">
+  <div id="cam"><canvas id="cv" width="1080" height="1920"></canvas><canvas id="fx" width="1080" height="1920"></canvas></div>
+  <svg id="fg" width="1080" height="1920" viewBox="0 0 1080 1920">
+    <defs>
+      <filter id="stone" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency=".02 .03" numOctaves="5" seed="17" result="n"/>
+        <feDiffuseLighting in="n" surfaceScale="2.6" diffuseConstant="1" lighting-color="#fff" result="l"><feDistantLight azimuth="250" elevation="55"/></feDiffuseLighting>
+        <feComposite in="l" in2="SourceAlpha" operator="in" result="lc"/>
+        <feBlend in="SourceGraphic" in2="lc" mode="multiply"/>
+      </filter>
+      <filter id="carve" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="b"/>
+        <feDiffuseLighting in="b" surfaceScale="5" diffuseConstant="1.2" lighting-color="#ffd9a8" result="l"><feDistantLight azimuth="90" elevation="35"/></feDiffuseLighting>
+        <feComposite in="l" in2="SourceAlpha" operator="in" result="lc"/>
+        <feBlend in="SourceGraphic" in2="lc" mode="multiply"/>
+      </filter>
+      <linearGradient id="stoneG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1d1a"/><stop offset=".6" stop-color="#3a2820"/><stop offset="1" stop-color="#1c1312"/></linearGradient>
+      <radialGradient id="rim" cx="540" cy="900" r="620" gradientUnits="userSpaceOnUse"><stop offset=".55" stop-color="#ffb466" stop-opacity=".0"/><stop offset=".85" stop-color="#ffb466" stop-opacity=".0"/></radialGradient>
+      <radialGradient id="lglow"><stop offset="0" stop-color="#ffe2a8" stop-opacity=".95"/><stop offset=".35" stop-color="#ffab52" stop-opacity=".35"/><stop offset="1" stop-color="#ff9a40" stop-opacity="0"/></radialGradient>
+      <linearGradient id="brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6a4520"/><stop offset=".45" stop-color="#e2b46a"/><stop offset="1" stop-color="#5a3816"/></linearGradient>
+    </defs>
+    <g id="fgArt"></g>
+  </svg>
+  <svg id="ui" width="1080" height="1920" viewBox="0 0 1080 1920">
+    <defs>
+      <linearGradient id="goldT" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#c3955a"/><stop offset=".35" stop-color="#f8e3b0"/><stop offset=".55" stop-color="#d5a462"/><stop offset=".75" stop-color="#fff3d2"/><stop offset="1" stop-color="#c99a5c"/>
+      </linearGradient>
+      <linearGradient id="botScrim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#03040c" stop-opacity="0"/><stop offset=".45" stop-color="#03040c" stop-opacity=".55"/><stop offset="1" stop-color="#03040c" stop-opacity=".9"/></linearGradient>
+      <linearGradient id="topScrim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#03040c" stop-opacity=".55"/><stop offset="1" stop-color="#03040c" stop-opacity="0"/></linearGradient>
+      <radialGradient id="vig" cx="50%" cy="46%" r="72%"><stop offset=".62" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+      <filter id="txtGlow" x="-10%" y="-30%" width="120%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b"/><feFlood flood-color="#f4b464" flood-opacity=".28"/><feComposite in2="b" operator="in" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence id="grainT" type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="13"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .85 0 0 0 .05 0"/></filter>
+    </defs>
+    <rect width="1080" height="520" fill="url(#topScrim)"/>
+    <rect y="1480" width="1080" height="440" fill="url(#botScrim)"/>
+    <g text-anchor="middle">
+      <text id="t-eb" x="540" y="104" font-family="Manrope" font-weight="600" font-size="22" letter-spacing="12" fill="#f0d29a">THE ENGAGEMENT OF</text>
+      <text id="t-n1" x="92" y="262" text-anchor="start" font-family="Bodoni Moda" font-style="italic" font-size="150" fill="url(#goldT)" filter="url(#txtGlow)" letter-spacing="-3" data-name="Avinash"></text>
+      <text id="t-amp" x="540" y="346" font-family="Bodoni Moda" font-style="italic" font-size="92" fill="#eaa868">&amp;</text>
+      <text id="t-n2" x="990" y="398" text-anchor="end" font-family="Bodoni Moda" font-style="italic" font-size="150" fill="url(#goldT)" filter="url(#txtGlow)" letter-spacing="-3" data-name="Divya"></text>
+      <path id="t-rule" d="M380 1600 H700" stroke="url(#goldT)" stroke-width="1.4" pathLength="1"/>
+      <text id="t-day" x="540" y="1650" font-family="Manrope" font-weight="600" font-size="22" letter-spacing="12" fill="#efd3a0">SUNDAY</text>
+      <text id="t-date" x="540" y="1728" font-family="Bodoni Moda" font-size="74" fill="#fbecd0">22 November 2026</text>
+      <text id="t-time" x="540" y="1782" font-family="Manrope" font-weight="600" font-size="22" letter-spacing="10" fill="#efd3a0">11 AM ONWARDS</text>
+      <text id="t-ven" x="540" y="1856" font-family="Bodoni Moda" font-style="italic" font-size="54" fill="#fbecd0">Aas Manglam, Korba</text>
+    </g>
+    <rect width="1080" height="1920" fill="url(#vig)"/>
+    <rect width="1080" height="1920" filter="url(#grain)"/>
+  </svg>
+</div>
+<script src="layers.js"></script>
+<script>
+const NS='http://www.w3.org/2000/svg', $=id=>document.getElementById(id);
+const W=1080,H=1920,NPX=W*H;
+const DUR=8.0, clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), P=(t,s,d)=>clamp((t-s)/d);
+const eO=x=>1-Math.pow(1-x,3), eO5=x=>1-Math.pow(1-x,5), eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, eS=x=>x*x*(3-2*x);
+let A,D,T,Wm,ORD,PH,buf,img,ctx,fx;
+const load=src=>new Promise(r=>{const i=new Image();i.onload=()=>{const c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');x.drawImage(i,0,0);r(x.getImageData(0,0,W,H).data)};i.src=src});
+window.ready=(async()=>{
+  [A,D,T,Wm,ORD,PH]=await Promise.all(['A','D','T','W','order','phase'].map(k=>load(LAYERS[k])));
+  ctx=$('cv').getContext('2d'); img=ctx.createImageData(W,H); buf=new Uint8ClampedArray(NPX*4);
+  fx=$('fx').getContext('2d');
+  ['t-n1','t-n2'].forEach(id=>{const e=$(id);[...e.dataset.name].forEach(ch=>{const t=document.createElementNS(NS,'tspan');t.textContent=ch;e.appendChild(t)})});
+  setV(DUR); return true;
+})();
+
+/* ---------- foreground jharokha (carved sandstone window) ---------- */
+(function(){
+  const X0=150,X1=930,SILL=1530,SPR=820,APEX=330, cx=540;
+  // pointed arch centre-line points, then multifoil lobes between them
+  const pts=[];const N=11;
+  for(let i=0;i<=N;i++){const t=i/N;            // left springing -> apex -> right springing
+    let x,y; if(t<=.5){const a=t/.5; x=X0+(cx-X0)*(1-Math.cos(a*Math.PI/2)); y=SPR-(SPR-APEX)*Math.sin(a*Math.PI/2);}
+    else{const a=(t-.5)/.5; x=cx+(X1-cx)*Math.sin(a*Math.PI/2); y=APEX+(SPR-APEX)*(1-Math.cos(a*Math.PI/2));}
+    pts.push([x,y]);}
+  let op=`M${X0} ${SILL} L${X0} ${SPR}`;
+  for(let i=0;i<N;i++){const [x1,y1]=pts[i],[x2,y2]=pts[i+1],r=Math.hypot(x2-x1,y2-y1)*.56; op+=` A${r.toFixed(1)} ${r.toFixed(1)} 0 0 1 ${x2.toFixed(1)} ${y2.toFixed(1)}`;}
+  op+=` L${X1} ${SILL} Z`;
+  let s=`<path d="M0 0 H1080 V1920 H0 Z ${op}" fill-rule="evenodd" fill="url(#stoneG)" filter="url(#stone)"/>`;
+  // carved inner band following the opening
+  s+=`<g filter="url(#carve)">`;
+  s+=`<path d="${op}" fill="none" stroke="#4a3426" stroke-width="34" stroke-linejoin="round"/>`;
+  s+=`<path d="${op}" fill="none" stroke="#5a4030" stroke-width="10" stroke-dasharray="2 14" stroke-linecap="round"/>`;
+  // side columns with capitals and bases
+  [[86,150],[930,994]].forEach(([a,b])=>{s+=`<rect x="${a}" y="${SPR-40}" width="${b-a}" height="${SILL-SPR+40}" fill="#3c2a20"/>`;
+    for(let y=SPR;y<SILL;y+=46) s+=`<rect x="${a+8}" y="${y}" width="${b-a-16}" height="30" rx="6" fill="#4c3628"/>`;
+    s+=`<path d="M${a-14} ${SPR-40} h${b-a+28} l-10 -24 h${-(b-a+8)} z" fill="#57402f"/>`;});
+  // sill (balcony ledge) and jaali railing below it
+  s+=`<rect x="70" y="${SILL}" width="940" height="34" rx="6" fill="#5a4030"/><rect x="60" y="${SILL+34}" width="960" height="14" fill="#3a281e"/>`;
+  let j='';for(let x=110;x<980;x+=56)for(let y=SILL+80;y<1880;y+=56){j+=`<path d="M${x} ${y-20} L${x+20} ${y} L${x} ${y+20} L${x-20} ${y} Z" fill="none" stroke="#5c4232" stroke-width="5"/><circle cx="${x}" cy="${y}" r="5" fill="#5c4232"/>`;}
+  s+=j+`</g>`;
+  // warm rim light on the inner edge (light from the palace)
+  s+=`<path id="rimEdge" d="${op}" fill="none" stroke="#ffb76a" stroke-width="3" opacity="0"/>`;
+  // hanging brass lantern from the apex
+  s+=`<g id="lantern"><path d="M${cx} ${APEX+4} V${APEX+150}" stroke="#7a5428" stroke-width="3" stroke-dasharray="6 4"/>`+
+     `<circle id="lGlow" cx="${cx}" cy="${APEX+212}" r="150" fill="url(#lglow)" opacity="0"/>`+
+     `<path d="M${cx-30} ${APEX+160} h60 l-8 -12 h-44 z" fill="url(#brass)"/>`+
+     `<path d="M${cx-34} ${APEX+160} L${cx-26} ${APEX+250} H${cx+26} L${cx+34} ${APEX+160} Z" fill="url(#brass)"/>`+
+     `<path id="lWin" d="M${cx-22} ${APEX+176} L${cx-17} ${APEX+238} H${cx+17} L${cx+22} ${APEX+176} Z" fill="#ffd690" opacity=".08"/>`+
+     `<path d="M${cx-34} ${APEX+160} L${cx-26} ${APEX+250} M${cx} ${APEX+160} V${APEX+250} M${cx+34} ${APEX+160} L${cx+26} ${APEX+250}" stroke="#5a3a18" stroke-width="3"/>`+
+     `<path d="M${cx-26} ${APEX+250} h52 l-14 18 h-24 z" fill="url(#brass)"/><circle cx="${cx}" cy="${APEX+276}" r="6" fill="url(#brass)"/></g>`;
+  $('fgArt').innerHTML=s;
+})();
+/* deterministic stars + embers */
+let sd=7;const rnd=()=>(sd=(sd*16807)%2147483647)/2147483647;
+const stars=[...Array(120)].map(()=>({x:rnd()*W,y:rnd()*560,r:.4+rnd()*1.3,o:.3+rnd()*.6,p:rnd()*6.28}));
+const embers=[...Array(0)].map(()=>({x:40+rnd()*1000,y:1000+rnd()*120,s:6+rnd()*12,r:.8+rnd()*1.4,p:rnd()*6.28,d:rnd()}));
+function reveal(id,t,s,d,rise=24,blur=8){const p=eO(P(t,s,d)),e=$(id);e.style.opacity=p;e.setAttribute('transform',`translate(0 ${((1-p)*rise).toFixed(2)})`);e.style.filter=blur&&p<1?`blur(${((1-p)*blur).toFixed(2)}px)`:'';}
+
+function setV(t){t=clamp(t,0,DUR);
+  /* ---- light layers ---- */
+  const wave=-0.10+1.28*eIO(P(t,0.7,2.9));       // windows light outward from the central pavilion
+  const tg=eIO(P(t,2.9,1.6));                     // facade uplight
+  const wg=eS(P(t,0.8,3.2));                      // overall warmth
+  const fin=eO(P(t,0,1.1));                       // fade up from black
+  const soft=.05;
+  for(let i=0,j=0;i<NPX;i++,j+=4){
+    const age=wave-ORD[j]/255;
+    let w=0;
+    if(age>0){const k=age/soft; w=(k>=1?1:k*k*(3-2*k))*(1+.55*Math.exp(-age/.045));
+      w*=.86+.14*Math.sin(t*9.5+PH[j]*44);}
+    buf[j]  =(A[j]  +D[j]*w  +T[j]*tg  +Wm[j]*wg)*fin;
+    buf[j+1]=(A[j+1]+D[j+1]*w+T[j+1]*tg+Wm[j+1]*wg)*fin;
+    buf[j+2]=(A[j+2]+D[j+2]*w+T[j+2]*tg+Wm[j+2]*wg)*fin;
+    buf[j+3]=255;
+  }
+  /* ---- water: gentle horizontal ripple below the waterline ---- */
+  const out=img.data, WL=1164;
+  out.set(buf.subarray(0,WL*W*4));
+  for(let y=WL;y<H;y++){const d=(y-WL)/(H-WL), amp=1.2+d*5.5;
+    const dx=(Math.sin(y*.13+t*3.1)+.6*Math.sin(y*.037-t*1.9))*amp, ix=Math.floor(dx), fr=dx-ix, row=y*W*4;
+    for(let x=0;x<W;x++){let a=x+ix,b=a+1; a=a<0?0:a>=W?W-1:a; b=b<0?0:b>=W?W-1:b;
+      const pa=row+a*4,pb=row+b*4,o=row+x*4;
+      out[o]=buf[pa]*(1-fr)+buf[pb]*fr; out[o+1]=buf[pa+1]*(1-fr)+buf[pb+1]*fr; out[o+2]=buf[pa+2]*(1-fr)+buf[pb+2]*fr; out[o+3]=255;}}
+  ctx.putImageData(img,0,0);
+  /* ---- stars + embers ---- */
+  fx.clearRect(0,0,W,H);
+  stars.forEach(s=>{fx.globalAlpha=s.o*(.6+.4*Math.sin(t*2.3+s.p))*fin; fx.fillStyle='#fff6e2'; fx.beginPath(); fx.arc(s.x,s.y,s.r,0,6.283); fx.fill();});
+  embers.forEach(e=>{const p=P(t,1.2+e.d*2.4,4.6); if(p<=0||p>=1) return;
+    const x=e.x+Math.sin(t*1.3+e.p)*10, y=e.y-p*e.s*6, a=Math.sin(p*Math.PI)*.35;
+    const g=fx.createRadialGradient(x,y,0,x,y,e.r*5); g.addColorStop(0,'rgba(255,214,140,1)'); g.addColorStop(1,'rgba(255,150,60,0)');
+    fx.globalAlpha=a; fx.fillStyle=g; fx.beginPath(); fx.arc(x,y,e.r*5,0,6.283); fx.fill();});
+  fx.globalAlpha=1;
+  /* ---- camera: slow push toward the shrine ---- */
+  const c=eIO(P(t,0,DUR));
+  $('cam').style.transform=`scale(${(1.05+.05*c).toFixed(4)})`;
+  const dz=eIO(P(t,1.3,2.8));                     // dolly through the jharokha
+  $('fg').style.transform=`scale(${(1+2.2*dz*dz+0.6*dz).toFixed(4)})`;
+  $('fg').style.filter=dz>0?`blur(${(dz*14).toFixed(2)}px)`:'';
+  $('fg').style.opacity=(1-eS(P(t,3.3,.9))).toFixed(3);
+  const lg=eO(P(t,0.35,.7))*(.9+.1*Math.sin(t*17));
+  $('lGlow').setAttribute('opacity',lg.toFixed(3)); $('lWin').setAttribute('opacity',(.08+.9*lg).toFixed(3));
+  $('rimEdge').setAttribute('opacity',(eS(P(t,.6,2))*.55).toFixed(3));
+  /* ---- typography (timed to the score) ---- */
+  reveal('t-eb',t,3.8,1.0,14,4);
+  [['t-n1',4.1],['t-n2',4.75]].forEach(([id,s])=>{[...$(id).children].forEach((sp,i)=>{const p=eO5(P(t,s+i*.06,.9));
+      sp.setAttribute('opacity',p.toFixed(3)); sp.style.filter=p<1?`blur(${((1-p)*10).toFixed(2)}px)`:'';});
+    const p0=eO5(P(t,s,1.3)); $(id).setAttribute('transform',`translate(0 ${((1-p0)*36).toFixed(2)})`);});
+  {const p=eO(P(t,4.55,.7)); $('t-amp').style.opacity=p; $('t-amp').setAttribute('transform',`translate(540 320) scale(${(.6+.4*p).toFixed(3)}) rotate(${((1-p)*-30).toFixed(1)}) translate(-540 -320)`);}
+  {const p=eIO(P(t,5.6,1.2)); $('t-rule').setAttribute('stroke-dasharray','1 1'); $('t-rule').setAttribute('stroke-dashoffset',(1-p).toFixed(4));}
+  reveal('t-day',t,5.7,.8,14,4); reveal('t-date',t,5.85,1.0,26,8); reveal('t-time',t,6.15,.9,16,5); reveal('t-ven',t,6.35,.9,18,6);
+  const sh=eIO(P(t,6.0,1.8)); $('goldT').setAttribute('gradientTransform',`translate(${(-1+sh*2).toFixed(3)} 0)`);
+  $('grainT').setAttribute('seed',String(13+Math.floor(t*24)%7));
+}
+window.setV=setV; window.DUR_V=DUR;
+</script>
+</body></html>

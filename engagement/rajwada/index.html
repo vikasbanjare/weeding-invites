@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Rajwada — Avinash &amp; Divya</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../fonts2/fonts.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#frame{position:relative;width:1080px;height:1920px;overflow:hidden;background:#e38aa0}
+#inner{position:absolute;left:24px;top:24px;width:1032px;height:1872px;overflow:hidden;background:#1d2a44}
+.el{position:absolute;display:block;will-change:transform,opacity}
+svg.full{position:absolute;left:0;top:0;width:1032px;height:1872px;overflow:visible}
+.cap{font-family:'Cormorant Garamond',serif;font-weight:500;text-transform:uppercase;fill:#fff7f3}
+</style></head><body>
+<div id="frame"><div id="inner">
+  <!-- night-blue paper with a soft centre glow -->
+  <svg class="full" viewBox="0 0 1032 1872">
+    <defs>
+      <radialGradient id="skyG" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#2a3a5a"/><stop offset="1" stop-color="#18233b"/></radialGradient>
+      <filter id="paper" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="3" seed="4"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0"/></filter>
+      <filter id="fibre" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".012 .035" numOctaves="3" seed="9"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0"/></filter>
+    </defs>
+    <rect width="1032" height="1872" fill="url(#skyG)"/>
+    <rect width="1032" height="1872" filter="url(#fibre)"/>
+  </svg>
+  <img id="clouds" class="el" src="assets/clouds.png" style="left:-40px;top:-70px;width:1112px;-webkit-mask-image:linear-gradient(#000 0,#000 62%,transparent 80%);mask-image:linear-gradient(#000 0,#000 62%,transparent 80%)">
+  <!-- the pink jharokha panel -->
+  <svg id="panel" class="full el" viewBox="0 0 1032 1872">
+    <defs>
+      <linearGradient id="pinkG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e996ad"/><stop offset="1" stop-color="#df7f99"/></linearGradient>
+      <filter id="paperP" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" seed="2" result="n"/><feColorMatrix in="n" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0" result="g"/><feComposite in="g" in2="SourceGraphic" operator="in" result="gi"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="gi"/></feMerge></filter>
+    </defs>
+    <path id="panelPath" d="" fill="url(#pinkG)" filter="url(#paperP)"/>
+  </svg>
+  <img id="treeL" class="el" src="cut/tree.png" style="width:470px;left:-60px;top:640px;transform-origin:51% 100%">
+  <img id="treeR" class="el" src="cut/tree.png" style="width:470px;left:622px;top:640px;transform-origin:49% 100%">
+  <img id="banL" class="el" src="cut/banana.png" style="width:250px;left:-36px;top:900px;transform-origin:52% 100%">
+  <img id="banR" class="el" src="cut/banana.png" style="width:250px;left:818px;top:900px;transform-origin:48% 100%">
+  <img id="craneL" class="el" src="cut/crane.png" style="width:300px;left:30px;top:120px">
+  <img id="craneR" class="el" src="cut/crane.png" style="width:250px;left:740px;top:230px">
+  <!-- text, monogram and ornaments -->
+  <svg id="txt" class="full" viewBox="0 0 1032 1872">
+    <g id="logo" transform="translate(516 352) scale(.85)" fill="none" stroke="#fff7f3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path pathLength="1" d="M0 6 C-10 -8 -10 -24 0 -36 C10 -24 10 -8 0 6 Z"/>
+      <path pathLength="1" d="M-3 6 C-18 0 -28 -12 -30 -26 C-18 -24 -8 -14 -3 6 M3 6 C18 0 28 -12 30 -26 C18 -24 8 -14 3 6"/>
+      <path pathLength="1" d="M-6 8 C-24 8 -40 0 -46 -12 C-30 -14 -16 -6 -6 8 M6 8 C24 8 40 0 46 -12 C30 -14 16 -6 6 8"/>
+      <circle cx="0" cy="18" r="2.6" fill="#fff7f3" stroke="none"/>
+    </g>
+    <g id="mono">
+      <path id="chhatri" d="" fill="#fff7f3"/>
+      <text x="516" y="626" text-anchor="middle" font-family="Cormorant Garamond" font-weight="500" font-size="76" fill="#e2869e">A<tspan font-weight="300" dx="4" dy="-3">|</tspan><tspan dx="4" dy="3">D</tspan></text>
+    </g>
+    <g text-anchor="middle">
+      <text id="t-eb" class="cap" x="516" y="716" font-size="26" letter-spacing="8">The engagement of</text>
+      <text id="t-n1" class="cap" x="516" y="810" font-size="88" letter-spacing="6">Avinash</text>
+      <text id="t-with" x="516" y="866" font-family="Cormorant Garamond" font-style="italic" font-weight="500" font-size="52" fill="#fff7f3">with</text>
+      <text id="t-n2" class="cap" x="516" y="950" font-size="88" letter-spacing="6">Divya</text>
+      <g id="t-div" transform="translate(516 1000)"><path d="M-120 0 H-22 M22 0 H120" stroke="#fff7f3" stroke-width="1.4" opacity=".8"/><path d="M0 -9 L9 0 L0 9 L-9 0 Z" fill="none" stroke="#fff7f3" stroke-width="1.6"/></g>
+      <text id="t-date" class="cap" x="516" y="1060" font-size="34" letter-spacing="3">Sunday, 22 November 2026</text>
+      <text id="t-time" class="cap" x="516" y="1108" font-size="28" letter-spacing="6">11 AM onwards</text>
+      <text id="t-ven" class="cap" x="516" y="1154" font-size="28" letter-spacing="6">· Aas Manglam, Korba ·</text>
+    </g>
+  </svg>
+  <img id="palace" class="el" src="cut/palace2.png" style="width:930px;left:51px;top:1218px;transform-origin:50% 100%">
+  <img id="peaL" class="el" src="cut/peacock.png" style="width:150px;left:97px;top:1192px;transform-origin:50% 100%">
+  <img id="peaR" class="el" src="cut/peacock.png" style="width:150px;left:787px;top:1192px;transform-origin:50% 100%">
+  <!-- ghat steps -->
+  <svg id="ghat" class="full el" viewBox="0 0 1032 1872">
+    <rect x="0" y="1662" width="1032" height="14" fill="#cdbca8"/>
+    <rect x="0" y="1676" width="1032" height="10" fill="#d9744f"/>
+    <rect x="0" y="1686" width="1032" height="12" fill="#e9dccb"/>
+    <rect x="0" y="1698" width="1032" height="9" fill="#e08a5c"/>
+    <rect x="0" y="1707" width="1032" height="8" fill="#bfae9b"/>
+  </svg>
+  <div id="pond" class="el" style="left:0;top:1714px;width:1032px;height:158px;overflow:hidden;background:#2f6a78">
+    <img id="lotus1" class="el" src="cut/lotus.png" style="height:180px;left:0;top:-10px">
+    <img id="lotus2" class="el" src="cut/lotus.png" style="height:180px;left:1580px;top:-10px">
+  </div>
+  <canvas id="petals" class="el" width="1032" height="1872" style="left:0;top:0"></canvas>
+  <svg class="full" viewBox="0 0 1032 1872" style="pointer-events:none"><rect width="1032" height="1872" filter="url(#paper)"/></svg>
+</div></div>
+<script>
+const $=id=>document.getElementById(id);
+/* jharokha panel: multifoil arch over stepped shoulders */
+(function(){
+  const X0=150,X1=882,SPR=600,APEX=300,cx=516,BOT=1700; const N=9,pts=[];
+  for(let i=0;i<=N;i++){const t=i/N;let x,y;
+    if(t<=.5){const a=t/.5;x=X0+(cx-X0)*(1-Math.cos(a*Math.PI/2));y=SPR-(SPR-APEX)*Math.sin(a*Math.PI/2);}
+    else{const a=(t-.5)/.5;x=cx+(X1-cx)*Math.sin(a*Math.PI/2);y=APEX+(SPR-APEX)*(1-Math.cos(a*Math.PI/2));}
+    pts.push([x,y]);}
+  let d=`M${X0-40} ${BOT} V${SPR+70} H${X0-14} V${SPR+20} H${X0}`;
+  for(let i=0;i<N;i++){const [a,b]=pts[i],[c,e]=pts[i+1],r=Math.hypot(c-a,e-b)*.56;d+=` A${r.toFixed(1)} ${r.toFixed(1)} 0 0 1 ${c.toFixed(1)} ${e.toFixed(1)}`;}
+  d+=` H${X1+14} V${SPR+70} H${X1+40} V${BOT} Z`;
+  $('panelPath').setAttribute('d',d);
+  // chhatri monogram silhouette: onion dome, finial, eaves, body
+  const c=`M516 388 c5 0 8 5 8 10 c0 6 -4 10 -8 11 C536 432 588 446 588 492 C588 506 578 512 568 514 H464 C454 512 444 506 444 492 C444 446 496 432 508 409 c-4 -1 -8 -5 -8 -11 c0 -5 3 -10 8 -10 z M424 514 H608 L630 536 H402 Z M436 536 H596 V650 H436 Z`;
+  $('chhatri').setAttribute('d',c);
+})();
+/* timeline helpers */
+const DUR=8.0, clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), P=(t,s,d)=>clamp((t-s)/d);
+const eO=x=>1-Math.pow(1-x,3), eO5=x=>1-Math.pow(1-x,5), eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, eS=x=>x*x*(3-2*x);
+const back=x=>{const c1=1.4,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const css=(id,tr,op)=>{const e=$(id);e.style.transform=tr;if(op!==undefined)e.style.opacity=op;};
+const svgFade=(id,t,s,d,rise=18,blur=6)=>{const p=eO(P(t,s,d)),e=$(id);e.style.opacity=p;e.style.transform=`translateY(${((1-p)*rise).toFixed(2)}px)`;e.style.filter=p<1&&blur?`blur(${((1-p)*blur).toFixed(2)}px)`:'';};
+/* falling blossoms (deterministic) */
+let sd=5;const rnd=()=>(sd=(sd*16807)%2147483647)/2147483647;
+const petals=[...Array(26)].map(()=>({x:rnd()*1032,y0:560+rnd()*500,s:30+rnd()*50,p:rnd()*6.28,r:2+rnd()*2.6,d:rnd()}));
+const pc=$('petals').getContext('2d');
+function setV(t){t=clamp(t,0,DUR);
+  const intro=eO(P(t,0,1.0));
+  $('inner').style.opacity=intro;
+  css('clouds',`translateY(${(-50*(1-eO(P(t,0,2.2)))).toFixed(1)}px) translateX(${(-t*3).toFixed(1)}px)`,eS(P(t,.1,1.6)));
+  // panel opens like a pop-up card
+  {const p=back(clamp(P(t,.5,1.3))); const q=eO(P(t,.5,1.0));
+   css('panel',`translateY(${((1-q)*80).toFixed(1)}px) scaleY(${(0.86+.14*p).toFixed(4)})`,q); $('panel').style.transformOrigin='516px 1700px';}
+  // palace rises up from the ghat, peacocks alight on it
+  {const p=eO5(P(t,1.1,1.5)); css('palace',`translateY(${((1-p)*160).toFixed(1)}px) scaleY(${(.9+.1*p).toFixed(4)})`,eS(P(t,1.1,.8)));}
+  [['peaL',3.0],['peaR',3.25]].forEach(([id,s],i)=>{const p=eO(P(t,s,.9)); const sx=i?-1:1;
+     css(id,`translateY(${(-(1-p)*70).toFixed(1)}px) scaleX(${sx}) rotate(${((1-p)*sx*-8).toFixed(2)}deg)`,eS(P(t,s,.5)));});
+  // trees grow from their roots and sway; banana leaves unfurl
+  [['treeL',1.5,1],['treeR',1.7,-1]].forEach(([id,s,sx])=>{const p=eO(P(t,s,1.6)); const sw=Math.sin(t*1.2+(sx>0?0:1.4))*1.1;
+     css(id,`scaleX(${sx}) scale(${(.55+.45*p).toFixed(4)}) rotate(${(sw*p).toFixed(3)}deg)`,eS(P(t,s,.6)));
+     $(id).style.clipPath=`inset(${((1-eIO(P(t,s,1.8)))*100).toFixed(2)}% 0 0 0)`;});
+  [['banL',1.9,1],['banR',2.05,-1]].forEach(([id,s,sx])=>{const p=back(clamp(P(t,s,1.1))); const sw=Math.sin(t*1.5+(sx>0?.6:2))*1.4;
+     css(id,`scaleX(${sx}) scaleY(${(.4+.6*p).toFixed(4)}) rotate(${(sw*eS(P(t,s,1))).toFixed(3)}deg)`,eS(P(t,s,.5)));});
+  // ghat + lotus pond slide up; pond drifts gently
+  {const p=eO(P(t,1.6,1.0)); css('ghat',`translateY(${((1-p)*60).toFixed(1)}px)`,p); css('pond',`translateY(${((1-p)*120).toFixed(1)}px)`,p);
+   const off=-(t*14)%1580; $('lotus1').style.left=off+'px'; $('lotus2').style.left=(off+1580)+'px';}
+  // cranes glide in from either side and settle into a slow hover
+  {const a=eO(P(t,2.2,2.4)), b=eO(P(t,2.6,2.4));
+   css('craneL',`translate(${(-(1-a)*520).toFixed(1)}px, ${(Math.sin(t*1.6)*8+(1-a)*60).toFixed(1)}px) rotate(${(-6+Math.sin(t*1.6)*2).toFixed(2)}deg) scaleY(${(1+Math.sin(t*5)*.04).toFixed(3)})`,eS(P(t,2.2,.6)));
+   css('craneR',`translate(${((1-b)*480).toFixed(1)}px, ${(Math.sin(t*1.4+1)*7+(1-b)*40).toFixed(1)}px) scaleX(-1) rotate(${(-8+Math.sin(t*1.4)*2).toFixed(2)}deg) scaleY(${(1+Math.sin(t*5+1)*.04).toFixed(3)})`,eS(P(t,2.6,.6)));}
+  // lotus mark draws, chhatri monogram rises
+  {const p=eIO(P(t,3.3,1.0)); $('logo').querySelectorAll('path').forEach(e=>{e.setAttribute('stroke-dasharray','1 1');e.setAttribute('stroke-dashoffset',(1-p).toFixed(4));});
+   $('logo').style.opacity=eS(P(t,3.3,.4));
+   const m=back(clamp(P(t,3.5,.9))); const mo=$('mono'); mo.style.opacity=eS(P(t,3.5,.5)); mo.style.transformOrigin='516px 650px'; mo.style.transform=`scale(${(.8+.2*m).toFixed(4)})`;}
+  // typography, timed to the score
+  svgFade('t-eb',t,3.85,.9,12,4);
+  svgFade('t-n1',t,4.1,1.0,24,10); svgFade('t-with',t,4.5,.8,10,4); svgFade('t-n2',t,4.75,1.0,24,10);
+  {const p=eIO(P(t,5.5,.9)); $('t-div').style.opacity=p; $('t-div').setAttribute('transform',`translate(516 1000) scale(${(.3+.7*p).toFixed(3)} 1)`);}
+  svgFade('t-date',t,5.75,.9,16,6); svgFade('t-time',t,6.05,.8,12,4); svgFade('t-ven',t,6.3,.8,12,4);
+  // blossoms drift down from the trees
+  pc.clearRect(0,0,1032,1872);
+  petals.forEach(q=>{const p=P(t,2.4+q.d*2.6,4.5); if(p<=0||p>=1)return; const x=q.x+Math.sin(t*1.4+q.p)*22, y=q.y0+p*q.s*9;
+    pc.globalAlpha=Math.sin(p*Math.PI)*.85; pc.fillStyle='#fff8f2'; pc.beginPath(); pc.ellipse(x,y,q.r,q.r*.6,t*2+q.p,0,6.283); pc.fill();});
+  pc.globalAlpha=1;
+}
+window.setV=setV; window.DUR_V=DUR; window.ready=Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>i.onload=r)));
+window.ready.then(()=>setV(DUR));
+</script>
+</body></html>
