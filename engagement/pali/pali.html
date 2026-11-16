@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Pali — Avinash &amp; Divya</title>
+<link rel="stylesheet" href="../fonts2/fonts.css">
+<style>*{margin:0;padding:0}html,body{width:1080px;height:1920px;overflow:hidden;background:#000}svg{display:block}
+.l{fill:none;stroke:url(#gold);stroke-linecap:round;stroke-linejoin:round}</style>
+</head><body>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1330" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#070b24"/><stop offset=".38" stop-color="#151a46"/><stop offset=".62" stop-color="#33245a"/>
+    <stop offset=".80" stop-color="#7a3558"/><stop offset=".92" stop-color="#c9604a"/><stop offset="1" stop-color="#f09a52"/>
+  </linearGradient>
+  <linearGradient id="waterG" x1="0" y1="1330" x2="0" y2="1920" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#8a3e52"/><stop offset=".18" stop-color="#3a2147"/><stop offset=".5" stop-color="#110f2a"/><stop offset="1" stop-color="#05060f"/>
+  </linearGradient>
+  <linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1080" y2="600">
+    <stop offset="0" stop-color="#a87a40"/><stop offset=".3" stop-color="#f6dda2"/><stop offset=".45" stop-color="#c8944e"/>
+    <stop offset=".62" stop-color="#fff0c4"/><stop offset=".8" stop-color="#c38d48"/><stop offset="1" stop-color="#e9c582"/>
+  </linearGradient>
+  <linearGradient id="goldT" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#b98a4c"/><stop offset=".35" stop-color="#f7e0a8"/><stop offset=".55" stop-color="#cf9c58"/><stop offset=".75" stop-color="#fff2cc"/><stop offset="1" stop-color="#c79352"/>
+  </linearGradient>
+  <radialGradient id="aureole" cx="540" cy="1080" r="760" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#ffcf8a" stop-opacity=".75"/><stop offset=".22" stop-color="#f08a5a" stop-opacity=".38"/>
+    <stop offset=".55" stop-color="#b04a6a" stop-opacity=".12"/><stop offset="1" stop-color="#b04a6a" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="doorLight" cx="540" cy="1215" r="210" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#ffd58a" stop-opacity=".9"/><stop offset=".3" stop-color="#ff9a4a" stop-opacity=".35"/><stop offset="1" stop-color="#ff9a4a" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="moonGlow"><stop offset="0" stop-color="#fff3d6" stop-opacity=".5"/><stop offset="1" stop-color="#fff3d6" stop-opacity="0"/></radialGradient>
+  <radialGradient id="flame"><stop offset="0" stop-color="#fff6d0"/><stop offset=".4" stop-color="#ffc260" stop-opacity=".9"/><stop offset="1" stop-color="#ff7a2a" stop-opacity="0"/></radialGradient>
+  <filter id="softglow" x="-5%" y="-5%" width="110%" height="110%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2.6" result="b"/>
+    <feColorMatrix in="b" values="1.1 0 0 0 0  0 .85 0 0 0  0 0 .55 0 0  0 0 0 .75 0" result="g"/>
+    <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="ripple" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".0035 .055" numOctaves="2" seed="5" result="t0"/>
+    <feOffset id="rippleOff" in="t0" dx="0" dy="0" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+    <feGaussianBlur stdDeviation="1.1"/>
+  </filter>
+  <filter id="blurS"><feGaussianBlur stdDeviation="14"/></filter>
+  <filter id="blurM"><feGaussianBlur stdDeviation="4"/></filter>
+  <filter id="txtGlow" x="-10%" y="-30%" width="120%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="10" result="b"/><feFlood flood-color="#f2b46a" flood-opacity=".22"/><feComposite in2="b" operator="in" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="13"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .85 0 0 0 .055 0"/></filter>
+  <linearGradient id="refFade" x1="0" y1="1330" x2="0" y2="1580" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity=".62"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <mask id="refMask" maskUnits="userSpaceOnUse" x="0" y="1330" width="1080" height="600"><rect x="0" y="1330" width="1080" height="600" fill="url(#refFade)"/></mask>
+  <radialGradient id="vig" cx="50%" cy="46%" r="72%"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#02030a" stop-opacity=".62"/></radialGradient>
+</defs>
+
+<g id="world">
+  <rect width="1080" height="1330" fill="url(#sky)"/>
+  <g id="stars"></g>
+  <g id="moon" transform="translate(904 640)">
+    <circle r="90" fill="url(#moonGlow)"/>
+    <path d="M10 -26 A27 27 0 1 0 10 26 A21 21 0 1 1 10 -26 Z" fill="#fbe9c8"/>
+  </g>
+  <circle id="aureoleC" cx="540" cy="1080" r="760" fill="url(#aureole)"/>
+  <g id="clouds" filter="url(#blurM)"></g>
+  <g id="birds"></g>
+  <g id="land">
+    <g id="hillsFar"></g>
+    <g id="hillsNear"></g>
+    <g id="trees"></g>
+    <g id="tFill"></g>
+    <g id="tLines" filter="url(#softglow)"></g>
+    <g id="tGold"></g>
+    <g id="doorLamp"><circle cx="540" cy="1215" r="210" fill="url(#doorLight)" id="doorSpill"/></g>
+  </g>
+  <rect y="1330" width="1080" height="590" fill="url(#waterG)"/>
+  <g mask="url(#refMask)"><g filter="url(#ripple)"><use href="#land" transform="translate(0 2660) scale(1 -1)"/></g></g>
+  <rect id="horizon" x="0" y="1329" width="1080" height="1.6" fill="url(#gold)" opacity=".75"/>
+  <g id="diyas"></g>
+</g>
+
+<g id="txt" text-anchor="middle">
+  <text id="t-eb" x="540" y="112" font-family="Eczar" font-weight="600" font-size="34" fill="#f0cf8e">॥ सगाई के नेवता ॥</text>
+  <text id="t-n1" x="92" y="262" text-anchor="start" font-family="Bodoni Moda" font-style="italic" font-size="150" fill="url(#goldT)" filter="url(#txtGlow)" letter-spacing="-3" data-name="Avinash"></text>
+  <text id="t-amp" x="540" y="346" font-family="Bodoni Moda" font-style="italic" font-size="92" fill="#e8a46a">&amp;</text>
+  <text id="t-n2" x="990" y="398" text-anchor="end" font-family="Bodoni Moda" font-style="italic" font-size="150" fill="url(#goldT)" filter="url(#txtGlow)" letter-spacing="-3" data-name="Divya"></text>
+  <text id="t-dev" x="96" y="392" text-anchor="start" font-family="Rozha One" font-size="42" fill="#e9c88f">अविनाश · दिव्या</text>
+  <text id="t-day" x="540" y="1606" font-family="Manrope" font-weight="600" font-size="22" letter-spacing="12" fill="#e9c88f">SUNDAY</text>
+  <text id="t-date" x="540" y="1686" font-family="Bodoni Moda" font-size="74" fill="#f7e6c4">22 November 2026</text>
+  <text id="t-time" x="540" y="1740" font-family="Manrope" font-weight="600" font-size="22" letter-spacing="10" fill="#e9c88f">11 AM ONWARDS  ·  AAS MANGLAM, KORBA</text>
+  <text id="t-hin" x="540" y="1800" font-family="Eczar" font-size="31" fill="#d9b886">रविवार, सुबह 11 बजे से · आस मंगलम, कोरबा</text>
+  <path id="t-rule" d="M380 1556 H700" stroke="url(#gold)" stroke-width="1.4" pathLength="1"/>
+</g>
+<rect width="1080" height="1920" fill="url(#vig)" pointer-events="none"/>
+<rect width="1080" height="1920" filter="url(#grain)" pointer-events="none"/>
+</svg>
+
+<script>
+const NS='http://www.w3.org/2000/svg', $=id=>document.getElementById(id);
+let sd=31; const rnd=()=>(sd=(sd*16807)%2147483647)/2147483647;
+const cx=540, WL=1330;
+
+/* ---------------- line + fill builders ---------------- */
+let L=[], F=[], G=[];               // gold lines, stone fills, solid gold shapes
+const line=(d,w=1.4,o=1)=>L.push(`<path class="l" d="${d}" stroke-width="${w}" opacity="${o}" pathLength="1"/>`);
+const ell=(x,y,rx,ry,w=1.2,o=1)=>L.push(`<ellipse class="l" cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" stroke-width="${w}" opacity="${o}" pathLength="1"/>`);
+const fill=(d,c)=>F.push(`<path d="${d}" fill="${c}"/>`);
+const solid=(d,c='url(#gold)')=>G.push(`<path d="${d}" fill="${c}"/>`);
+const mir=(f)=>{f(1);f(-1)};
+
+/* curvilinear Nagara spire */
+function spire(x0,base,hw0,h,o={}){
+  const lv=o.levels||7, k=o.k||0.56, p=o.p||2.1, mesh=o.mesh!==false, det=o.detail!==false;
+  const hw=t=>hw0*(1-k*Math.pow(t,p));
+  const pt=(t,f,s)=>[x0+s*hw(t)*f, base-h*t];
+  const prof=(f,s,steps=40)=>{let d='';for(let i=0;i<=steps;i++){const [x,y]=pt(i/steps,f,s);d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}return d};
+  const band=(f1,f2,col)=>mir(s=>{let a=[],b=[];for(let i=0;i<=40;i++){a.push(pt(i/40,f1,s));b.push(pt(i/40,f2,s))}
+    fill('M'+a.map(q=>q.map(v=>v.toFixed(1)).join(' ')).join('L')+'L'+b.reverse().map(q=>q.map(v=>v.toFixed(1)).join(' ')).join('L')+'Z',col)});
+  band(0,.30,o.c1||'#2c2752'); band(.30,.64,o.c2||'#221d45'); band(.64,1,o.c3||'#191536');
+  mir(s=>{line(prof(1,s),o.w||2.2); if(det){line(prof(.64,s),1,.8); line(prof(.30,s),1,.8);}});
+  // bhumi courses + karna amalakas
+  for(let i=1;i<lv;i++){const t=i/lv, y=base-h*t, w=hw(t);
+    mir(s=>{ if(det) line(`M${x0+s*w*.30} ${y} H${x0+s*w}`,.9,.65);
+      const ax=x0+s*w*.82, rx=w*.17; ell(ax,y-3,rx,Math.max(2.5,rx*.22),1,.9);
+      if(det&&rx>9) for(let r=-2;r<=2;r++) line(`M${ax+r*rx*.38} ${y-3-rx*.2} V${y-3+rx*.2}`,.6,.6);
+      if(det){ const gx=x0+s*w*.47, gs=Math.max(4,w*.07); line(`M${gx-gs} ${y-4} V${y-4-gs} A${gs} ${gs} 0 0 1 ${gx+gs} ${y-4-gs} V${y-4}`,.8,.75); }
+    });}
+  // gavaksha mesh on the central bhadra
+  if(mesh){const rows=o.rows||13;
+    for(let r=0;r<rows;r++){const t0=.03+r*(.94/rows), t1=t0+.94/rows, ym=base-h*(t0+t1)/2, a=h*(t1-t0);
+      const w=2*hw((t0+t1)/2)*.30-6, n=Math.max(1,Math.floor(w/(a*1.05))), off=(r%2)?a*.5:0;
+      for(let j=0;j<n;j++){const ax=x0-w/2+a*.55+j*(w-a*1.1)/Math.max(1,n-1)*(n>1?1:0)+(n==1?w/2-a*.55:0);
+        if(Math.abs(ax-x0)>w/2) continue;
+        const rr=a*.42; line(`M${ax-rr} ${ym+a*.42} V${ym} A${rr} ${rr} 0 0 1 ${ax+rr} ${ym} V${ym+a*.42}`,.7,.8);
+        if(rr>5) ell(ax,ym-rr*.1,rr*.35,rr*.35,.5,.6);}}}
+  return {topY:base-h, topHW:hw(1)};
+}
+/* tiny elephant for the gajathara frieze */
+const ele=(x,y,s)=>`M${x} ${y} c0 -${8*s} ${4*s} -${11*s} ${10*s} -${11*s} h${8*s} c${5*s} 0 ${7*s} ${3*s} ${7*s} ${6*s} c${3*s} ${2*s} ${4*s} ${6*s} ${3*s} ${10*s} h-${2*s} c0 -${3*s} -${1*s} -${5*s} -${3*s} -${6*s} v${6*s} h-${3*s} v-${4*s} h-${8*s} v${4*s} h-${3*s} z`;
+
+/* ---------------- the temple ---------------- */
+(function(){
+  const JT=1250, WT=1060, SB=1036;
+  // ghat steps down to the water
+  for(let i=0;i<4;i++){const y=1290+i*10, hw=330+i*34;
+    fill(`M${cx-hw} ${y} H${cx+hw} V${y+10} H${cx-hw} Z`,i%2?'#1d1838':'#231e44');
+    line(`M${cx-hw} ${y} H${cx+hw}`,1.1,.8);}
+  // jagati with gajathara (elephant frieze)
+  fill(`M${cx-330} ${JT} H${cx+330} V1290 H${cx-330} Z`,'#1f1a40');
+  line(`M${cx-330} 1290 V${JT} H${cx+330} V1290`,1.8); line(`M${cx-330} ${JT+12} H${cx+330}`,1,.7); line(`M${cx-330} 1280 H${cx+330}`,1,.7);
+  for(let x=cx-318;x<cx+300;x+=34) G.push(`<path d="${ele(x+4,1276,.9)}" fill="url(#gold)" opacity=".6"/>`);
+  // urushringas (outer then inner), behind the main spire
+  mir(s=>spire(cx+s*214,SB,40,160,{levels:5,mesh:false,detail:false,w:1.6,k:.66}));
+  mir(s=>spire(cx+s*160,SB,62,250,{levels:6,rows:7,w:1.8,k:.68,p:1.8}));
+  [[214,40,160,.66],[160,62,250,.68]].forEach(([dx,hw,h,kk])=>mir(s=>{const x=cx+s*dx, ty=SB-h, th=hw*(1-kk);
+      fill(`M${x-th*.9} ${ty} h${th*1.8} v-6 h-${th*1.8} z`,'#221d45'); ell(x,ty-12,th*1.15,5,1.3); solid(`M${x-5} ${ty-16} C${x-8} ${ty-28} ${x+8} ${ty-28} ${x+5} ${ty-16} Z`);}));
+  // main shikhara
+  const {topY,topHW}=spire(cx,SB,200,440,{levels:8,rows:15,w:2.6,k:.70,p:1.75});
+  // crown: griva, amalaka, chandrika, kalasha, finial, flag
+  fill(`M${cx-topHW} ${topY} H${cx+topHW} V${topY-14} H${cx-topHW} Z`,'#241f47'); line(`M${cx-topHW} ${topY} H${cx+topHW}`,1.8);
+  const ay=topY-30;
+  fill(`M${cx-84} ${ay} A84 21 0 1 0 ${cx+84} ${ay} A84 21 0 1 0 ${cx-84} ${ay} Z`,'#2a2550');
+  ell(cx,ay,84,21,2.2); for(let r=-8;r<=8;r++){const x=cx+r*9.6; line(`M${x} ${ay-20*Math.sqrt(1-(r/9)**2)} Q${x+r*1.1} ${ay} ${x} ${ay+20*Math.sqrt(1-(r/9)**2)}`,.8,.75);}
+  ell(cx,ay-26,50,7,1.6); ell(cx,ay-35,28,5,1.4);
+  solid(`M${cx-24} ${ay-40} C${cx-34} ${ay-78} ${cx+34} ${ay-78} ${cx+24} ${ay-40} Z`);
+  solid(`M${cx-10} ${ay-74} C${cx-14} ${ay-92} ${cx+14} ${ay-92} ${cx+10} ${ay-74} Z`);
+  solid(`M${cx-1.6} ${ay-90} V${ay-140} h3.2 V${ay-90} Z`);
+  G.push(`<path id="flag" d="" fill="#d23a2e"/>`);
+  window.FLAG={x:cx+1,y:ay-138};
+  // cornice (varandika) with chaitya arches
+  fill(`M${cx-266} ${SB} H${cx+266} V${WT} H${cx-266} Z`,'#262049');
+  line(`M${cx-266} ${WT} V${SB} H${cx+266} V${WT}`,2); line(`M${cx-258} ${SB+12} H${cx+258}`,1,.7);
+  for(let x=cx-250;x<=cx+250;x+=25) line(`M${x-8} ${WT-2} V${WT-10} A8 8 0 0 1 ${x+8} ${WT-10} V${WT-2}`,.8,.7);
+  // wall (mandovara)
+  fill(`M${cx-250} ${WT} H${cx+250} V${JT} H${cx-250} Z`,'#1e1a3e');
+  mir(s=>{[70,130,190,250].forEach(dx=>line(`M${cx+s*dx} ${WT} V${JT}`,dx==250?2:1.2,dx==250?1:.85));});
+  // base mouldings (vedibandha)
+  [1214,1226,1238].forEach(y=>line(`M${cx-250} ${y} H${cx+250}`,1,.7));
+  for(let x=cx-246;x<cx+246;x+=12) line(`M${x} 1232 l6 -6 l6 6`,.7,.6);
+  for(let x=cx-244;x<cx+250;x+=16) ell(x,1244,3,3,.7,.7);
+  line(`M${cx-250} 1086 H${cx+250}`,1.2,.85); line(`M${cx-250} 1076 Q${cx} 1068 ${cx+250} 1076`,1,.7);
+  // niches with deity silhouettes
+  mir(s=>[160,220].forEach(dx=>{const x=cx+s*dx;
+    line(`M${x-22} 1206 V1122 L${x} 1096 L${x+22} 1122 V1206 Z`,1.4);
+    const fig=`M${x} 1124 a6 6 0 1 0 0.1 0 M${x-7} 1136 q7 -4 14 0 l-3 26 q4 10 2 34 h-6 l-1 -22 l-1 22 h-6 q-2 -24 2 -34 z`;
+    G.push(`<path d="${fig}" fill="url(#gold)" opacity=".85"/>`);
+    line(`M${x-7} 1140 q-10 8 -6 18 M${x+7} 1140 q10 6 8 16`,1,.85);}));
+  // doorway with nested frames (shakhas)
+  [[62,176],[54,166],[46,156],[38,146]].forEach(([hw,h],k)=>line(`M${cx-hw} ${JT} V${JT-h} H${cx+hw} V${JT}`,k?1.2:2,k?.85:1));
+  for(let y=JT-170;y<JT;y+=10){line(`M${cx-58} ${y} h3`,1,.6);line(`M${cx+55} ${y} h3`,1,.6);}
+  fill(`M${cx-32} ${JT} V${JT-140} H${cx+32} V${JT} Z`,'#07061a');
+  G.push(`<g id="sanctum"><path d="M${cx-18} ${JT-4} h36 l-5 -8 h-26 z M${cx-8} ${JT-12} v-18 a8 8 0 0 1 16 0 v18 z" fill="#3a2a40"/>`+
+         `<circle id="lampFlame" cx="${cx+20}" cy="${JT-22}" r="14" fill="url(#flame)"/></g>`);
+  ell(cx,JT-162,8,8,1.2);   // lalatabimba
+  $('tFill').innerHTML=F.join(''); $('tLines').innerHTML=L.join(''); $('tGold').innerHTML=G.join('');
+})();
+
+/* ---------------- landscape ---------------- */
+(function(){
+  // far Maikal hills with Chaiturgarh fort on the right ridge
+  let d='M0 1330 L0 1200 C90 1170 160 1150 240 1172 C300 1188 360 1160 420 1176 L660 1180 C720 1150 790 1120 860 1118 C920 1116 980 1140 1080 1150 L1080 1330 Z';
+  let s=`<path d="${d}" fill="#3b2a5a" opacity=".85"/>`;
+  for(let x=828;x<900;x+=10) s+=`<rect x="${x}" y="${1110-(x%20?0:6)}" width="7" height="${10+(x%20?0:6)}" fill="#3b2a5a"/>`;
+  s+=`<path d="M0 1330 L0 1250 C80 1230 150 1238 230 1258 C280 1270 330 1262 380 1270 L700 1272 C760 1252 840 1236 920 1240 C990 1244 1040 1256 1080 1262 L1080 1330 Z" fill="#251a40"/>`;
+  $('hillsFar').innerHTML=s;
+  // trees: sal canopies with palash blossoms catching the last light
+  let t='';const tree=(x,y,r)=>{let g='';for(let k=0;k<5;k++){const a=k/5*Math.PI*2, rr=r*(.55+rnd()*.25);g+=`<circle cx="${x+Math.cos(a)*r*.45}" cy="${y-r*.4+Math.sin(a)*r*.35}" r="${rr}" fill="#130e28"/>`}
+    g+=`<rect x="${x-3}" y="${y-r*.3}" width="6" height="${r*.9}" fill="#130e28"/>`;
+    for(let k=0;k<5;k++)g+=`<circle cx="${x+(rnd()-.5)*r*1.3}" cy="${y-r*.5+(rnd()-.5)*r*.8}" r="${1.6+rnd()*1.6}" fill="#ff8a3a" opacity=".85"/>`;return g};
+  [[30,1320,60],[100,1316,48],[170,1322,40],[230,1326,30],[860,1326,32],[920,1320,46],[990,1316,58],[1060,1322,44]].forEach(a=>t+=tree(...a));
+  $('trees').innerHTML=t;
+})();
+
+/* ---------------- sky detail ---------------- */
+(function(){let s='';for(let i=0;i<170;i++){const y=rnd()*1050, x=rnd()*1080;s+=`<circle class="st" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(rnd()*1.5+.35).toFixed(2)}" fill="#fff4dc" data-o="${((.25+rnd()*.7)*(1-y/1150)).toFixed(3)}" data-p="${(rnd()*6.28).toFixed(2)}"/>`}$('stars').innerHTML=s;
+  let c='';[[180,960,260,7],[820,900,300,6],[520,840,200,5],[300,1040,340,6],[900,1060,240,5]].forEach(([x,y,w,h])=>c+=`<ellipse cx="${x}" cy="${y}" rx="${w}" ry="${h}" fill="#f2a07a" opacity=".22"/>`);$('clouds').innerHTML=c;
+  let b='';for(let i=0;i<9;i++)b+=`<path class="bird" d="" fill="none" stroke="#120c24" stroke-width="2.4" stroke-linecap="round"/>`;$('birds').innerHTML=b;
+  let dy='';[[150,1372,.62],[318,1420,.8],[430,1362,.55],[650,1398,.72],[790,1366,.58],[930,1430,.86],[214,1500,1],[868,1520,1.02],[548,1462,.9],[700,1500,1.06],[380,1470,.98]].forEach(([x,y,s],i)=>{
+    dy+=`<g class="diya" data-x="${x}" data-y="${y}" data-s="${s}" data-i="${i}"><ellipse cx="0" cy="18" rx="5" ry="34" fill="#ffb25a" opacity=".22" filter="url(#blurM)"/>`+
+        `<path d="M-15 0 C-15 9 15 9 15 0 Z" fill="#b8642e"/><path d="M-15 0 H15" stroke="#e39a52" stroke-width="1.5"/>`+
+        `<circle cx="0" cy="-8" r="16" fill="url(#flame)"/><path class="fl" d="M0 -2 C-5 -10 -2 -18 0 -23 C2 -18 5 -10 0 -2 Z" fill="#fff0c0"/></g>`});
+  $('diyas').innerHTML=dy;
+})();
+
+/* ---------------- names as letter spans ---------------- */
+['t-n1','t-n2'].forEach(id=>{const e=$(id);[...e.dataset.name].forEach(ch=>{const t=document.createElementNS(NS,'tspan');t.textContent=ch;e.appendChild(t)})});
+
+/* ---------------- timeline ---------------- */
+const DUR=8.0, clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), P=(t,s,d)=>clamp((t-s)/d);
+const eO=x=>1-Math.pow(1-x,3), eO5=x=>1-Math.pow(1-x,5), eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, eS=x=>x*x*(3-2*x);
+const lines=[...document.querySelectorAll('#tLines .l')];
+const lineMeta=lines.map(el=>{const b=el.getBBox();return {el,y:b.y+b.height, x:Math.abs(b.x+b.width/2-540)}});
+const yMin=Math.min(...lineMeta.map(m=>m.y)), yMax=Math.max(...lineMeta.map(m=>m.y));
+lineMeta.forEach(m=>{m.el.setAttribute('stroke-dasharray','1 1'); m.d=.15+ (1-(m.y-yMin)/(yMax-yMin))*1.55 + m.x/540*.25;});
+const stars=[...document.querySelectorAll('.st')], birds=[...document.querySelectorAll('.bird')], diyas=[...document.querySelectorAll('.diya')];
+const fade=(id,v)=>{$(id).style.opacity=v};
+function reveal(id,t,s,d,rise=24,blur=8){const p=eO(P(t,s,d)),e=$(id);e.style.opacity=p;e.setAttribute('transform',`translate(0 ${((1-p)*rise).toFixed(2)})`);e.style.filter=blur&&p<1?`blur(${((1-p)*blur).toFixed(2)}px)`:'';}
+
+function setV(t){t=clamp(t,0,DUR);
+  // camera: slow pull-back + rise, settling at the end
+  const c=eIO(P(t,0,DUR-.6));
+  $('world').setAttribute('transform',`translate(540 1100) scale(${(1.16-.16*c).toFixed(4)}) translate(-540 ${(-1100+ (1-c)*-40).toFixed(2)})`);
+  $('hillsFar').setAttribute('transform',`translate(${((1-c)*-26).toFixed(2)} 0)`);
+  $('trees').setAttribute('transform',`translate(${((1-c)*-48).toFixed(2)} 0)`);
+  // sky comes up from dark
+  const sky=eO(P(t,0,1.4)); $('world').style.opacity=.15+.85*sky;
+  stars.forEach(s=>s.setAttribute('opacity',(+s.dataset.o*(.6+.4*Math.sin(t*2.2+ +s.dataset.p))*sky).toFixed(3)));
+  fade('moon',eO(P(t,.4,1.4)));
+  const glow=eIO(P(t,1.2,2.6)); $('aureoleC').setAttribute('opacity',(.25+.75*glow).toFixed(3)); $('aureoleC').setAttribute('r',(560+200*glow+Math.sin(t*1.3)*8).toFixed(1));
+  fade('clouds',.3+.7*glow); $('clouds').setAttribute('transform',`translate(${(t*6).toFixed(1)} 0)`);
+  // linework draws bottom-up
+  lineMeta.forEach(m=>{const p=eIO(P(t,m.d,1.25)); m.el.setAttribute('stroke-dashoffset',(1-p).toFixed(4)); m.el.style.visibility=p>0?'visible':'hidden'});
+  // stone and solid gold come in after the lines
+  fade('tFill',eS(P(t,1.5,1.6))); fade('tGold',eO(P(t,2.2,1.2)));
+  fade('hillsFar',eS(P(t,.6,1.8))); fade('trees',eS(P(t,1.0,1.8)));
+  // flag flutter
+  const f=window.FLAG, w1=Math.sin(t*7)*6, w2=Math.sin(t*7+1.4)*8;
+  $('flag').setAttribute('d',`M${f.x} ${f.y} Q${f.x+22} ${f.y+3+w1*.8} ${f.x+46} ${f.y+9+w2*.8} Q${f.x+24} ${f.y+14+w1*.8} ${f.x} ${f.y+20} Z`);
+  // sanctum lamp ignites, light spills down the steps
+  const lp=P(t,3.0,.6), lamp=lp>0?(eO(lp)*(.92+.08*Math.sin(t*23))):0;
+  $('lampFlame').setAttribute('opacity',lamp.toFixed(3)); $('doorSpill').setAttribute('opacity',(lamp*.9).toFixed(3));
+  // water
+  $('rippleOff').setAttribute('dy',(t*14).toFixed(2)); $('rippleOff').setAttribute('dx',(Math.sin(t*.8)*6).toFixed(2));
+  fade('horizon',eO(P(t,1.0,1.4)));
+  // diyas float in one by one
+  diyas.forEach(g=>{const i=+g.dataset.i, p=eO(P(t,3.3+i*.13,1.1)), s=+g.dataset.s;
+    const x=+g.dataset.x+Math.sin(t*.9+i)*6+(1-p)*-30, y=+g.dataset.y+Math.sin(t*1.7+i*2)*2.5;
+    g.setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${s})`); g.style.opacity=p;
+    const fl=g.querySelector('.fl'); fl.setAttribute('transform',`scale(${(1+Math.sin(t*19+i*3)*.08).toFixed(3)} ${(1+Math.sin(t*13+i)*.12).toFixed(3)})`);});
+  // birds cross the sky
+  birds.forEach((b,i)=>{const p=P(t,2.4+i*.12,4.2); if(p<=0||p>=1){b.setAttribute('d','');return;}
+    const x=-80+p*1260+((i%3)-1)*40, y=780-p*120+Math.sin(i*1.7)*50+(i%2)*26, sz=9+(i%3)*2, fl=Math.sin(t*14+i*1.3)*sz*.7;
+    b.setAttribute('d',`M${x-sz} ${y-fl} Q${x-sz*.4} ${y-2} ${x} ${y} Q${x+sz*.4} ${y-2} ${x+sz} ${y-fl}`);});
+  // typography
+  reveal('t-eb',t,3.8,1.0,14,4);
+  [['t-n1',4.1],['t-n2',4.75]].forEach(([id,s])=>{[...$(id).children].forEach((sp,i)=>{const p=eO5(P(t,s+i*.06,.9));
+      sp.setAttribute('opacity',p.toFixed(3)); sp.setAttribute('dy','0'); sp.style.filter=p<1?`blur(${((1-p)*10).toFixed(2)}px)`:'';
+      sp.setAttribute('rotate','0');});
+    const p0=eO5(P(t,s,1.3)); $(id).setAttribute('transform',`translate(0 ${((1-p0)*36).toFixed(2)})`);});
+  { const p=eO(P(t,4.55,.7)); $('t-amp').style.opacity=p; $('t-amp').setAttribute('transform',`translate(540 320) scale(${(.6+.4*p).toFixed(3)}) rotate(${((1-p)*-30).toFixed(1)}) translate(-540 -320)`); }
+  reveal('t-dev',t,5.4,.9,16,6);
+  reveal('t-day',t,5.7,.8,14,4); reveal('t-date',t,5.85,1.0,26,8); reveal('t-time',t,6.15,.9,16,5); reveal('t-hin',t,6.35,.9,16,5);
+  { const p=eIO(P(t,5.8,1.2)); $('t-rule').setAttribute('stroke-dasharray','1 1'); $('t-rule').setAttribute('stroke-dashoffset',(1-p).toFixed(4)); }
+  // gold shimmer sweeps across everything gold
+  const sh=eIO(P(t,6.0,1.8)); $('gold').setAttribute('gradientTransform',`translate(${(-700+sh*1400).toFixed(1)} 0)`);
+  $('goldT').setAttribute('gradientTransform',`translate(${(-1+sh*2).toFixed(3)} 0)`);
+}
+window.setV=setV; window.DUR_V=DUR; setV(DUR);
+</script>
+</body></html>
