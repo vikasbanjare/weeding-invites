@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Avinash &amp; Divya — Engagement</title>
+<meta name="viewport" content="width=1080">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root{
+    --ink:#12061a; --plum:#2b0b3a; --wine:#6b1646; --rose:#c2456b; --dusk:#e0763c;
+    --gold:#d9a566; --gold-hi:#fbe7b8; --champ:#f4e4c8;
+    --gold-grad:linear-gradient(100deg,#a9733c 0%,#f3d79c 22%,#d29a58 40%,#fff1c9 56%,#c48c4c 74%,#f0cf92 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1080px;height:1920px;background:#000;overflow:hidden}
+  #frame{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+  #stage{position:absolute;inset:0;transform-origin:50% 55%}
+
+  /* ---------- atmosphere ---------- */
+  #bg{position:absolute;inset:-10%;
+    background:
+      radial-gradient(60% 38% at 50% 8%, rgba(88,40,160,.55), transparent 70%),
+      radial-gradient(75% 45% at 50% 58%, rgba(168,36,96,.62), transparent 72%),
+      radial-gradient(90% 40% at 50% 104%, rgba(233,120,52,.60), transparent 70%),
+      linear-gradient(180deg,#1b0a2c 0%,#2a0b36 38%,#3e0f3a 66%,#5a1a38 100%);}
+  #glow{position:absolute;left:50%;top:640px;width:1100px;height:1100px;margin:-550px 0 0 -550px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(255,170,110,.34),rgba(224,80,110,.16) 50%,transparent 75%);mix-blend-mode:screen}
+  #vig{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 50%,transparent 55%,rgba(6,1,12,.72) 100%)}
+  #grain{position:absolute;inset:0;pointer-events:none;opacity:.20;mix-blend-mode:soft-light}
+  #lattice{position:absolute;inset:0}
+
+  svg.full{position:absolute;inset:0;width:1080px;height:1920px;overflow:visible}
+  .gline{fill:none;stroke:url(#gg);stroke-linecap:round;stroke-linejoin:round}
+
+  /* ---------- type ---------- */
+  .abs{position:absolute;left:0;width:1080px;text-align:center}
+  .gold{background:var(--gold-grad);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .eyebrow{font:400 21px/1 'Jost',sans-serif;letter-spacing:.62em;text-transform:uppercase;color:#e8c993;padding-left:.62em}
+  .cap{font:400 31px/1 'Marcellus',serif;letter-spacing:.46em;text-transform:uppercase;padding-left:.46em}
+  .deva{font:400 66px/1 'Tiro Devanagari Hindi',serif}
+  .name{font:italic 300 218px/1 'Cormorant Garamond',serif;letter-spacing:-.01em;white-space:nowrap}
+  .name .l{display:inline-block;will-change:transform,opacity,filter;background:var(--gold-grad);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;padding:0 .02em}
+  .amp{font:italic 300 84px/1 'Cormorant Garamond',serif}
+  .tag{font:italic 300 37px/1.3 'Cormorant Garamond',serif;color:#f1dcc0;letter-spacing:.02em}
+  .day{font:400 25px/1 'Jost',sans-serif;letter-spacing:.5em;color:#ecd2a2;text-transform:uppercase}
+  .big{font:300 160px/1 'Cormorant Garamond',serif;letter-spacing:-.02em}
+  .time{font:400 34px/1 'Marcellus',serif;letter-spacing:.36em;color:var(--champ);padding-left:.36em}
+  .venue{font:500 74px/1 'Cormorant Garamond',serif;letter-spacing:.02em}
+  .city{font:400 24px/1 'Jost',sans-serif;letter-spacing:.6em;color:#e8c993;text-transform:uppercase;padding-left:.6em}
+  .foot{font:300 20px/1 'Jost',sans-serif;letter-spacing:.5em;color:rgba(240,218,184,.62);text-transform:uppercase;padding-left:.5em}
+
+  .rv{will-change:transform,opacity,filter}
+  .mote{position:absolute;border-radius:50%;background:radial-gradient(circle,#ffe9b8,rgba(255,190,110,.0) 70%)}
+  #sweep{position:absolute;top:560px;left:-400px;width:300px;height:620px;transform:skewX(-18deg);mix-blend-mode:overlay;
+    background:linear-gradient(90deg,transparent,rgba(255,244,214,.95),transparent);filter:blur(14px)}
+</style>
+</head>
+<body>
+<div id="frame">
+ <div id="stage">
+  <div id="bg"></div>
+  <div id="glow"></div>
+
+  <!-- jali lattice, masked into the arch -->
+  <svg class="full" id="lattice" viewBox="0 0 1080 1920">
+    <defs>
+      <pattern id="jali" width="96" height="96" patternUnits="userSpaceOnUse" id="jp">
+        <g fill="none" stroke="#e9c58e" stroke-width="1.1" stroke-linejoin="miter">
+          <rect x="18" y="18" width="60" height="60" transform="rotate(45 48 48)"/>
+          <rect x="18" y="18" width="60" height="60"/>
+          <circle cx="48" cy="48" r="9"/>
+          <path d="M0 48h18M78 48h18M48 0v18M48 78v18" />
+        </g>
+      </pattern>
+      <radialGradient id="jfade" cx="50%" cy="40%" r="62%">
+        <stop offset="0" stop-color="#fff" stop-opacity=".95"/>
+        <stop offset=".55" stop-color="#fff" stop-opacity=".42"/>
+        <stop offset="1" stop-color="#fff" stop-opacity=".0"/>
+      </radialGradient>
+      <mask id="jmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
+        <rect x="140" y="250" width="800" height="1060" fill="url(#jfade)"/>
+      </mask>
+      <clipPath id="archClip"><path id="archClipPath" d="M140 1290V770C140 560 400 400 540 262C680 400 940 560 940 770V1290Z"/></clipPath>
+    </defs>
+    <g clip-path="url(#archClip)">
+      <g mask="url(#jmask)"><rect id="jrect" x="0" y="0" width="1200" height="1900" fill="url(#jali)" opacity=".34"/></g>
+    </g>
+  </svg>
+
+  <!-- ornament / frames -->
+  <svg class="full" viewBox="0 0 1080 1920">
+    <defs>
+      <linearGradient id="gg" gradientUnits="userSpaceOnUse" x1="80" y1="200" x2="1000" y2="1800">
+        <stop offset="0" stop-color="#b98450"/><stop offset=".35" stop-color="#f6dfae"/>
+        <stop offset=".62" stop-color="#d09a59"/><stop offset="1" stop-color="#f3d79c"/>
+      </linearGradient>
+      <radialGradient id="sunfill" cx="50%" cy="45%" r="60%">
+        <stop offset="0" stop-color="#ffd9a0"/><stop offset=".55" stop-color="#f08b55"/><stop offset="1" stop-color="#b53a62"/>
+      </radialGradient>
+    </defs>
+
+    <!-- outer arch + inner arch (pathLength normalised) -->
+    <path id="arch2" class="gline" pathLength="1" stroke-width="2" opacity=".75"
+      d="M100 1330V770C100 540 390 380 540 222C690 380 980 540 980 770V1330Z"/>
+    <path id="arch1" class="gline" pathLength="1" stroke-width="4"
+      d="M140 1290V770C140 560 400 400 540 262C680 400 940 560 940 770V1290Z"/>
+    <path id="arch3" class="gline" pathLength="1" stroke-width="1.3" opacity=".6"
+      d="M162 1268V772C162 578 414 424 540 296C666 424 918 578 918 772V1268Z"/>
+
+    <!-- sun / bindi motif -->
+    <g id="sun" transform="translate(540 462)">
+      <circle r="150" fill="none" stroke="#f3d79c" stroke-width="1" opacity=".28" class="sring" />
+      <circle r="112" fill="none" stroke="#f3d79c" stroke-width="1.2" opacity=".42" stroke-dasharray="2 9" id="ring2"/>
+      <circle r="74" fill="url(#sunfill)" id="disc"/>
+      <circle r="74" fill="none" stroke="url(#gg)" stroke-width="2.4"/>
+      <g id="rays" stroke="url(#gg)" stroke-width="2" stroke-linecap="round"></g>
+    </g>
+
+    <!-- diamond divider -->
+    <g id="div1" transform="translate(540 1186)">
+      <path class="gline" pathLength="1" stroke-width="1.6" d="M-250 0H-30" id="dl"/>
+      <path class="gline" pathLength="1" stroke-width="1.6" d="M30 0H250" id="dr"/>
+      <path d="M0 -13L13 0L0 13L-13 0Z" fill="none" stroke="url(#gg)" stroke-width="2" id="dd"/>
+      <circle r="3.5" fill="#f3d79c" id="dc"/>
+    </g>
+
+    <!-- date separators -->
+    <path id="vsep1" class="gline" pathLength="1" stroke-width="1.5" d="M338 1410V1560"/>
+    <path id="vsep2" class="gline" pathLength="1" stroke-width="1.5" d="M742 1410V1560"/>
+    <path id="hsep" class="gline" pathLength="1" stroke-width="1.5" d="M300 1682H780"/>
+
+    <!-- corner ornaments -->
+    <g id="corners" fill="none" stroke="url(#gg)" stroke-width="1.6">
+      <path pathLength="1" d="M56 120V56H120M64 128V64H128"/>
+      <path pathLength="1" d="M1024 120V56H960M1016 128V64H952"/>
+      <path pathLength="1" d="M56 1800V1864H120M64 1792V1856H128"/>
+      <path pathLength="1" d="M1024 1800V1864H960M1016 1792V1856H952"/>
+    </g>
+  </svg>
+
+  <!-- copy -->
+  <div class="abs eyebrow rv" id="t-eyebrow" style="top:108px">With the blessings of our families</div>
+  <div class="abs cap gold rv" id="t-cap" style="top:154px">Engagement Ceremony</div>
+
+  <div class="abs deva gold rv" id="t-deva" style="top:610px">सगाई</div>
+
+  <div class="abs" style="top:684px;height:230px"><div class="name" id="n1" data-text="Avinash"></div></div>
+  <div class="abs amp gold rv" id="t-amp" style="top:878px">&amp;</div>
+  <div class="abs" style="top:932px;height:230px"><div class="name" id="n2" data-text="Divya"></div></div>
+
+  <div class="abs tag rv" id="t-tag" style="top:1216px">invite you to celebrate their engagement</div>
+
+  <div class="abs day rv" id="t-day" style="top:1472px;left:0;width:338px">Sunday</div>
+  <div class="abs big gold rv" id="t-22" style="top:1395px;left:338px;width:404px">22</div>
+  <div class="abs day rv" id="t-mon" style="top:1458px;left:742px;width:338px">November<br><span style="display:block;margin-top:18px;letter-spacing:.42em">2026</span></div>
+
+  <div class="abs time rv" id="t-time" style="top:1604px">11:00 AM onwards</div>
+
+  <div class="abs venue gold rv" id="t-venue" style="top:1728px;line-height:1.1">Aas Manglam</div>
+  <div class="abs city rv" id="t-city" style="top:1826px">Korba</div>
+
+  <div id="motes"></div>
+  <div id="sweep"></div>
+ </div>
+ <div id="vig"></div>
+ <svg id="grain" width="1080" height="1920"><filter id="nz"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0"/></filter><rect width="100%" height="100%" filter="url(#nz)"/></svg>
+</div>
+
+<script>
+const DUR = 12;
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,s,d)=>clamp((t-s)/d);
+const eOut=x=>1-Math.pow(1-x,3);
+const eOut5=x=>1-Math.pow(1-x,5);
+const eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const $=id=>document.getElementById(id);
+
+/* seeded random */
+let seed=11; const rnd=()=> (seed=(seed*16807)%2147483647)/2147483647;
+
+/* build letters */
+function buildName(el){
+  const txt=el.dataset.text; el.innerHTML='';
+  [...txt].forEach(ch=>{const s=document.createElement('span');s.className='l gold';s.textContent=ch;el.appendChild(s)});
+}
+buildName($('n1')); buildName($('n2'));
+
+/* sun rays */
+(()=>{const g=$('rays');let h='';for(let i=0;i<48;i++){const a=i*7.5*Math.PI/180,r1=(i%2?88:84),r2=(i%2?98:108);
+  h+=`<line x1="${Math.cos(a)*r1}" y1="${Math.sin(a)*r1}" x2="${Math.cos(a)*r2}" y2="${Math.sin(a)*r2}"/>`}g.innerHTML=h})();
+
+/* motes */
+const motes=[];
+(()=>{const host=$('motes');for(let i=0;i<46;i++){const d=document.createElement('div');d.className='mote';
+  const sz=3+rnd()*9;d.style.width=d.style.height=sz+'px';if(sz>8)d.style.filter='blur(2px)';host.appendChild(d);
+  motes.push({d,x:rnd()*1080,y0:rnd()*2100,sp:14+rnd()*34,ph:rnd()*6.28,sw:6+rnd()*18,base:.25+rnd()*.5})}})();
+
+/* generic reveals: [id, start, dur, rise(px), blur(px)] */
+const RV=[
+  ['t-eyebrow',1.6,1.1,18,6],['t-cap',2.0,1.3,0,0],['t-deva',3.2,1.2,26,10],
+  ['t-amp',5.0,1.0,0,0],['t-tag',6.9,1.2,22,6],
+  ['t-day',7.6,1.1,26,6],['t-22',7.9,1.3,60,12],['t-mon',8.2,1.1,26,6],
+  ['t-time',9.0,1.2,22,6],['t-venue',9.6,1.3,34,8],['t-city',10.1,1.1,18,4],
+];
+const DRAW=[['arch2',.3,2.6],['arch1',.5,2.6],['arch3',1.0,2.4],['vsep1',7.4,1.2],['vsep2',7.6,1.2],['hsep',8.9,1.4],['dl',6.5,1.1],['dr',6.5,1.1]];
+
+function setT(t){
+  t=clamp(t,0,DUR);
+  /* camera: slow push-out, settles to identity at the end */
+  const cp=eOut(P(t,0,DUR));
+  $('stage').style.transform=`scale(${1+0.07*(1-cp)}) translateY(${(1-cp)*-26}px)`;
+
+  /* atmosphere */
+  const bgp=eOut(P(t,0,2.2));
+  $('bg').style.opacity=.25+.75*bgp;
+  const br=Math.sin(t*0.9)*0.5+0.5;
+  $('glow').style.opacity=(.35+.65*eOut(P(t,.4,3)))*(.88+.12*br);
+  $('glow').style.transform=`scale(${.82+.18*eOut(P(t,0,4))+.025*br})`;
+
+  /* lattice */
+  const lp=eOut(P(t,1.4,2.6));
+  $('jrect').setAttribute('opacity',(.34*lp).toFixed(3));
+  $('jrect').setAttribute('transform',`translate(${(-t*3.2).toFixed(2)} ${(t*2.2).toFixed(2)})`);
+
+  /* line draws */
+  DRAW.forEach(([id,s,d])=>{const el=$(id);const p=eIO(P(t,s,d));
+    el.setAttribute('stroke-dasharray','1 1');el.setAttribute('stroke-dashoffset',(1-p).toFixed(4));
+    el.style.opacity=p>0?'':'0'});
+  document.querySelectorAll('#corners path').forEach((el,i)=>{const p=eIO(P(t,.2+i*.12,1.8));
+    el.setAttribute('stroke-dasharray','1 1');el.setAttribute('stroke-dashoffset',(1-p).toFixed(4))});
+
+  /* sun */
+  const sp=eOut5(P(t,1.2,2.2));
+  $('sun').setAttribute('transform',`translate(540 ${462+ (1-sp)*70}) scale(${.55+.45*sp})`);
+  $('sun').style.opacity=sp;
+  $('rays').setAttribute('transform',`rotate(${t*6})`);
+  $('ring2').setAttribute('transform',`rotate(${-t*9})`);
+  $('disc').setAttribute('r',74+Math.sin(t*1.6)*1.8);
+
+  /* diamond */
+  const dp=eOut(P(t,6.3,1.0));
+  $('dd').style.opacity=dp;$('dc').style.opacity=dp;
+  $('dd').setAttribute('transform',`rotate(${(1-dp)*90}) scale(${.4+.6*dp})`);
+
+  /* generic reveals */
+  RV.forEach(([id,s,d,rise,bl])=>{const el=$(id);const p=eOut(P(t,s,d));
+    el.style.opacity=p;
+    el.style.transform=`translateY(${(1-p)*rise}px)`;
+    el.style.filter=bl?`blur(${(1-p)*bl}px)`:'none'});
+  /* kinetic tracking on the headline caps */
+  const tp=eOut5(P(t,2.0,2.2));
+  $('t-cap').style.letterSpacing=(.46+ (1-tp)*.55)+'em';
+  $('t-cap').style.paddingLeft=(.46+ (1-tp)*.55)+'em';
+
+  /* names: per-letter kinetic reveal */
+  [['n1',3.3],['n2',5.4]].forEach(([id,s])=>{
+    [...$(id).children].forEach((l,i)=>{
+      const p=eOut5(P(t,s+i*.085,1.15));
+      l.style.opacity=p;
+      l.style.transform=`translateY(${(1-p)*90}px) rotate(${(1-p)*-5}deg) scale(${.94+.06*p})`;
+      l.style.filter=`blur(${(1-p)*16}px)`;
+    });
+  });
+
+  /* gold shimmer travelling across all gold text */
+  const sh=P(t,7.5,3.2);
+  const pos=100-eIO(sh)*100;
+  document.querySelectorAll('.gold').forEach(el=>el.style.backgroundPosition=`${pos}% 0`);
+
+  /* light sweep across names */
+  const sw=eIO(P(t,9.2,1.7));
+  $('sweep').style.transform=`translateX(${sw*1900}px) skewX(-18deg)`;
+  $('sweep').style.opacity=sw>0&&sw<1?1:0;
+
+  /* motes */
+  const fadeM=eOut(P(t,.8,2));
+  motes.forEach(m=>{
+    const y=((m.y0-m.sp*t)%2200+2200)%2200-60;
+    const x=m.x+Math.sin(t*.7+m.ph)*m.sw;
+    m.d.style.transform=`translate(${x}px,${y}px)`;
+    m.d.style.opacity=(m.base*(.55+.45*Math.sin(t*1.7+m.ph)))*fadeM;
+  });
+}
+window.setT=setT; window.DUR=DUR;
+setT(DUR);
+</script>
+</body>
+</html>
