@@ -282,7 +282,7 @@ function setT(t){
     m.d.style.opacity=(m.base*(.55+.45*Math.sin(t*1.7+m.ph)))*fadeM;
   });
 }
-window.setT=setT; window.DUR=DUR;
+window.setT=setT; window.DUR=DUR; window.DUR_V=7.5; window.setV=t=>setT(t*DUR/7.5);
 setT(DUR);
 </script>
 </body>
