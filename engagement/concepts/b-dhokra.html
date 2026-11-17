@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Dhokra — Avinash &amp; Divya</title>
+<link rel="stylesheet" href="../fonts2/fonts.css">
+<style>*{margin:0;padding:0}html,body{width:1080px;height:1920px;overflow:hidden;background:#000}svg{display:block}</style>
+</head><body>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920">
+<defs>
+  <radialGradient id="bg" cx="50%" cy="58%" r="75%"><stop offset="0" stop-color="#3a2614"/><stop offset=".55" stop-color="#1c120a"/><stop offset="1" stop-color="#0a0604"/></radialGradient>
+  <linearGradient id="brass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9a45c"/><stop offset=".45" stop-color="#9c6a2e"/><stop offset=".8" stop-color="#5e3a16"/><stop offset="1" stop-color="#42270c"/></linearGradient>
+  <linearGradient id="brassT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2a4"/><stop offset=".5" stop-color="#d49b4c"/><stop offset="1" stop-color="#8a5a22"/></linearGradient>
+  <!-- cast metal: bumped alpha + strong specular highlight, then dark patina in the recesses -->
+  <filter id="metal" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="2.4" result="b"/>
+    <feSpecularLighting in="b" surfaceScale="5" specularConstant=".9" specularExponent="34" lighting-color="#fff1cf" result="sp"><feDistantLight azimuth="235" elevation="42"/></feSpecularLighting>
+    <feComposite in="sp" in2="SourceAlpha" operator="in" result="spc"/>
+    <feDiffuseLighting in="b" surfaceScale="5" diffuseConstant="1.05" lighting-color="#fff" result="df"><feDistantLight azimuth="240" elevation="55"/></feDiffuseLighting>
+    <feComposite in="df" in2="SourceAlpha" operator="in" result="dfc"/>
+    <feBlend in="SourceGraphic" in2="dfc" mode="multiply" result="base"/>
+    <feComposite in="base" in2="spc" operator="arithmetic" k1="0" k2="1" k3=".55" k4="0" result="lit"/>
+    <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="sb"/><feOffset in="sb" dx="0" dy="16" result="so"/>
+    <feFlood flood-color="#000" flood-opacity=".6"/><feComposite in2="so" operator="in" result="sh"/>
+    <feMerge><feMergeNode in="sh"/><feMergeNode in="lit"/></feMerge>
+  </filter>
+  <filter id="glowT" x="-10%" y="-30%" width="120%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="14" result="b"/><feFlood flood-color="#e8a24a" flood-opacity=".25"/><feComposite in2="b" operator="in" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="9"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 .9 0 0 0 0 .7 0 0 0 .05 0"/></filter>
+</defs>
+<rect width="1080" height="1920" fill="url(#bg)"/>
+
+<!-- plinth line -->
+<rect x="90" y="1462" width="900" height="3" fill="url(#brass)" opacity=".7"/>
+<ellipse cx="540" cy="1470" rx="460" ry="26" fill="#000" opacity=".35"/>
+
+<g filter="url(#metal)"><g id="ele" transform="translate(56 1080) scale(1.0)"></g></g>
+<g filter="url(#metal)"><g id="horse" transform="translate(1024 1040) scale(-1 1)"></g></g>
+<g filter="url(#metal)"><g id="lampG" transform="translate(540 1318) scale(.72)"></g></g>
+<g id="topOrn" filter="url(#metal)"></g>
+
+<g text-anchor="middle">
+  <text x="540" y="214" font-family="Rozha One" font-size="44" fill="#d9ad6a">सगाई</text><text x="540" y="256" font-family="Manrope" font-weight="600" font-size="20" letter-spacing="10" fill="#d9ad6a">THE ENGAGEMENT</text>
+  <g filter="url(#glowT)">
+  <text x="540" y="520" font-family="Bodoni Moda" font-style="italic" font-size="190" fill="url(#brassT)" letter-spacing="-3">Avinash</text>
+  <text x="540" y="640" font-family="Bodoni Moda" font-style="italic" font-size="84" fill="#c48a44">&amp;</text>
+  <text x="540" y="800" font-family="Bodoni Moda" font-style="italic" font-size="190" fill="url(#brassT)" letter-spacing="-3">Divya</text>
+  </g>
+  <text x="540" y="880" font-family="Rozha One" font-size="48" fill="#c48a44">अविनाश  ·  दिव्या</text>
+  <text x="540" y="1580" font-family="Bodoni Moda" font-size="64" fill="#f1d29a">Sunday, 22 November 2026</text>
+  <text x="540" y="1640" font-family="Manrope" font-weight="600" font-size="22" letter-spacing="10" fill="#d9ad6a">11 AM ONWARDS</text>
+  <text x="540" y="1740" font-family="Bodoni Moda" font-style="italic" font-size="56" fill="#f1d29a">Aas Manglam, Korba</text>
+  <text x="540" y="1796" font-family="Eczar" font-size="30" fill="#c48a44">रविवार, सुबह 11 बजे से · आस मंगलम, कोरबा</text>
+</g>
+<rect width="1080" height="1920" filter="url(#grain)"/>
+</svg>
+<script>
+const $=id=>document.getElementById(id);
+const spiral=(cx,cy,r,turns=3,sw=3,col='url(#brass)')=>{let d='';const n=turns*40;for(let i=0;i<=n;i++){const t=i/n,a=t*turns*2*Math.PI,rr=r*t;d+=(i?'L':'M')+(cx+Math.cos(a)*rr).toFixed(1)+' '+(cy+Math.sin(a)*rr).toFixed(1)}return `<path d="${d}" stroke="${col}" stroke-width="${sw}" fill="none" stroke-linecap="round"/>`};
+const threads=(x1,y1,x2,y2,n,gap,sw=3)=>{let s='';for(let i=0;i<n;i++)s+=`<path d="M${x1} ${y1+i*gap} L${x2} ${y2+i*gap}" stroke="url(#brass)" stroke-width="${sw}" stroke-linecap="round"/>`;return s};
+const dots=(x1,x2,y,step,r=4)=>{let s='';for(let x=x1;x<=x2;x+=step)s+=`<circle cx="${x}" cy="${y}" r="${r}" fill="url(#brass)"/>`;return s};
+// ---- elephant, facing right ----
+(function(){let s='';const B='url(#brass)';
+  s+=`<path d="M40 150 C24 170 22 200 32 226" stroke="${B}" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="32" cy="230" r="9" fill="${B}"/>`;
+  [[70,210],[120,214],[250,214],[298,210]].forEach(([x,y])=>{s+=`<rect x="${x}" y="${y}" width="44" height="96" rx="12" fill="${B}"/>`+threads(x+2,y+70,x+42,y+70,3,8,3)});
+  s+=`<path d="M52 150 C52 82 120 54 206 56 C286 58 330 92 336 150 L336 206 C336 226 318 238 298 238 L86 238 C64 238 50 222 50 200 Z" fill="${B}"/>`;
+  // caparison with spirals and fringe
+  s+=`<path d="M108 64 C150 50 260 50 296 70 L304 190 L100 190 Z" fill="#9a6428"/>`;
+  s+=spiral(150,120,30,3,3.2)+spiral(250,120,30,3,3.2)+threads(104,82,300,82,1,0,4)+threads(104,176,302,176,1,0,4);
+  for(let x=104;x<300;x+=18)s+=`<path d="M${x} 190 l9 18 l9 -18" fill="${B}"/>`;
+  s+=dots(116,290,62,14,4);
+  // howdah
+  s+=`<rect x="140" y="-6" width="124" height="58" rx="6" fill="${B}"/>`+threads(144,6,260,6,4,12,3);
+  s+=`<path d="M128 -6 C150 -60 254 -60 276 -6 Z" fill="${B}"/><circle cx="202" cy="-58" r="10" fill="${B}"/>`;
+  // head, ear, trunk, tusk
+  s+=`<circle cx="340" cy="112" r="68" fill="${B}"/>`;
+  s+=`<path d="M300 70 C250 74 248 170 300 182 C320 160 324 96 300 70 Z" fill="#9a6428"/>`+spiral(292,126,28,2.6,3);
+  s+=`<path d="M392 140 C428 176 432 240 412 286 C404 304 420 316 434 304" stroke="${B}" stroke-width="30" fill="none" stroke-linecap="round"/>`;
+  for(let i=0;i<7;i++)s+=`<path d="M${400+i*2} ${170+i*18} l26 0" stroke="#6a3f16" stroke-width="2.5" opacity=".7"/>`;
+  s+=`<path d="M370 170 C390 200 420 206 436 196" stroke="#f6dfae" stroke-width="10" fill="none" stroke-linecap="round"/>`;
+  s+=`<circle cx="360" cy="96" r="7" fill="#2a1606"/><circle cx="360" cy="96" r="12" fill="none" stroke="${B}" stroke-width="3"/>`;
+  s+=`<path d="M330 50 L340 30 L350 50" fill="${B}"/>`;
+  // wax-thread surface texture over the body
+  s+=`<clipPath id="ebody"><path d="M52 150 C52 82 120 54 206 56 C286 58 330 92 336 150 L336 206 C336 226 318 238 298 238 L86 238 C64 238 50 222 50 200 Z"/></clipPath>`;
+  let h='';for(let y=60;y<240;y+=7)h+=`<path d="M40 ${y} Q190 ${y-8} 340 ${y}" stroke="#4a2c10" stroke-width="1.4" fill="none" opacity=".35"/>`;
+  s+=`<g clip-path="url(#ebody)">${h}</g>`;
+  $('ele').innerHTML=s;})();
+// ---- horse, facing right (mirrored in place to face the elephant) ----
+(function(){let s='';const B='url(#brass)';
+  s+=`<path d="M70 130 C20 140 10 220 40 270 M80 136 C40 160 38 230 60 278" stroke="${B}" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+  [[96,190],[136,196],[236,196],[276,190]].forEach(([x,y])=>{s+=`<path d="M${x} ${y} L${x+22} ${y} L${x+18} ${y+142} L${x+4} ${y+142} Z" fill="${B}"/><rect x="${x-2}" y="${y+138}" width="26" height="14" rx="4" fill="${B}"/>`});
+  s+=`<ellipse cx="190" cy="168" rx="128" ry="62" fill="${B}"/>`;
+  s+=`<path d="M276 150 C290 90 300 40 320 0 L356 14 C346 70 326 130 312 186 Z" fill="${B}"/>`;
+  s+=`<path d="M318 -2 L396 36 C404 44 400 62 388 62 L330 46 Z" fill="${B}"/>`;
+  s+=`<path d="M318 -2 L322 -40 L334 -6 Z M334 4 L344 -34 L350 6 Z" fill="${B}"/>`;
+  for(let i=0;i<9;i++)s+=`<path d="M${314-i*4} ${10+i*18} l-16 6" stroke="${B}" stroke-width="5" stroke-linecap="round"/>`;
+  s+=`<circle cx="352" cy="18" r="6" fill="#2a1606"/><circle cx="352" cy="18" r="10" fill="none" stroke="${B}" stroke-width="3"/>`;
+  s+=threads(330,30,390,52,1,0,3)+threads(326,46,388,62,1,0,3);
+  // saddle with spirals & fringe
+  s+=`<path d="M120 112 L262 112 L270 200 L112 200 Z" fill="#9a6428"/>`+spiral(160,154,26,2.6,3)+spiral(226,154,26,2.6,3);
+  for(let x=114;x<268;x+=16)s+=`<path d="M${x} 200 l8 16 l8 -16" fill="${B}"/>`;
+  s+=dots(126,258,116,13,4);
+  s+=`<path d="M180 112 L180 70 C180 50 210 50 210 70 L210 112" fill="none" stroke="${B}" stroke-width="6"/>`;
+  let h='';for(let y=110;y<232;y+=7)h+=`<path d="M60 ${y} Q190 ${y-6} 320 ${y}" stroke="#4a2c10" stroke-width="1.4" fill="none" opacity=".35"/>`;
+  s+=`<clipPath id="hbody"><ellipse cx="190" cy="168" rx="128" ry="62"/></clipPath><g clip-path="url(#hbody)">${h}</g>`;
+  $('horse').innerHTML=s;})();
+// ---- central dhokra lamp (diya) between them ----
+(function(){let s='';const B='url(#brass)';
+  s+=`<path d="M-90 120 L90 120 L70 140 L-70 140 Z" fill="${B}"/><rect x="-14" y="10" width="28" height="112" fill="${B}"/>`+threads(-14,30,14,30,5,16,3);
+  s+=`<path d="M-80 0 C-80 34 80 34 80 0 Z" fill="${B}"/>`+dots(-66,66,14,12,3.4);
+  s+=`<path d="M0 -6 C-14 -26 -6 -46 0 -60 C6 -46 14 -26 0 -6 Z" fill="#ffd27a"/>`;
+  $('lampG').innerHTML=s;
+  let t='';t+=`<g transform="translate(540 300)">`+spiral(0,0,34,3.2,3.2)+`</g>`;
+  t+=`<rect x="250" y="298" width="240" height="3" fill="url(#brass)"/><rect x="590" y="298" width="240" height="3" fill="url(#brass)"/>`;
+  $('topOrn').innerHTML=t;})();
+</script>
+</body></html>

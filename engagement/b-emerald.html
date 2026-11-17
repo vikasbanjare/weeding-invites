@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Avinash &amp; Divya — Emerald Medallion</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--gold-grad:linear-gradient(100deg,#a9733c 0%,#f3d79c 22%,#d29a58 40%,#fff1c9 56%,#c48c4c 74%,#f0cf92 100%)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:#000;overflow:hidden}
+#frame{position:relative;width:1080px;height:1920px;overflow:hidden;background:#031512}
+#stage{position:absolute;inset:0;transform-origin:50% 40%}
+#bg{position:absolute;inset:-8%;background:
+ radial-gradient(70% 36% at 50% 40%,rgba(18,120,98,.75),transparent 72%),
+ radial-gradient(90% 38% at 50% 106%,rgba(246,152,38,.62),transparent 70%),
+ radial-gradient(60% 30% at 50% -2%,rgba(14,70,96,.7),transparent 70%),
+ linear-gradient(180deg,#04201f 0%,#05302a 45%,#06251f 75%,#1c2a16 100%)}
+#vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 46%,transparent 52%,rgba(0,8,6,.75) 100%)}
+#grain{position:absolute;inset:0;opacity:.2;mix-blend-mode:soft-light;pointer-events:none}
+svg.full{position:absolute;inset:0;width:1080px;height:1920px;overflow:visible}
+.g{fill:none;stroke:url(#gg);stroke-linecap:round;stroke-linejoin:round}
+.abs{position:absolute;left:0;width:1080px;text-align:center}
+.gold{background:var(--gold-grad);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.eyebrow{font:400 21px/1 'Jost';letter-spacing:.6em;text-transform:uppercase;color:#e3c58f;padding-left:.6em}
+.deva{font:400 78px/1 'Tiro Devanagari Hindi'}
+.nm{font:400 80px/1 'Marcellus';letter-spacing:.2em;padding-left:.2em;white-space:nowrap}
+.nm .l{display:inline-block;background:var(--gold-grad);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.amp{font:italic 300 96px/1 'Cormorant Garamond'}
+.eng{font:400 108px/1 'Marcellus';letter-spacing:.07em;padding-left:.07em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.6px #e8c68a}
+.engfill{position:absolute;left:0;top:0;width:1080px;overflow:hidden}
+.date{font:300 132px/1 'Cormorant Garamond';font-variant-numeric:lining-nums;letter-spacing:.02em}
+.sub{font:400 27px/1 'Jost';letter-spacing:.46em;color:#efd8a8;text-transform:uppercase;padding-left:.46em}
+.ven{font:400 42px/1 'Marcellus';letter-spacing:.26em;padding-left:.26em;color:#f6e6c6}
+.rv{will-change:transform,opacity,filter}
+.mote{position:absolute;border-radius:50%;background:radial-gradient(circle,#ffe9b8,rgba(255,190,110,0) 70%)}
+#sweep{position:absolute;top:340px;left:-400px;width:260px;height:900px;mix-blend-mode:overlay;filter:blur(14px);
+ background:linear-gradient(90deg,transparent,rgba(255,244,214,.9),transparent)}
+</style></head><body>
+<div id="frame"><div id="stage">
+ <div id="bg"></div>
+ <svg class="full" viewBox="0 0 1080 1920">
+  <defs>
+   <linearGradient id="gg" gradientUnits="userSpaceOnUse" x1="80" y1="200" x2="1000" y2="1800"><stop offset="0" stop-color="#b98450"/><stop offset=".35" stop-color="#f6dfae"/><stop offset=".62" stop-color="#d09a59"/><stop offset="1" stop-color="#f3d79c"/></linearGradient>
+   <radialGradient id="disc" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#0f6d59"/><stop offset=".7" stop-color="#06352d"/><stop offset="1" stop-color="#03211c"/></radialGradient>
+   <pattern id="jali" width="80" height="80" patternUnits="userSpaceOnUse"><g fill="none" stroke="#e9c58e" stroke-width="1"><rect x="14" y="14" width="52" height="52" transform="rotate(45 40 40)"/><rect x="14" y="14" width="52" height="52"/><circle cx="40" cy="40" r="7"/></g></pattern>
+   <radialGradient id="jf" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+   <mask id="jm" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920"><circle cx="540" cy="770" r="290" fill="url(#jf)"/></mask>
+   <clipPath id="dc"><circle cx="540" cy="770" r="290"/></clipPath>
+  </defs>
+  <g id="med" transform="translate(540 770)">
+   <circle r="300" fill="url(#disc)" id="discc"/>
+   <g clip-path="url(#dc)" transform="translate(-540 -770)"><g mask="url(#jm)"><rect id="jr" width="1300" height="1900" fill="url(#jali)" opacity=".3"/></g></g>
+   <circle class="g" id="r1" pathLength="1" r="404" stroke-width="2" opacity=".6"/>
+   <circle class="g" id="r2" pathLength="1" r="388" stroke-width="4"/>
+   <circle class="g" id="r3" pathLength="1" r="300" stroke-width="2.4"/>
+   <g id="star" stroke-width="1.6" class="g"></g>
+   <g id="dots"></g>
+  </g>
+  <g transform="translate(540 1330)"><path class="g" id="dl" pathLength="1" stroke-width="1.5" d="M-300 0H-60"/><path class="g" id="dr" pathLength="1" stroke-width="1.5" d="M60 0H300"/><path id="dm" d="M0 -12L12 0L0 12L-12 0Z" class="g" stroke-width="2"/></g>
+  <path class="g" id="hl" pathLength="1" stroke-width="1.5" d="M260 1640H820"/>
+  <g class="g" id="corners" stroke-width="1.6"><path pathLength="1" d="M56 120V56H120"/><path pathLength="1" d="M1024 120V56H960"/><path pathLength="1" d="M56 1800V1864H120"/><path pathLength="1" d="M1024 1800V1864H960"/></g>
+ </svg>
+
+ <div class="abs eyebrow rv" id="eb" style="top:96px">Together with their families</div>
+ <div class="abs deva gold rv" id="dv" style="top:158px">सगाई</div>
+ <div class="abs" style="top:690px"><div class="nm" id="n1" data-t="AVINASH"></div></div>
+ <div class="abs amp gold rv" id="amp" style="top:762px">&amp;</div>
+ <div class="abs" style="top:870px"><div class="nm" id="n2" data-t="DIVYA"></div></div>
+
+ <div class="abs" style="top:1190px;height:130px">
+   <div class="abs eng" id="eng">ENGAGEMENT</div>
+   <div class="engfill" id="engf" style="clip-path:inset(0 100% 0 0)"><div class="abs eng gold" style="-webkit-text-stroke:0;top:0">ENGAGEMENT</div></div>
+ </div>
+ <div class="abs date gold rv" id="date" style="top:1384px">22 · 11 · 2026</div>
+ <div class="abs sub rv" id="sub" style="top:1548px">Sunday &nbsp;·&nbsp; 11:00 AM onwards</div>
+ <div class="abs ven rv" id="ven" style="top:1700px">AAS MANGLAM, KORBA</div>
+ <div id="motes"></div><div id="sweep"></div>
+</div>
+<div id="vig"></div>
+<svg id="grain" width="1080" height="1920"><filter id="nz"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="5" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .9 0"/></filter><rect width="100%" height="100%" filter="url(#nz)"/></svg>
+</div>
+<script>
+const DUR_V=7.5,clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),P=(t,s,d)=>clamp((t-s)/d),eO=x=>1-Math.pow(1-x,3),eO5=x=>1-Math.pow(1-x,5),eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,$=id=>document.getElementById(id);
+let sd=5;const rnd=()=>(sd=(sd*16807)%2147483647)/2147483647;
+['n1','n2'].forEach(id=>{const e=$(id);[...e.dataset.t].forEach(c=>{const s=document.createElement('span');s.className='l';s.textContent=c;e.appendChild(s)})});
+// 16-point star (two squares x2) + dot ring
+(()=>{let h='';for(let k=0;k<4;k++){const a=k*22.5;h+=`<rect x="-250" y="-250" width="500" height="500" transform="rotate(${a})" />`}$('star').innerHTML=h;
+let d='';for(let i=0;i<72;i++){const a=i*5*Math.PI/180;d+=`<circle cx="${Math.cos(a)*346}" cy="${Math.sin(a)*346}" r="${i%6?1.6:3.2}" fill="#f0d196"/>`}$('dots').innerHTML=d})();
+const motes=[];for(let i=0;i<44;i++){const d=document.createElement('div');d.className='mote';const z=3+rnd()*9;d.style.width=d.style.height=z+'px';if(z>8)d.style.filter='blur(2px)';$('motes').appendChild(d);motes.push({d,x:rnd()*1080,y0:rnd()*2100,sp:14+rnd()*34,ph:rnd()*6.28,sw:6+rnd()*18,b:.25+rnd()*.5})}
+const RV=[['eb',.5,.8,16,6],['dv',.9,.9,24,10],['amp',2.6,.7,0,0],['date',4.3,.9,50,12],['sub',5.2,.8,20,6],['ven',5.7,.9,24,6]];
+function draw(el,p){el.setAttribute('stroke-dasharray','1 1');el.setAttribute('stroke-dashoffset',(1-p).toFixed(4))}
+function setV(t){t=clamp(t,0,DUR_V);
+ const cp=eO(P(t,0,DUR_V));$('stage').style.transform=`scale(${1+.06*(1-cp)})`;
+ $('bg').style.opacity=.3+.7*eO(P(t,0,1.4));
+ draw($('r1'),eIO(P(t,.1,1.5)));draw($('r2'),eIO(P(t,0,1.5)));draw($('r3'),eIO(P(t,.3,1.4)));
+ $('discc').style.opacity=eO(P(t,.6,1.2));$('jr').setAttribute('opacity',(.3*eO(P(t,.9,1.4))).toFixed(3));$('jr').setAttribute('transform',`translate(${-t*5} ${t*3})`);
+ const sp=eO5(P(t,.2,1.9));$('star').setAttribute('transform',`rotate(${(1-sp)*-70+t*3}) scale(${.7+.3*sp})`);$('star').style.opacity=sp*.55;
+ $('dots').setAttribute('transform',`rotate(${-t*5})`);$('dots').style.opacity=eO(P(t,.5,1.2));
+ draw($('dl'),eIO(P(t,4.0,.9)));draw($('dr'),eIO(P(t,4.0,.9)));$('dm').style.opacity=eO(P(t,4.0,.7));draw($('hl'),eIO(P(t,5.5,.9)));
+ document.querySelectorAll('#corners path').forEach((e,i)=>draw(e,eIO(P(t,.1+i*.1,1.2))));
+ RV.forEach(([id,s,d,r,b])=>{const e=$(id),p=eO(P(t,s,d));e.style.opacity=p;e.style.transform=`translateY(${(1-p)*r}px)`;e.style.filter=b?`blur(${(1-p)*b}px)`:'none'});
+ [['n1',1.8],['n2',3.0]].forEach(([id,s])=>[...$(id).children].forEach((l,i)=>{const p=eO5(P(t,s+i*.07,.8));l.style.opacity=p;l.style.transform=`translateY(${(1-p)*70}px) scale(${.9+.1*p})`;l.style.filter=`blur(${(1-p)*14}px)`}));
+ const w=eIO(P(t,3.7,1.0));$('engf').style.clipPath=`inset(0 ${100-w*100}% 0 0)`;$('eng').style.opacity=eO(P(t,3.5,.5));
+ const pos=100-eIO(P(t,5.4,1.9))*100;document.querySelectorAll('.gold,.nm .l').forEach(e=>e.style.backgroundPosition=pos+'% 0');
+ const sw=eIO(P(t,5.6,1.5));$('sweep').style.transform=`translateX(${sw*1900}px) skewX(-18deg)`;$('sweep').style.opacity=sw>0&&sw<1?1:0;
+ const fm=eO(P(t,.5,1.5));motes.forEach(m=>{const y=((m.y0-m.sp*t)%2200+2200)%2200-60;m.d.style.transform=`translate(${m.x+Math.sin(t*.7+m.ph)*m.sw}px,${y}px)`;m.d.style.opacity=m.b*(.55+.45*Math.sin(t*1.7+m.ph))*fm})}
+window.setV=setV;window.DUR_V=DUR_V;setV(DUR_V);
+</script></body></html>

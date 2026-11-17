@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="hi"><head><meta charset="utf-8"><title>Rajwar Bhitti — Avinash &amp; Divya</title>
+<link rel="stylesheet" href="../fonts2/fonts.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+svg{display:block}
+</style></head><body>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920">
+<defs>
+  <!-- mud-plaster wall with real bump lighting -->
+  <filter id="mud" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".016" numOctaves="5" seed="4" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="3.2" diffuseConstant="1.15" lighting-color="#fff" result="l"><feDistantLight class="L" azimuth="225" elevation="52"/></feDiffuseLighting>
+    <feFlood flood-color="#c4895a" result="f"/>
+    <feBlend in="f" in2="l" mode="multiply"/>
+  </filter>
+  <!-- raised clay relief: bump from blurred alpha, lit, multiplied onto paint, plus cast shadow -->
+  <filter id="relief" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="3.2" result="b"/>
+    <feDiffuseLighting in="b" surfaceScale="7" diffuseConstant="1.25" lighting-color="#fff" result="l"><feDistantLight class="L" azimuth="225" elevation="48"/></feDiffuseLighting>
+    <feComposite in="l" in2="SourceAlpha" operator="in" result="lc"/>
+    <feBlend in="SourceGraphic" in2="lc" mode="multiply" result="lit"/>
+    <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="sb"/>
+    <feOffset in="sb" dx="5" dy="7" result="so"/>
+    <feFlood flood-color="#3a1c08" flood-opacity=".42"/><feComposite in2="so" operator="in" result="sh"/>
+    <feMerge><feMergeNode in="sh"/><feMergeNode in="lit"/></feMerge>
+  </filter>
+  <filter id="reliefSoft" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="b"/>
+    <feDiffuseLighting in="b" surfaceScale="9" diffuseConstant="1.18" lighting-color="#fff" result="l"><feDistantLight class="L" azimuth="225" elevation="50"/></feDiffuseLighting>
+    <feComposite in="l" in2="SourceAlpha" operator="in" result="lc"/>
+    <feBlend in="SourceGraphic" in2="lc" mode="multiply" result="lit"/>
+    <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="sb"/><feOffset in="sb" dx="8" dy="11" result="so"/>
+    <feFlood flood-color="#2e1404" flood-opacity=".5"/><feComposite in2="so" operator="in" result="sh"/>
+    <feMerge><feMergeNode in="sh"/><feMergeNode in="lit"/></feMerge>
+  </filter>
+  <!-- incised lettering: lit from the opposite side so it reads as carved in -->
+  <filter id="incise" x="-5%" y="-20%" width="110%" height="140%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="b"/>
+    <feDiffuseLighting in="b" surfaceScale="-4" diffuseConstant="1.2" lighting-color="#fff" result="l"><feDistantLight class="L" azimuth="225" elevation="50"/></feDiffuseLighting>
+    <feComposite in="l" in2="SourceAlpha" operator="in" result="lc"/>
+    <feBlend in="SourceGraphic" in2="lc" mode="multiply"/>
+  </filter>
+  <radialGradient id="vig" cx="50%" cy="45%" r="75%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#1a0a02" stop-opacity=".6"/></radialGradient>
+  <linearGradient id="raking" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd9a3" stop-opacity=".28"/><stop offset=".5" stop-color="#ffd9a3" stop-opacity="0"/><stop offset="1" stop-color="#2a1004" stop-opacity=".3"/></linearGradient>
+</defs>
+
+<rect width="1080" height="1920" filter="url(#mud)"/>
+
+<!-- niche (raised, chhui-white) with geru border band -->
+<g filter="url(#reliefSoft)">
+  <path d="M96 1188V540C96 296 295 96 540 96C785 96 984 296 984 540V1188Z" fill="#b5462a"/>
+</g>
+<g filter="url(#relief)">
+  <path d="M136 1160V540C136 318 318 136 540 136C762 136 944 318 944 540V1160Z" fill="#efe3cb"/>
+</g>
+<g id="borderMotif" filter="url(#relief)"></g>
+
+<g id="tree" filter="url(#relief)" transform="translate(0 -70)"></g><g id="sky" filter="url(#relief)"></g>
+
+<!-- plaque -->
+<g filter="url(#reliefSoft)"><rect x="96" y="1236" width="888" height="620" rx="28" fill="#b5462a"/></g>
+<g filter="url(#relief)"><rect x="124" y="1264" width="832" height="564" rx="18" fill="#efe3cb"/></g>
+<g id="plaqueDots" filter="url(#relief)"></g>
+
+<g filter="url(#incise)" fill="#7a2614" text-anchor="middle">
+  <text x="540" y="1350" font-family="Eczar" font-weight="600" font-size="40" letter-spacing="2">॥ सगाई के नेवता ॥</text>
+  <text x="540" y="1500" font-family="Rozha One" font-size="112">अविनाश <tspan font-family="Eczar" font-size="56" dy="-12" fill="#b5462a">संग</tspan><tspan dy="12"> दिव्या</tspan></text>
+  <text x="540" y="1566" font-family="Manrope" font-weight="600" font-size="24" letter-spacing="10" fill="#8a4a2a">AVINASH  &amp;  DIVYA</text>
+  <text x="540" y="1660" font-family="Eczar" font-weight="600" font-size="44">रविवार, 22 नवम्बर 2026</text>
+  <text x="540" y="1716" font-family="Eczar" font-size="34" fill="#8a4a2a">सुबह 11 बजे से  ·  आस मंगलम, कोरबा</text>
+  <text x="540" y="1780" font-family="Manrope" font-weight="500" font-size="20" letter-spacing="6" fill="#8a4a2a">SUNDAY · 11 AM ONWARDS · AAS MANGLAM, KORBA</text>
+</g>
+
+<rect width="1080" height="1920" fill="url(#raking)" id="rake"/>
+<rect width="1080" height="1920" fill="url(#vig)"/>
+</svg>
+<script src="motifs.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+// ---- tree of life rising from a kalash ----
+(function(){
+  let s='';
+  const base=1110, top=470, cx=540;
+  s+=`<path d="M${cx-16} ${base} C${cx-26} 900 ${cx+18} 760 ${cx-10} ${top} L${cx+10} ${top} C${cx+40} 760 ${cx-4} 900 ${cx+16} ${base} Z" fill="#6b3a1e"/>`;
+  const rows=[[1010,270,1],[880,300,0],[750,290,1],[625,250,0],[515,190,1]];
+  rows.forEach(([y,w,flip],k)=>{
+    [-1,1].forEach(side=>{
+      const x1=cx+side*w, yc=y-70;
+      s+=`<path d="M${cx} ${y} C${cx+side*w*.35} ${y-10} ${cx+side*w*.7} ${yc-30} ${x1} ${yc} C${x1+side*30} ${yc+10} ${x1+side*24} ${yc+52} ${x1-side*6} ${yc+46}" stroke="#6b3a1e" stroke-width="${12-k}" fill="none" stroke-linecap="round"/>`;
+      for(let i=1;i<=4;i++){
+        const t=i/5, lx=cx+side*w*t, ly=y-(y-yc)*Math.pow(t,1.4)-6;
+        const ang=side>0?(-50+i*4):(230-i*4), L=54-k*3;
+        s+=`<g transform="translate(${lx} ${ly}) rotate(${ang})">${M.leaf(L,i%2?'#4f8a38':'#2f6b34')}</g>`;
+        s+=`<g transform="translate(${lx} ${ly+6}) rotate(${side>0?40:140})">${M.leaf(L*.8,i%2?'#2f6b34':'#4f8a38')}</g>`;
+      }
+      s+=`<g transform="translate(${x1-side*6} ${yc+46})">${M.flower(26-k*1.5,k%2?'#c8322a':'#d9822b','#f4cf6a')}</g>`;
+    });
+  });
+  s+=`<g transform="translate(${cx} ${top-30})">${M.flower(40,'#c8322a','#f4cf6a')}</g>`;
+  s+=`<g transform="translate(${cx} ${top-30}) scale(.55)">${M.flower(40,'#f4cf6a','#c8322a')}</g>`;
+  // the pair of sua (parrots), facing each other
+  s+=`<g transform="translate(296 330) scale(1.05)">${M.parrot({})}</g>`;
+  s+=`<g transform="translate(784 330) scale(-1.05 1.05)">${M.parrot({})}</g>`;
+  s+=`<g transform="translate(${cx} ${base-8}) scale(.8)">${M.kalash()}</g>`;
+  // ground band of small hills / leaves
+  $('tree').innerHTML=s;
+  // folk sun and moon in the arch shoulders
+  let k='<g transform="translate(300 300)">';for(let i=0;i<16;i++)k+=`<path d="M0 -46 L7 -30 L-7 -30 Z" fill="#d9822b" transform="rotate(${i*22.5})"/>`;
+  k+='<circle r="28" fill="#e9a52f"/><circle r="16" fill="#c8322a"/></g>';
+  k+='<g transform="translate(780 300)"><path d="M14 -38 A40 40 0 1 0 14 38 A30 30 0 1 1 14 -38 Z" fill="#7d8fa6"/>';
+  for(let i=0;i<5;i++)k+=`<circle cx="${-60+i*10}" cy="${-50+((i*37)%60)}" r="3" fill="#7d8fa6"/>`;
+  k+='</g>';$('sky').innerHTML=k;
+  // border motif on the geru band: white triangles + dots along the arch
+  let b='';
+  const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+  path.setAttribute('d','M116 1174V540C116 307 307 116 540 116C773 116 964 307 964 540V1174');
+  $('s').appendChild(path);const L=path.getTotalLength();
+  for(let d=10; d<L; d+=34){const p=path.getPointAtLength(d), q=path.getPointAtLength(Math.min(L,d+1));
+    const a=Math.atan2(q.y-p.y,q.x-p.x)*180/Math.PI;
+    b+=`<g transform="translate(${p.x} ${p.y}) rotate(${a})"><path d="M-12 8 L0 -10 L12 8 Z" fill="#f3e6cc"/></g>`;}
+  path.remove();
+  $('borderMotif').innerHTML=b;
+  let pd='';for(let x=150;x<=930;x+=30){pd+=`<circle cx="${x}" cy="1250" r="5" fill="#f3e6cc"/><circle cx="${x}" cy="1842" r="5" fill="#f3e6cc"/>`}
+  $('plaqueDots').innerHTML=pd;
+})();
+function setLight(az,el){document.querySelectorAll('.L').forEach(l=>{l.setAttribute('azimuth',az);if(el)l.setAttribute('elevation',el)})}
+window.setLight=setLight;
+</script>
+</body></html>
