@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Avinash &amp; Divya · Engagement</title>
+<meta name="description" content="You are invited to the engagement of Avinash and Divya, Aas Manglam, Korba.">
+<meta property="og:title" content="Avinash &amp; Divya · Engagement">
+<meta property="og:description" content="You are invited. Tap to open the invitation.">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../fonts2/fonts.css">
+<style>
+/* ---------- themes (picked with ?design=rajwada|pali|jharokha) ---------- */
+:root{--bg:#1d2a44;--bg2:#24345a;--card:#e38aa0;--cardInk:#fff7f3;--ink:#fff7f3;--muted:#f3c9d4;--accent:#e38aa0;--line:rgba(255,247,243,.35);
+  --display:'Cormorant Garamond',serif;--names:'Cormorant Garamond',serif;--namesStyle:normal;--namesWeight:500;--namesCase:uppercase;--ui:'Manrope',system-ui,sans-serif}
+body[data-design="pali"]{--bg:#070b24;--bg2:#141a40;--card:#1b2048;--cardInk:#f7e6c4;--ink:#f7e6c4;--muted:#d9b886;--accent:#e9c88f;--line:rgba(233,200,143,.35);
+  --names:'Bodoni Moda',serif;--namesStyle:italic;--namesWeight:400;--namesCase:none}
+body[data-design="jharokha"]{--bg:#0d1030;--bg2:#1b1d4a;--card:#1f1f4d;--cardInk:#fbecd0;--ink:#fbecd0;--muted:#efd3a0;--accent:#f0c070;--line:rgba(240,192,112,.35);
+  --names:'Bodoni Moda',serif;--namesStyle:italic;--namesWeight:400;--namesCase:none}
+
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--ui);-webkit-font-smoothing:antialiased;min-height:100vh}
+.wrap{max-width:480px;margin:0 auto;position:relative;background:var(--bg)}
+button{font:inherit;cursor:pointer}
+
+/* ---------- cover ---------- */
+#cover{position:relative;height:100svh;min-height:560px;overflow:hidden}
+#cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);animation:breathe 9s ease-in-out infinite alternate}
+@keyframes breathe{to{transform:scale(1.0)}}
+#cover .shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,.15) 45%,rgba(0,0,0,0) 65%)}
+#cover .cta{position:absolute;left:0;right:0;bottom:calc(36px + env(safe-area-inset-bottom));text-align:center;padding:0 24px}
+.dear{font-family:var(--display);font-style:italic;font-size:22px;color:var(--muted);margin-bottom:6px;min-height:1em}
+.open{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:rgba(255,255,255,.08);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  color:var(--ink);padding:14px 26px;border-radius:999px;font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+.open .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(240,192,112,.6)}100%{box-shadow:0 0 0 14px rgba(240,192,112,0)}}
+
+/* ---------- film ---------- */
+#film{position:fixed;inset:0;z-index:20;background:#000;display:none;align-items:center;justify-content:center}
+#film.on{display:flex}
+#film video{width:100%;height:100%;max-width:480px;object-fit:cover}
+#skip{position:absolute;top:calc(16px + env(safe-area-inset-top));right:16px;border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.35);color:#fff;
+  padding:8px 14px;border-radius:999px;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+
+/* ---------- content ---------- */
+#content{padding:56px 22px calc(48px + env(safe-area-inset-bottom));background:radial-gradient(120% 60% at 50% 0%,var(--bg2),var(--bg) 70%)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);text-align:center;font-weight:600}
+.names{font-family:var(--names);font-style:var(--namesStyle);font-weight:var(--namesWeight);text-transform:var(--namesCase);text-align:center;line-height:1.02;
+  font-size:clamp(46px,14vw,64px);letter-spacing:.02em;margin:14px 0 6px}
+.names .amp{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;text-transform:none;font-size:.5em;color:var(--accent);margin:4px 0}
+.lede{font-family:var(--display);font-size:19px;line-height:1.5;text-align:center;color:var(--muted);margin:10px auto 0;max-width:330px}
+.rule{display:flex;align-items:center;gap:12px;justify-content:center;margin:34px 0}
+.rule:before,.rule:after{content:"";height:1px;width:80px;background:var(--line)}
+.rule i{width:9px;height:9px;border:1px solid var(--accent);transform:rotate(45deg)}
+
+.card{background:var(--card);color:var(--cardInk);border-radius:22px;padding:28px 22px;text-align:center;position:relative;overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,.25)}
+body[data-design="rajwada"] .card{border-radius:150px 150px 22px 22px;padding-top:54px}
+.card h3{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.3em;text-transform:uppercase}
+.when{font-family:var(--display);font-size:30px;margin:12px 0 2px;font-weight:500}
+.sub{font-size:13px;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+.venue{font-family:var(--display);font-style:italic;font-size:26px;margin-top:18px}
+
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.count div{border:1px solid var(--line);border-radius:14px;padding:14px 4px;text-align:center}
+.count b{display:block;font-family:var(--display);font-size:32px;font-weight:500;line-height:1}
+.count span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.past{font-family:var(--display);font-style:italic;font-size:20px;text-align:center;color:var(--muted)}
+
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:13px 10px;font-size:12px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;text-decoration:none;border:1px solid currentColor;color:inherit;background:transparent}
+.btn.solid{background:var(--cardInk);color:var(--card);border-color:var(--cardInk)}
+.btn svg{width:16px;height:16px}
+
+.wishes textarea{width:100%;min-height:96px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);
+  padding:14px;font:17px/1.4 var(--display);resize:vertical}
+.wishes textarea::placeholder{color:var(--muted);opacity:.8}
+.wishes .btn{margin-top:12px;width:100%;background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.foot{text-align:center;margin-top:44px}
+.mono{display:inline-block;font-family:'Cormorant Garamond',serif;font-size:34px;letter-spacing:.06em;color:var(--accent)}
+.foot p{font-family:var(--display);font-style:italic;color:var(--muted);margin-top:8px;font-size:18px}
+.switch{display:flex;gap:8px;justify-content:center;margin-top:26px}
+.switch a{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 10px;opacity:.7}
+.switch a.on{opacity:1;color:var(--ink)}
+</style>
+</head>
+<body data-design="rajwada">
+<div class="wrap">
+  <section id="cover">
+    <img id="poster" alt="Engagement invitation of Avinash and Divya">
+    <div class="shade"></div>
+    <div class="cta">
+      <p class="dear" id="dear"></p>
+      <button class="open" id="openBtn"><span class="dot"></span>Open the invitation</button>
+    </div>
+  </section>
+
+  <main id="content">
+    <p class="eyebrow reveal">With the blessings of our families</p>
+    <h1 class="names reveal">Avinash<span class="amp">&amp;</span>Divya</h1>
+    <p class="lede reveal">request the pleasure of your company as they celebrate their engagement</p>
+
+    <div class="rule reveal"><i></i></div>
+
+    <section class="card reveal" aria-label="Date and venue">
+      <h3>Engagement Ceremony</h3>
+      <p class="when" id="whenText">Sunday, 22 November 2026</p>
+      <p class="sub">11 AM onwards</p>
+      <p class="venue">Aas Manglam, Korba</p>
+      <div class="btns">
+        <a class="btn solid" id="mapBtn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Directions</a>
+        <button class="btn" id="calBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Add to calendar</button>
+      </div>
+    </section>
+
+    <div class="rule reveal"><i></i></div>
+
+    <section class="reveal" aria-label="Countdown">
+      <p class="eyebrow" id="countLabel">Counting down to the day</p>
+      <div class="count" id="count">
+        <div><b id="cd-d">0</b><span>Days</span></div><div><b id="cd-h">0</b><span>Hours</span></div>
+        <div><b id="cd-m">0</b><span>Mins</span></div><div><b id="cd-s">0</b><span>Secs</span></div>
+      </div>
+      <p class="past" id="pastText" hidden></p>
+    </section>
+
+    <div class="rule reveal"><i></i></div>
+
+    <section class="wishes reveal" aria-label="Send your wishes">
+      <p class="eyebrow" style="margin-bottom:14px">Send your blessings</p>
+      <textarea id="wish" placeholder="Write a few words for Avinash & Divya…"></textarea>
+      <a class="btn" id="wishBtn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/></svg>
+        Send on WhatsApp</a>
+    </section>
+
+    <footer class="foot reveal">
+      <span class="mono">A | D</span>
+      <p>With love, the families</p>
+      <nav class="switch" id="switch" aria-label="Designs"></nav>
+    </footer>
+  </main>
+</div>
+
+<div id="film" aria-hidden="true">
+  <video id="video" playsinline preload="auto"></video>
+  <button id="skip">Skip</button>
+</div>
+
+<script>
+/* ---------- the only settings you should need to change ---------- */
+const EVENT = {
+  start: '2026-11-22T11:00:00+05:30',    // engagement date and time (IST)
+  hours: 4,                              // length, for the calendar entry
+  title: 'Engagement of Avinash & Divya',
+  venue: 'Aas Manglam, Korba, Chhattisgarh',
+  mapQuery: 'Aas Manglam Korba',
+  wishesTo: ''                           // optional: family WhatsApp number with country code, e.g. 919876543210
+};
+const DESIGNS = {
+  rajwada:  {label:'Rajwada',  cover:'covers/rajwada.jpg',  poster:'../rajwada/out/rajwada-poster-2160x3840.jpg',      film:'../rajwada/out/rajwada-1080p.mp4'},
+  pali:     {label:'Pali',     cover:'covers/pali.jpg',     poster:'../pali-photo/out/pali-photo-poster-2160x3840.jpg', film:'../pali-photo/out/pali-photo-1080p.mp4'},
+  jharokha: {label:'Jharokha', cover:'covers/jharokha.jpg', poster:'../jharokha/out/jharokha-poster-2160x3840.jpg',    film:'../jharokha/out/jharokha-1080p.mp4'}
+};
+
+const $=id=>document.getElementById(id);
+const q=new URLSearchParams(location.search);
+const key=DESIGNS[q.get('design')]?q.get('design'):'rajwada';
+const D=DESIGNS[key];
+document.body.dataset.design=key;
+$('poster').src=D.cover; $('video').src=D.film; $('video').poster=D.poster;
+
+/* personal greeting: ?to=Sharma%20Family */
+const to=(q.get('to')||'').trim().slice(0,60);
+$('dear').textContent=to?`Dear ${to},`:'';
+
+/* design switcher keeps the guest name */
+$('switch').innerHTML=Object.entries(DESIGNS).map(([k,v])=>{const p=new URLSearchParams(q);p.set('design',k);return `<a href="?${p}" class="${k===key?'on':''}">${v.label}</a>`}).join('');
+
+/* open: play the film with sound, then reveal the details */
+const film=$('film'), video=$('video');
+function reveal(){
+  film.classList.remove('on'); video.pause();
+  document.querySelectorAll('.reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),120+i*110));
+  $('content').scrollIntoView({behavior:'smooth'});
+}
+$('openBtn').addEventListener('click',()=>{
+  film.classList.add('on'); video.currentTime=0;
+  const p=video.play(); if(p&&p.catch) p.catch(()=>reveal());
+});
+video.addEventListener('ended',reveal);
+$('skip').addEventListener('click',reveal);
+/* anyone who scrolls past the cover sees the details too */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* countdown (switches to a thank-you once the day has passed) */
+const start=new Date(EVENT.start), end=new Date(start.getTime()+EVENT.hours*3600e3);
+function tick(){
+  const now=Date.now(), ms=start-now;
+  if(ms<=0){
+    $('count').hidden=true; $('pastText').hidden=false;
+    $('countLabel').textContent= now<end ? 'Happening now' : 'Celebrated';
+    $('pastText').textContent= now<end ? 'The celebration is under way. Join us at Aas Manglam.' : 'Thank you for blessing Avinash & Divya on their engagement.';
+    return;
+  }
+  const s=Math.floor(ms/1000);
+  $('cd-d').textContent=Math.floor(s/86400); $('cd-h').textContent=Math.floor(s%86400/3600);
+  $('cd-m').textContent=Math.floor(s%3600/60); $('cd-s').textContent=s%60;
+}
+tick(); setInterval(tick,1000);
+$('whenText').textContent=start.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'Asia/Kolkata'});
+
+/* directions */
+$('mapBtn').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(EVENT.mapQuery);
+
+/* add to calendar: a standard .ics file works on iPhone, Android and desktop */
+$('calBtn').addEventListener('click',()=>{
+  const f=d=>d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Avinash Divya//Engagement//EN','BEGIN:VEVENT',
+    'UID:engagement-avinash-divya-20261122@invite','DTSTAMP:'+f(new Date()),'DTSTART:'+f(start),'DTEND:'+f(end),
+    'SUMMARY:'+EVENT.title,'LOCATION:'+EVENT.venue.replace(/,/g,'\\,'),'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'})); a.download='avinash-divya-engagement.ics'; a.click();
+});
+
+/* wishes go out through WhatsApp (to the family number if set, otherwise the guest picks a chat) */
+function wishLink(){
+  const msg=($('wish').value.trim()||'Heartiest congratulations on your engagement!')+(to?`\n— ${to}`:'');
+  const base=EVENT.wishesTo?`https://wa.me/${EVENT.wishesTo}`:'https://wa.me/';
+  $('wishBtn').href=`${base}?text=${encodeURIComponent('Dear Avinash & Divya,\n'+msg)}`;
+}
+$('wish').addEventListener('input',wishLink); wishLink();
+</script>
+</body>
+</html>
