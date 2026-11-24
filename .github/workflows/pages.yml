@@ -31,6 +31,15 @@ jobs:
           cp assets/scenes/*.svg public/assets/scenes/
           cp assets/previews/*.webp public/assets/previews/
           cp assets/fonts/* public/assets/fonts/
+          # engagement web invite (designs chosen with ?design=rajwada|pali|jharokha)
+          mkdir -p public/engagement/web/covers public/engagement/fonts public/engagement/fonts2 public/engagement/rajwada/out public/engagement/pali-photo/out public/engagement/jharokha/out
+          cp engagement/web/index.html public/engagement/web/
+          cp engagement/web/covers/*.jpg public/engagement/web/covers/
+          cp engagement/fonts/* public/engagement/fonts/
+          cp engagement/fonts2/* public/engagement/fonts2/
+          cp engagement/rajwada/out/rajwada-1080p.mp4 engagement/rajwada/out/rajwada-poster-2160x3840.jpg public/engagement/rajwada/out/
+          cp engagement/pali-photo/out/pali-photo-1080p.mp4 engagement/pali-photo/out/pali-photo-poster-2160x3840.jpg public/engagement/pali-photo/out/
+          cp engagement/jharokha/out/jharokha-1080p.mp4 engagement/jharokha/out/jharokha-poster-2160x3840.jpg public/engagement/jharokha/out/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
